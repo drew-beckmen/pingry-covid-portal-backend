@@ -5,6 +5,7 @@ class CreateIsolations < ActiveRecord::Migration[6.0]
       t.date :date_improving
       t.boolean :fever_free
       t.date :end_date
+      t.boolean :completed
       t.integer :student_id 
 
       t.timestamps

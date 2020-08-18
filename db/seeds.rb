@@ -17,8 +17,8 @@ u1 = User.create(username: "mlevinson", password: "password")
 
 s1 = Student.create(first_name: "Drew", last_name: "Beckmen", grade: 12, campus: "Basking Ridge")
 
-i1 = Isolation.create(start_isolation: Date.today, date_improving: nil, fever_free: false, end_date: Date.today + 10, student_id: s1.id)
-i2 = Isolation.create(start_isolation: Date.today - 2, date_improving: nil, fever_free: false, end_date: Date.today + 8, student_id: s1.id)
+i1 = Isolation.create(start_isolation: Date.today, date_improving: nil, fever_free: false, end_date: Date.today + 10, student_id: s1.id, completed: false)
+i2 = Isolation.create(start_isolation: Date.today - 2, date_improving: nil, fever_free: false, end_date: Date.today + 8, student_id: s1.id, completed: false)
 
-q1 = Quarantine.create(exposure: Date.today, student_id: s1.id)
-q2 = Quarantine.create(exposure: Date.today - 5, student: s1)
+q1 = Quarantine.create(exposure: Date.today, student_id: s1.id, completed: false)
+q2 = Quarantine.create(exposure: Date.today - 5, student: s1, completed: false)
