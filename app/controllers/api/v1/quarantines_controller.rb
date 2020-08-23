@@ -23,6 +23,8 @@ class Api::V1::QuarantinesController < ApplicationController
 
     def create 
         quarantine = Quarantine.create(quarantine_params)
+        currentStudent = Student.find(quarantine.sutdent_id)
+        QuarantineMailer.with(student: currentStudent).quarantine_started_email.deliver_now
         render json: quarantine
     end 
 

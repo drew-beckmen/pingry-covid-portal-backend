@@ -1,0 +1,24 @@
+<h1>Pingry COVID Update</h1>
+<h2>A change has been note on your student's isolation status</h2>
+<hr/>
+
+<p>Dear Parent or Guardian of <%= "#{@student.first_name} #{@student.last_name}" %>,</p>
+
+<p>According to Pingry's official COVID-19 database, <%= @student.first_name %> is currently in an isolation period after receiving a presumed or confirmed positive diagnosis for COVID-19. Our records on <%= @student.first_name %>'s isolation status have been updated. We write with the updated details below. Please note that a student will only be permitted to return to campus once the "Overall Status" field reads <strong>"Isolation Complete"</strong>. If <%= @student.first_name %> has any updates to their isolation status, please contact <a href="mailto:ecarannante@pingry.org">Erin Carannante</a>.</p>
+
+<p>Thank you for your help in keeping Pingry safe!</p>
+
+Your Current Isolation Status: 
+<ul>
+    <li>Start: <%= @isolation.start_isolation %></li>
+    <li>Date of Symptom Improvement: <%= @isolation.date_improving || "Not Yet Improving" %></li>
+    <li><%= @isolation.confirmed ? "Confirmed Positive" : "Presumed Positive" %> </li>
+    <li>Earliest Possible End Date: <%= @isolation.end_date %></li>
+    <li><strong>Overall Status: <%= @isolation.completed ? "Isolation Complete" : "Isolation Incomplete" %></strong></li>
+</ul>
+
+
+<p>The Pingry School</p>
+<img src="https://americanwaterpolo.org/wp-content/uploads/2018/07/PingrySchool_WhiteJuly232018.jpg" width=100 height=50>
+
+<p></p>
