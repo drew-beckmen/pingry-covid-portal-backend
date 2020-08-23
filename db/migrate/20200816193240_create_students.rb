@@ -5,6 +5,8 @@ class CreateStudents < ActiveRecord::Migration[6.0]
       t.string :last_name
       t.integer :grade
       t.string :campus
+      t.string :cohort
+      t.integer :veracross_id 
 
       t.timestamps
     end

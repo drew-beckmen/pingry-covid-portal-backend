@@ -15,15 +15,15 @@ Student.destroy_all
 
 u1 = User.create(username: "mlevinson", password: "password")
 
-s1 = Student.create(first_name: "Drew", last_name: "Beckmen", grade: 12, campus: "Basking Ridge")
-s2 = Student.create(first_name: "Abby", last_name: "Beckmen", grade: 10, campus: "Basking Ridge")
-s3 = Student.create(first_name: "Sarah", last_name: "Beckmen", grade: 6, campus: "Basking Ridge")
-s4 = Student.create(first_name: "David", last_name: "Fahey", grade: 1, campus: "Short Hills")
-s5 = Student.create(first_name: "Jeffrey", last_name: "Xiao", grade: 2, campus: "Short Hills")
+s1 = Student.create(first_name: "Drew", last_name: "Beckmen", grade: 12, campus: "Basking Ridge", cohort: "Group 1", veracross_id: 143270)
+s2 = Student.create(first_name: "Abby", last_name: "Beckmen", grade: 10, campus: "Basking Ridge", cohort: "Group 1", veracross_id: 143270)
+s3 = Student.create(first_name: "Sarah", last_name: "Beckmen", grade: 6, campus: "Basking Ridge", cohort: "Group 1", veracross_id: 143270)
+s4 = Student.create(first_name: "David", last_name: "Fahey", grade: 1, campus: "Short Hills", cohort: "Group 2", veracross_id: 143270)
+s5 = Student.create(first_name: "Jeffrey", last_name: "Xiao", grade: 2, campus: "Short Hills", cohort: "Group 2", veracross_id: 143270)
 
 
-i1 = Isolation.create(start_isolation: Date.today, date_improving: nil, fever_free: false, end_date: Date.today + 10, student_id: s1.id, completed: false)
-i2 = Isolation.create(start_isolation: Date.today - 2, date_improving: nil, fever_free: false, end_date: Date.today + 8, student_id: s1.id, completed: false)
+i1 = Isolation.create(start_isolation: Date.today, date_improving: nil, fever_free: false, end_date: Date.today + 10, student_id: s1.id, completed: false, confirmed: true)
+i2 = Isolation.create(start_isolation: Date.today - 2, date_improving: nil, fever_free: false, end_date: Date.today + 8, student_id: s1.id, completed: false, confirmed: false)
 
 q1 = Quarantine.create(exposure: Date.today, student_id: s1.id, completed: false)
 q2 = Quarantine.create(exposure: Date.today - 5, student: s1, completed: false)

@@ -19,9 +19,11 @@ ActiveRecord::Schema.define(version: 2020_08_16_193240) do
     t.date "start_isolation"
     t.date "date_improving"
     t.boolean "fever_free"
+    t.boolean "confirmed"
     t.date "end_date"
     t.boolean "completed"
     t.integer "student_id"
+    t.string "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -30,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_08_16_193240) do
     t.date "exposure"
     t.boolean "completed"
     t.integer "student_id"
+    t.string "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -39,6 +42,8 @@ ActiveRecord::Schema.define(version: 2020_08_16_193240) do
     t.string "last_name"
     t.integer "grade"
     t.string "campus"
+    t.string "cohort"
+    t.integer "veracross_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

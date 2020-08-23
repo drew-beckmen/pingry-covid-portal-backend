@@ -4,6 +4,7 @@ class CreateQuarantines < ActiveRecord::Migration[6.0]
       t.date :exposure
       t.boolean :completed
       t.integer :student_id 
+      t.string :notes
 
       t.timestamps
     end

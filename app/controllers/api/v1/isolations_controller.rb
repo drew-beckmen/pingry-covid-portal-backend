@@ -28,6 +28,6 @@ class Api::V1::IsolationsController < ApplicationController
 
     private 
     def isolation_params 
-        params.require(:isolation).permit(:start_isolation, :date_improving, :fever_free, :end_date, :completed, :student_id)
+        params.require(:isolation).permit(:start_isolation, :date_improving, :fever_free, :end_date, :completed, :student_id, :notes, :confirmed)
     end 
 end

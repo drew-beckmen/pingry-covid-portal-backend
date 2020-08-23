@@ -28,6 +28,6 @@ class Api::V1::QuarantinesController < ApplicationController
 
     private 
     def quarantine_params 
-        params.require(:quarantine).permit(:exposure, :completed, :student_id)
+        params.require(:quarantine).permit(:exposure, :completed, :student_id, :notes)
     end 
 end
