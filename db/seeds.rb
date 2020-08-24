@@ -15,11 +15,12 @@ Student.destroy_all
 
 u1 = User.create(username: "mlevinson", password: "password")
 
-s1 = Student.create(first_name: "Drew", last_name: "Beckmen", grade: 12, campus: "Basking Ridge", cohort: "Group 1", veracross_id: 143270)
-s2 = Student.create(first_name: "Abby", last_name: "Beckmen", grade: 10, campus: "Basking Ridge", cohort: "Group 1", veracross_id: 143270)
-s3 = Student.create(first_name: "Sarah", last_name: "Beckmen", grade: 6, campus: "Basking Ridge", cohort: "Group 1", veracross_id: 143270)
-s4 = Student.create(first_name: "David", last_name: "Fahey", grade: 1, campus: "Short Hills", cohort: "Group 2", veracross_id: 143270)
-s5 = Student.create(first_name: "Jeffrey", last_name: "Xiao", grade: 2, campus: "Short Hills", cohort: "Group 2", veracross_id: 143270)
+s1 = Student.create(first_name: "Drew", last_name: "Beckmen", grade: 12, campus: "Basking Ridge", cohort: "Group 1", veracross_id: 143270, teacher: false)
+s2 = Student.create(first_name: "Abby", last_name: "Beckmen", grade: 10, campus: "Basking Ridge", cohort: "Group 1", veracross_id: 143270, teacher: false)
+s3 = Student.create(first_name: "Sarah", last_name: "Beckmen", grade: 6, campus: "Basking Ridge", cohort: "Group 1", veracross_id: 143270, teacher: false)
+s4 = Student.create(first_name: "Finnegan", last_name: "Fahey", grade: 0, campus: "Short Hills", cohort: "Group 2", veracross_id: 143270, teacher: false)
+s5 = Student.create(first_name: "Jeffrey", last_name: "Xiao", grade: 2, campus: "Short Hills", cohort: "Group 2", veracross_id: 143270, teacher: false)
+s6 = Student.create(first_name: "David", last_name: "Fahey", campus: "Short Hills", teacher: true)
 
 
 i1 = Isolation.create(start_isolation: Date.today, date_improving: nil, fever_free: false, end_date: Date.today + 10, student_id: s1.id, completed: false, confirmed: true)
