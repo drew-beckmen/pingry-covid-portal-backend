@@ -17,13 +17,13 @@ class Api::V1::QuarantinesController < ApplicationController
     end 
 
     def index
-        quarantines = Quarantine.all 
+        quarantines = Quarantine.all
         render json: quarantines
     end 
 
     def create 
         quarantine = Quarantine.create(quarantine_params)
-        currentStudent = Student.find(quarantine.sutdent_id)
+        currentStudent = Student.find(quarantine.student_id)
         QuarantineMailer.with(student: currentStudent).quarantine_started_email.deliver_now
         render json: quarantine
     end 
