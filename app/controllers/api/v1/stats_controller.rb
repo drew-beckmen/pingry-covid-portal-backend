@@ -54,11 +54,11 @@ class Api::V1::StatsController < ApplicationController
 
     private 
     def get_short_hills_students
-        Student.all.select{|student| student.campus == "Short Hills" && !student.teacher}
+        Student.all.select{|student| student.campus == "Short Hills"} #&& !student.teacher}
     end   
     
     def get_basking_ridge_students 
-        Student.all.select{|student| student.campus == "Basking Ridge" && !student.teacher}
+        Student.all.select{|student| student.campus == "Basking Ridge"} # && !student.teacher}
     end 
 
     def short_hills_adults 
@@ -260,22 +260,30 @@ class Api::V1::StatsController < ApplicationController
     # Graph that shows date and number of people out of school 
     def number_people_out_of_school 
         mapping = {Date.today => 0, Date.today + 1 => 1, Date.today + 2 => 2, Date.today + 3 => 3, Date.today + 4 => 4}
-        final_hash = [{"name" => Date.today, "students" => 0}, {"name" => Date.today + 1, "students" => 0}, {"name" => Date.today + 2, "students" => 0}, {"name" => Date.today + 3, "students" => 0}, {"name" => Date.today + 4, "students" => 0}]
+        final_hash = [{"name" => Date.today, "students" => 0, "teachers" => 0, "total" => 0}, {"name" => Date.today + 1, "students" => 0, "teachers" => 0, "total" => 0}, {"name" => Date.today + 2, "students" => 0, "teachers" => 0, "total" => 0}, {"name" => Date.today + 3, "students" => 0, "teachers" => 0, "total" => 0}, {"name" => Date.today + 4, "students" => 0, "teachers" => 0, "total" => 0}]
         date_keys = final_hash.map{|obj| obj["name"]}
         date_keys.each do |key|  
             Isolation.all.each do |iso| 
-                if iso.end_date > key 
-                    # byebug
-                    final_hash[mapping[key]]["students"] += 1
+                if iso.end_date > key && !iso.completed
+                    final_hash[mapping[key]]["total"] += 1
+                    if Student.find(iso.student_id).teacher 
+                        final_hash[mapping[key]]["teachers"] += 1
+                    else 
+                        final_hash[mapping[key]]["students"] += 1
+                    end 
                 end 
             end 
             Quarantine.all.each do |q| 
-                if q.exposure + 14 > key 
-                    final_hash[mapping[key]]["students"] += 1
-
+                if q.exposure + 14 > key && !q.completed
+                    final_hash[mapping[key]]["total"] += 1
+                    if Student.find(q.student_id).teacher 
+                        final_hash[mapping[key]]["teachers"] += 1
+                    else
+                        final_hash[mapping[key]]["students"] += 1
+                    end 
                 end 
-            end 
-        end 
+            end
+        end
         final_hash
     end 
 

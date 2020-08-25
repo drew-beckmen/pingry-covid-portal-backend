@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_08_16_193240) do
 
   create_table "quarantines", force: :cascade do |t|
     t.date "exposure"
+    t.boolean "converted_to_isolation"
     t.boolean "completed"
     t.integer "student_id"
     t.string "notes"
