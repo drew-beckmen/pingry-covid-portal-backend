@@ -4,7 +4,11 @@ class Api::V1::QuarantinesController < ApplicationController
         quarantine.update(quarantine_params)
         currentStudent = Student.find(quarantine.student_id)
         # if currentStudent.veracross_id
-        #     QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_updated_email.deliver_now
+        #     if quarantine.converted_to_isolation
+        #         QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_converted_email.deliver_now
+        #     else 
+        #         QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_updated_email.deliver_now
+        #     end 
         # end 
         render json: quarantine
     end 

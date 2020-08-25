@@ -1,9 +1,8 @@
 <h1>Pingry COVID Update</h1>
-<h2>A change has been noted on your student's quarantine status</h2>
+<h2>A change has been noted on your quarantine status</h2>
 <hr/>
 
-<p>Dear Parent or Guardian of <%= "#{@student.first_name} #{@student.last_name}" %>,</p>
-
+<p>Dear <%= "#{@student.last_name}" %> Family,</p>
 <p>According to Pingry's official COVID-19 database, <%= @student.first_name %> has just entered a mandatory 14 day quarantine after coming into contact with a presumed or confirmed positive case of COVID-19.</p>
 
 <p>During the 14 day quarantine, <%= @student.first_name %> will not be permitted on any Pingry campus. All courses must be taken remotely under the remote learning guidelines outlined by Pingry Anywhere. If <%= @student.first_name %> begins developing symptoms, please contact <a href="mailto:ecarannante@pingry.org">Erin Carannante</a>. <%= @student.first_name %> will then be transfered to Pingry's isolation protocol and local public health officials will be notified for contact tracing purposes. Thank you for your help in keeping Pingry safe!</p>

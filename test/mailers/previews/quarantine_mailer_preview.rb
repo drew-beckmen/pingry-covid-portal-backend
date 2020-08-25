@@ -12,4 +12,10 @@ class QuarantineMailerPreview < ActionMailer::Preview
         currentStudent = Student.find(quarantine.student_id)
         QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_updated_email
     end 
+
+    def quarantine_converted_email 
+        quarantine = Quarantine.new(exposure: Date.today, completed: false, student_id: 1)
+        currentStudent = Student.find(quarantine.student_id)
+        QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_converted_email
+    end 
 end
