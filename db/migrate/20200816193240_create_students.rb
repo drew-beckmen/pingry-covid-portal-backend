@@ -7,7 +7,8 @@ class CreateStudents < ActiveRecord::Migration[6.0]
       t.string :campus
       t.string :cohort
       t.integer :veracross_id 
-      t.boolean :teacher 
+      t.boolean :teacher
+      t.string :email 
 
       t.timestamps
     end

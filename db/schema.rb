@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_08_16_193240) do
     t.string "cohort"
     t.integer "veracross_id"
     t.boolean "teacher"
+    t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

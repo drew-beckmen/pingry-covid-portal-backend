@@ -4,12 +4,20 @@ class IsolationMailer < ApplicationMailer
     def isolation_started_email 
         @student = params[:student]
         @isolation = params[:isolation]
-        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", subject: "TEST EMAIL - Pingry: #{@student.first_name} COVID-19 Isolation")
+        if !@student.teacher
+            mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", subject: "TEST EMAIL - Pingry: #{@student.first_name} COVID-19 Isolation")
+        else 
+            mail(to: @student.email, subject: "TEST EMAIL - Pingry: #{@student.first_name} COVID-19 Isolation")
+        end 
     end  
     
     def isolation_updated_email 
         @student = params[:student]
         @isolation = params[:isolation]
-        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", subject: "TEST EMAIL - Pingry: #{@student.first_name} COVID-19 Isolation Update")
+        if !@student.teacher 
+            mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", subject: "TEST EMAIL - Pingry: #{@student.first_name} COVID-19 Isolation Update")
+        else 
+            mail(to: @student.email, subject: "TEST EMAIL - Pingry: #{@student.first_name} COVID-19 Isolation")
+        end 
     end 
 end
