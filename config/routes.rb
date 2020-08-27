@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       post '/login', to: 'auth#create'
       get '/summarystats', to: 'stats#index'
       get '/studentinfo', to: "students#info"
+      get '/student_details', to: "students#details"
       resources :users, only: [:show, :update]
       resources :students, only: [:update, :show, :index]
       resources :quarantines, only: [:update, :show, :destroy, :index, :create]

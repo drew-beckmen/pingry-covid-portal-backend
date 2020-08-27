@@ -20,6 +20,11 @@ class Api::V1::StudentsController < ApplicationController
         render json: list 
     end 
 
+    def details 
+        list = Student.all.map{|s| {:id => s.id, :grade => s.grade, :campus => s.campus, :first_name => s.first_name, :last_name => s.last_name, :cohort => s.cohort, :veracross_id => s.veracross_id, :teacher => s.teacher, :email => s.email}}
+        render json: list 
+    end 
+
     private
     def student_params 
         params.require(:student).permit(:first_name, :last_name, :grade, :campus, :cohort, :veracross_id, :teacher, :email)
