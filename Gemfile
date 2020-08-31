@@ -5,7 +5,7 @@ ruby '2.6.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
-gem 'activesupport', '= 6.0.3.2'
+# gem 'activesupport', '= 6.0.3.2'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
@@ -23,8 +23,8 @@ gem 'figaro'
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'msgpack', '=1.0'
-gem 'bootsnap', '= 1.4.1', require: false
+# gem 'msgpack', '=1.0'
+# gem 'bootsnap', '= 1.4.1', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
