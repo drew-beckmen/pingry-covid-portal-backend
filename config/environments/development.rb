@@ -35,17 +35,15 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   config.action_mailer.delivery_method = :smtp
-  host = 'localhost:3000'
-  config.action_mailer.default_url_options = {:host => 'localhost:3000', protocol: 'http'}
+  host = 'mailrelay.pingry.k12.nj.us' #replace with your own url
+  config.action_mailer.default_url_options = { host: host }
+
+  # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
-    :address => "smtp.gmail.com", 
-    :port => 587, 
-    :domain => "gmail.com", 
-    :user_name => "drewb2000", 
-    :password => ENV['gmail_app_password'], 
-    :authentication => "plain", 
-    :enable_starttls_auto => true 
+    :address              => "mailrelay.pingry.k12.nj.us",
+    :port                 => 25
   }
+
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
