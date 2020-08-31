@@ -2,7 +2,7 @@
 lock "~> 3.14.1"
 
 set :application, "pingrycovidapp"
-set :repo_url, "git@github.com:drew-beckmen/pingry-covid-portal-backend.git"
+set :repo_url, "https://github.com/drew-beckmen/pingry-covid-portal-backend.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
