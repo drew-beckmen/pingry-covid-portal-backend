@@ -75,11 +75,11 @@ test:
 #
 # You can use this database configuration with:
 #
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
+  production:
+    url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: covid_portal_backend_production
-  username: covid_portal_backend
-  password: <%= ENV['COVID_PORTAL_BACKEND_DATABASE_PASSWORD'] %>
+# production:
+#   <<: *default
+#   database: covid_portal_backend_production
+#   username: covid_portal_backend
+#   password: <%= ENV['COVID_PORTAL_BACKEND_DATABASE_PASSWORD'] %>
