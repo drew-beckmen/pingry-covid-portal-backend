@@ -6,7 +6,7 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-server '130.156.110.132', user: "deploy", roles: %{app db web}
+server '130.156.110.132', user: "dbeckmen2019", roles: %{app db web}
 
 
 
@@ -17,6 +17,7 @@ server '130.156.110.132', user: "deploy", roles: %{app db web}
 # group is considered to be the first unless any hosts have the primary
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
+
 
 # role :app, %w{deploy@example.com}, my_property: :my_value
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
