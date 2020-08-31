@@ -195,7 +195,6 @@ DEPENDENCIES
   figaro
   jwt (~> 2.2)
   listen (~> 3.2)
-  msgpack (~> 1.0)
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rack-cors
