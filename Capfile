@@ -4,6 +4,7 @@ require "capistrano/deploy"
 require 'capistrano/bundler'
 require 'capistrano/rails'
 require 'capistrano/rbenv'
+require "capistrano/bundler"
 require 'capistrano/passenger'
 
 # Include default deployment tasks
@@ -33,13 +34,13 @@ install_plugin Capistrano::SCM::Git
 # require "capistrano/rvm"
 # require "capistrano/rbenv"
 # require "capistrano/chruby"
-# require "capistrano/bundler"
+
 # require "capistrano/rails/assets"
 # require "capistrano/rails/migrations"
 # require "capistrano/passenger"
 
 set :rbenv_type, :user
-set :rbenv_ruby, '2.7.1'
+set :rbenv_ruby, '2.6.1'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
