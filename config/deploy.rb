@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.14.1"
 
-set :application, "pingrycovidportal"
+set :application, "pingrycovidapp"
 set :repo_url, "https://github.com/drew-beckmen/pingry-covid-portal-backend.git"
 
 # Default branch is :master
