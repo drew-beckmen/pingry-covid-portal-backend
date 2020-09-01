@@ -23,7 +23,7 @@ u5 = User.create(username: "tchan", password: "bigblue5")
 u6 = User.create(username: "sacharya", password: "bigblue6")
 
 
-CSV.foreach("/Users/drewbeckmen/Desktop/pingry-seed-data/seed.csv", headers: false) do |row| 
+CSV.foreach(File.join(Rails.root, "db", "seed.csv"), headers: false) do |row| 
     first_name, last_name, grade, campus, cohort, veracross_id, email, teacher = row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7]
     Student.create(
         first_name: first_name, 
