@@ -10,7 +10,6 @@ class ApplicationController < ActionController::API
     end 
 
     def decoded_token
-        puts ENV['JWT_SECRET_KEY']
         if auth_header
             token = auth_header.split(" ")[1]
             begin
