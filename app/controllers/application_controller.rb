@@ -32,9 +32,12 @@ class ApplicationController < ActionController::API
         !!current_user
     end
 
+    def write? 
+        current_user.write 
+    end 
+
     def write_access
-        user = current_user
-        render json: { message: "Denied Access" }, status: :unauthorized unless user.write? 
+        render json: { message: "Denied Access" }, status: :unauthorized unless write? 
     end 
 
     def authorized
