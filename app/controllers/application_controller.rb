@@ -33,7 +33,9 @@ class ApplicationController < ActionController::API
     end
 
     def write? 
-        current_user.write 
+        if current_user
+            current_user.write 
+        end 
     end 
 
     def write_access

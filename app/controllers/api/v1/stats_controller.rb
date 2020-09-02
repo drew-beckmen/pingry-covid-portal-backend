@@ -2,6 +2,7 @@ require 'date'
 
 class Api::V1::StatsController < ApplicationController
     skip_before_action :authorized, only: [:index]
+    skip_before_action :write_access, only: [:index]
     def index 
         # render json: {
         #     studentsBaskingRidge: get_basking_ridge_students, 
