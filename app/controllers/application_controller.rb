@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-    before_action :authorized
+    prepend_before_action :authorized
     before_action :write_access
 
     def encode_token(payload)
@@ -39,10 +39,12 @@ class ApplicationController < ActionController::API
     end 
 
     def write_access
+        puts "WRITE"
         render json: { message: "Denied Access" }, status: :unauthorized unless write? 
     end 
 
     def authorized
+        puts "PASSWORD"
         render json: { message: "Please Log In" }, status: :unauthorized unless logged_in? 
     end 
 end
