@@ -28,14 +28,11 @@ class ApplicationController < ActionController::API
     end 
 
     def logged_in? 
-        !!current_user
+        user = current_user
+        !!current_user && user.write
     end
 
-    # def write_access
-    #     render json: { message: "Unauthorized User"}, status: :unauthorized unless current_user.write 
-    # end 
-
     def authorized
-        render json: { message: "Please log in" }, status: :unauthorized unless logged_in?
+        render json: { message: "Denied Access" }, status: :unauthorized unless logged_in? 
     end 
 end

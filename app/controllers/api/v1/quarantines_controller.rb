@@ -3,12 +3,10 @@ class Api::V1::QuarantinesController < ApplicationController
         quarantine = Quarantine.find(params[:id])
         quarantine.update(quarantine_params)
         currentStudent = Student.find(quarantine.student_id)
-        if currentStudent.veracross_id
-            if quarantine.converted_to_isolation
-                QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_converted_email.deliver_now
-            else 
-                QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_updated_email.deliver_now
-            end 
+        if quarantine.converted_to_isolation
+            QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_converted_email.deliver_now
+        else 
+            QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_updated_email.deliver_now
         end 
         render json: quarantine
     end 
@@ -32,9 +30,7 @@ class Api::V1::QuarantinesController < ApplicationController
     def create 
         quarantine = Quarantine.create(quarantine_params)
         currentStudent = Student.find(quarantine.student_id)
-        if currentStudent.veracross_id
-            QuarantineMailer.with(student: currentStudent).quarantine_started_email.deliver_now
-        end 
+        QuarantineMailer.with(student: currentStudent).quarantine_started_email.deliver_now
         render json: quarantine
     end 
 

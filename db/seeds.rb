@@ -15,12 +15,12 @@ Quarantine.destroy_all
 Student.destroy_all
 
 
-u1 = User.create(username: "mlevinson", password: "bigblue1")
-u2 = User.create(username: "dfahey", password: "bigblue2")
-u3 = User.create(username: "ecarannante", password: "bigblue3")
-u4 = User.create(username: "apu", password: "bigblue4")
-u5 = User.create(username: "tchan", password: "bigblue5")
-u6 = User.create(username: "sacharya", password: "bigblue6")
+u1 = User.create(username: "mlevinson", password: "bigblue1", write: false)
+u2 = User.create(username: "dfahey", password: "bigblue2", write: true)
+u3 = User.create(username: "ecarannante", password: "bigblue3", write: true)
+u4 = User.create(username: "apu", password: "bigblue4", write: true)
+u5 = User.create(username: "tchan", password: "bigblue5", write: false)
+u6 = User.create(username: "sacharya", password: "bigblue6", write: false)
 
 
 CSV.foreach(File.join(Rails.root, "db", "seed.csv"), headers: false) do |row| 
