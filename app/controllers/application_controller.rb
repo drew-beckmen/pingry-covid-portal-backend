@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
-    before_action :authorized #, :write_access
+    before_action :authorized
+    before_action :write_access
 
     def encode_token(payload)
         JWT.encode(payload, ENV['JWT_SECRET_KEY'])
@@ -28,11 +29,15 @@ class ApplicationController < ActionController::API
     end 
 
     def logged_in? 
-        user = current_user
-        !!current_user && user.write
+        !!current_user
     end
 
+    def write_access
+        user = current_user
+        render json: { message: "Denied Access" }, status: :unauthorized unless user.write? 
+    end 
+
     def authorized
-        render json: { message: "Denied Access" }, status: :unauthorized unless logged_in? 
+        render json: { message: "Please Log In" }, status: :unauthorized unless logged_in? 
     end 
 end
