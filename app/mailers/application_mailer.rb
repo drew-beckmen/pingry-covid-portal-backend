@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'drewb2000@gmail.com'
+  default from: 'noreply@pingry.org'
   layout 'mailer'
 end
