@@ -1,5 +1,5 @@
 class IsolationMailer < ApplicationMailer
-    default from: 'noreply@pingry.org'
+    default from: 'apu@pingry.org'
 
     def isolation_started_email 
         puts "Hello"

@@ -1,5 +1,5 @@
 class QuarantineMailer < ApplicationMailer 
-    default from: 'noreply@pingry.org'
+    default from: 'apu@pingry.org'
     def quarantine_started_email
         @student = params[:student]
         if !@student.teacher

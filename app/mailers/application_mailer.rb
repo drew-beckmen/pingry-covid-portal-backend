@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'noreply@pingry.org'
+  default from: 'apu@pingry.org'
   layout 'mailer'
 end
