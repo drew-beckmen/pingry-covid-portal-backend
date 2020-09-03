@@ -2,6 +2,7 @@ class IsolationMailer < ApplicationMailer
     default from: 'noreply@pingry.org'
 
     def isolation_started_email 
+        puts "Hello"
         @student = params[:student]
         @isolation = params[:isolation]
         if !@student.teacher

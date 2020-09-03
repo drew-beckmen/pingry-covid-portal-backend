@@ -41,7 +41,8 @@ Rails.application.configure do
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
     :address              => "mailrelay.pingry.k12.nj.us",
-    :port                 => 25
+    :port                 => 25, 
+    :authentication       => nil
   }
 
 
