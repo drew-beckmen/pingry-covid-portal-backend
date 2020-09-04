@@ -18,12 +18,4 @@ class Api::V1::AuthController < ApplicationController
     end 
 end
 
-# Every request to server carries token in an HTTP header
-# Example (on the front end): 
-# fetch('http://localhost:3000/api/v1/profile', {
-#   method: 'GET',
-#   headers: {
-#     Authorization: `Bearer <token>`
-#   }
-# })
 

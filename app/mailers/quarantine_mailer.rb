@@ -1,29 +1,49 @@
 class QuarantineMailer < ApplicationMailer 
     default from: 'apu@pingry.org'
-    def quarantine_started_email
+    def quarantine_started_email_student
         @student = params[:student]
-        if !@student.teacher
-            mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", subject: "TEST EMAIL - Pingry: #{@student.first_name} COVID-19 Update")
-        else 
-            mail(to: @student.email, subject: "TEST EMAIL IGNORE - Pingry: #{@student.first_name} COVID-19 Quarantine Update")
-        end 
-        # mail(to: "dfahey@pingry.org", subject: "TEST EMAIL - Pingry: #{@student.first_name} COVID-19 Update")
+        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", subject: "Pingry: #{@student.first_name}'s Quarantine Period Start")
     end 
 
-    def quarantine_updated_email 
+    def quarantine_started_email_adult 
         @student = params[:student]
-        @quarantine = params[:quarantine]
-        if !@student.teacher
-            mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", subject: "TEST EMAIL - Pingry: #{@student.first_name} Quarantine Update")
-        else 
-            mail(to: @student.email, subject: "TEST EMAIL IGNORE - Pingry: #{@student.first_name} COVID-19 Isolation")
-        end 
-        # mail(to: "dfahey@pingry.org", subject: "TEST EMAIL - Pingry: #{@student.first_name}'s Quarantine Update")
+        mail(to: @student.email, subject: "Pingry: Quarantine Period Started")
     end
 
-    def quarantine_converted_email 
+    def quarantine_updated_email_student
         @student = params[:student]
         @quarantine = params[:quarantine]
-        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", subject: "TEST EMAIL - Pingry: #{@student.first_name}'s' Quarantine Converted To Isolation" )
+        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", subject: "Pingry: #{@student.first_name}'s Quarantine Update")
+    end
+
+    def quarantine_updated_email_adult 
+        @student = params[:student]
+        @quarantine = params[:quarantine]
+        mail(to: @student.email, subject: "Pingry: Your Quarantine Update")
     end 
+
+    def quarantine_converted_email_student
+        @student = params[:student]
+        @quarantine = params[:quarantine]
+        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", subject: "Pingry: #{@student.first_name}'s Quarantine Converted To Isolation")
+    end 
+
+    def quarantine_converted_email_adult
+        @student = params[:student]
+        @quarantine = params[:quarantine]
+        mail(to: @student.email, subject: "Pingry: Quarantine Converted To Isolation")
+    end 
+
+    def quarantine_completed_email_student
+        @student = params[:student]
+        @quarantine = params[:quarantine]
+        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", subject: "Pingry: #{@student.first_name}'s Quarantine Is Complete")
+    end 
+
+    def quarantine_completed_email_adult
+        @student = params[:student]
+        @quarantine = params[:quarantine]
+        mail(to: @student.email, subject: "Pingry: Your Quarantine Is Complete")
+    end 
+
 end 

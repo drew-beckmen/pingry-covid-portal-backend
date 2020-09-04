@@ -3,7 +3,19 @@ class Api::V1::IsolationsController < ApplicationController
         isolation = Isolation.find(params[:id])
         isolation.update(isolation_params)
         currentStudent = Student.find(isolation.student_id)
-        IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_updated_email.deliver_now
+        if !currentStudent.teacher 
+            if isolation.completed 
+                IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_completed_email_student.deliver_now
+            else 
+                IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_updated_email_student.deliver_now
+            end 
+        else 
+            if isolation.completed 
+                IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_completed_email_adult.deliver_now
+            else 
+                IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_updated_email_adult.deliver_now
+            end 
+        end 
         render json: isolation
     end 
 
@@ -26,7 +38,11 @@ class Api::V1::IsolationsController < ApplicationController
     def create 
         isolation = Isolation.create(isolation_params)
         currentStudent = Student.find(isolation.student_id)
-        IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_started_email.deliver_now
+        if !currentStudent.teacher 
+            IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_started_email_student.deliver_now
+        else 
+            IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_started_email_adult.deliver_now
+        end 
         render json: isolation
     end 
 

@@ -4,9 +4,25 @@ class Api::V1::QuarantinesController < ApplicationController
         quarantine.update(quarantine_params)
         currentStudent = Student.find(quarantine.student_id)
         if quarantine.converted_to_isolation
-            QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_converted_email.deliver_now
+            if !currentStudent.teacher 
+                QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_converted_email_student.deliver_now
+            else 
+                QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_converted_email_adult.deliver_now
+            end 
         else 
-            QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_updated_email.deliver_now
+            if !currentStudent.teacher
+                if quarantine.completed
+                    QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_completed_email_student.deliver_now
+                else 
+                    QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_updated_email_student.deliver_now
+                end 
+            else 
+                if quarantine.completed 
+                    QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_completed_email_adult.deliver_now
+                else 
+                    QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_updated_email_adult.deliver_now
+                end 
+            end 
         end 
         render json: quarantine
     end 
@@ -30,7 +46,11 @@ class Api::V1::QuarantinesController < ApplicationController
     def create 
         quarantine = Quarantine.create(quarantine_params)
         currentStudent = Student.find(quarantine.student_id)
-        QuarantineMailer.with(student: currentStudent).quarantine_started_email.deliver_now
+        if !currentStudent.teacher
+            QuarantineMailer.with(student: currentStudent).quarantine_started_email_student.deliver_now
+        else 
+            QuarantineMailer.with(student: currentStudent).quarantine_started_email_adult.deliver_now
+        end 
         render json: quarantine
     end 
 

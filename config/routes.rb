@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   namespace :api do 
     namespace :v1 do 
       post '/login', to: 'auth#create'
-      get '/summarystats', to: 'stats#index'
+      get '/pingrystats', to: 'stats#index'
+      get '/summarystats', to: 'stats#summary'
       get '/studentinfo', to: "students#info"
       get '/student_details', to: "students#details"
       resources :users, only: [:show, :update]
