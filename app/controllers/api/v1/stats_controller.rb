@@ -1,8 +1,8 @@
 require 'date'
 
 class Api::V1::StatsController < ApplicationController
-    skip_before_action :authorized, only: [:index, :summary]
-    skip_before_action :write_access, only: [:summary]
+    skip_before_action :authorized, only: [:summary]
+    skip_before_action :write_access, only: [:summary, :index]
     def index 
         short_hills_array = short_hills_master
         basking_ridge_array = basking_ridge_master
