@@ -3,7 +3,7 @@ class Api::V1::IsolationsController < ApplicationController
         isolation = Isolation.find(params[:id])
         params = isolation_params
 
-        if params.isolation.start_isolation == isolation.start_isolation && params.isolation.date_improving == isolation.date_improving && params.isolation.fever_free == isolation.fever_free && params.isolation.end_date == isolation.end_date && params.isolation.completed == isolation.completed && params.isolation.confirmed == isolation.confirmed
+        if Date.parse(isolation[:start_isolation]) == isolation.start_isolation && Date.parse(params[:date_improving]) == isolation.date_improving && params[:fever_free] == isolation.fever_free && Date.parse(params[:end_date]) == isolation.end_date && params[:completed] == isolation.completed && params[:confirmed] == isolation.confirmed
             isolation.update(isolation_params)
         else 
             isolation.update(isolation_params)
