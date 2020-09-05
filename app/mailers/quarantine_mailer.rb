@@ -1,5 +1,5 @@
 class QuarantineMailer < ApplicationMailer 
-    default from: 'apu@pingry.org'
+    default from: 'ecarannante@pingry.org'
     def quarantine_started_email_student
         @student = params[:student]
         mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", subject: "Pingry: #{@student.first_name}'s Quarantine Period Start")

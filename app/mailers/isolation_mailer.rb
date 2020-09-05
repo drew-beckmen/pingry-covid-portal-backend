@@ -1,5 +1,5 @@
 class IsolationMailer < ApplicationMailer
-    default from: 'apu@pingry.org'
+    default from: 'ecarannante@pingry.org'
 
     def isolation_started_email_student
         @student = params[:student]
