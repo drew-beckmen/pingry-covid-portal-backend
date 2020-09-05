@@ -4,7 +4,7 @@ class Api::V1::QuarantinesController < ApplicationController
 
         # don't want to send email if only update is notes
         params = quarantine_params 
-        if params["exposure"] == quarantine.exposure && params["completed"] == quarantine.completed && params["converted_to_isolation"] == quarantine.converted_to_isolation
+        if params["quarantine"]["exposure"] == quarantine.exposure && params["quarantine"]["completed"] == quarantine.completed && params["quarantine"]["converted_to_isolation"] == quarantine.converted_to_isolation
             quarantine.update(quarantine_params)
         else 
             quarantine.update(quarantine_params)
