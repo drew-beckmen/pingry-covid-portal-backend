@@ -1,29 +1,36 @@
 class Api::V1::QuarantinesController < ApplicationController
     def update 
         quarantine = Quarantine.find(params[:id])
-        quarantine.update(quarantine_params)
-        currentStudent = Student.find(quarantine.student_id)
-        if quarantine.converted_to_isolation
-            if !currentStudent.teacher 
-                QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_converted_email_student.deliver_now
-            else 
-                QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_converted_email_adult.deliver_now
-            end 
+
+        # don't want to send email if only update is notes
+        params = quarantine_params 
+        if params.quarantine.exposure == quarantine.exposure && params.quarantine.completed == quarantine.completed && params.quarantine.converted_to_isolation == quarantine.converted_to_isolation
+            quarantine.update(quarantine_params)
         else 
-            if !currentStudent.teacher
-                if quarantine.completed
-                    QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_completed_email_student.deliver_now
+            quarantine.update(quarantine_params)
+            currentStudent = Student.find(quarantine.student_id)
+            if quarantine.converted_to_isolation
+                if !currentStudent.teacher 
+                    QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_converted_email_student.deliver_now
                 else 
-                    QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_updated_email_student.deliver_now
+                    QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_converted_email_adult.deliver_now
                 end 
             else 
-                if quarantine.completed 
-                    QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_completed_email_adult.deliver_now
+                if !currentStudent.teacher
+                    if quarantine.completed
+                        QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_completed_email_student.deliver_now
+                    else 
+                        QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_updated_email_student.deliver_now
+                    end 
                 else 
-                    QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_updated_email_adult.deliver_now
+                    if quarantine.completed 
+                        QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_completed_email_adult.deliver_now
+                    else 
+                        QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_updated_email_adult.deliver_now
+                    end 
                 end 
-            end 
-        end 
+            end
+        end  
         render json: quarantine
     end 
 

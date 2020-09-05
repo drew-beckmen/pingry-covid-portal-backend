@@ -26,7 +26,7 @@ class Api::V1::StatsController < ApplicationController
                 cohort2ShortHills: short_hills_array[12], 
                 cohort2ActiveIsolationsShortHills: short_hills_array[6], 
                 cohort2ActiveQuarantinesShortHills: short_hills_array[8],
-                cohort2NewIsolationsShortHills: short_hills_array[14], 
+                cohort2NewIsolationsShortHills: short_hills_array[15], 
                 cohort2NewQuarantinesShortHills: short_hills_array[16], 
                 shortHillsAdults: short_hills_array[19], 
                 shortHillsAdultsActiveIsolations: short_hills_array[18], 
@@ -48,7 +48,7 @@ class Api::V1::StatsController < ApplicationController
                 cohort2BaskingRidge: basking_ridge_array[12], 
                 cohort2ActiveIsolationsBaskingRidge: basking_ridge_array[6], 
                 cohort2ActiveQuarantinesBaskingRidge: basking_ridge_array[8],
-                cohort2NewIsolationsBaskingRidge: basking_ridge_array[14], 
+                cohort2NewIsolationsBaskingRidge: basking_ridge_array[15], 
                 cohort2NewQuarantinesBaskingRidge: basking_ridge_array[16], 
                 baskingRidgeAdults: basking_ridge_array[19], 
                 baskingRidgeAdultsActiveIsolations: basking_ridge_array[18], 
@@ -128,7 +128,7 @@ class Api::V1::StatsController < ApplicationController
             addToNewQ = 0 
             person.quarantines.each do |q| 
                 addToActiveQ += 1 if !q.completed 
-                addToNewQ += 1 if ((Date.today-3)..Date.today).include?(q.exposure)
+                addToNewQ += 1 if (((Date.today-3)..Date.today).include?(q.exposure) && !q.converted_to_isolation)
             end 
             activeQ += addToActiveQ
             newIso += addToNewIso
@@ -157,14 +157,14 @@ class Api::V1::StatsController < ApplicationController
     # Graph that shows date and number of people out of school 
     def number_people_out_of_school 
         mapping = {Date.today => 0, Date.today + 1 => 1, Date.today + 2 => 2, Date.today + 3 => 3, Date.today + 4 => 4}
-        final_hash = [{"name" => Date.today, "students" => 0, "teachers" => 0, "total" => 0}, {"name" => Date.today + 1, "students" => 0, "teachers" => 0, "total" => 0}, {"name" => Date.today + 2, "students" => 0, "teachers" => 0, "total" => 0}, {"name" => Date.today + 3, "students" => 0, "teachers" => 0, "total" => 0}, {"name" => Date.today + 4, "students" => 0, "teachers" => 0, "total" => 0}]
+        final_hash = [{"name" => Date.today, "students" => 0, "adults" => 0, "total" => 0}, {"name" => Date.today + 1, "students" => 0, "adults" => 0, "total" => 0}, {"name" => Date.today + 2, "students" => 0, "adults" => 0, "total" => 0}, {"name" => Date.today + 3, "students" => 0, "adults" => 0, "total" => 0}, {"name" => Date.today + 4, "students" => 0, "adults" => 0, "total" => 0}]
         date_keys = final_hash.map{|obj| obj["name"]}
         date_keys.each do |key|  
             Isolation.all.each do |iso| 
-                if iso.end_date > key && !iso.completed
+                if (iso.end_date == nil && !iso.completed) ||(iso.end_date > key && !iso.completed)
                     final_hash[mapping[key]]["total"] += 1
                     if Student.find(iso.student_id).teacher 
-                        final_hash[mapping[key]]["teachers"] += 1
+                        final_hash[mapping[key]]["adults"] += 1
                     else 
                         final_hash[mapping[key]]["students"] += 1
                     end 
@@ -174,7 +174,7 @@ class Api::V1::StatsController < ApplicationController
                 if q.exposure + 14 > key && !q.completed
                     final_hash[mapping[key]]["total"] += 1
                     if Student.find(q.student_id).teacher 
-                        final_hash[mapping[key]]["teachers"] += 1
+                        final_hash[mapping[key]]["adults"] += 1
                     else
                         final_hash[mapping[key]]["students"] += 1
                     end 

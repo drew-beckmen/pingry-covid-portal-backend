@@ -1,19 +1,25 @@
 class Api::V1::IsolationsController < ApplicationController
     def update 
         isolation = Isolation.find(params[:id])
-        isolation.update(isolation_params)
-        currentStudent = Student.find(isolation.student_id)
-        if !currentStudent.teacher 
-            if isolation.completed 
-                IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_completed_email_student.deliver_now
-            else 
-                IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_updated_email_student.deliver_now
-            end 
+        params = isolation_params
+
+        if params.isolation.start_isolation == isolation.start_isolation && params.isolation.date_improving == isolation.date_improving && params.isolation.fever_free == isolation.fever_free && params.isolation.end_date == isolation.end_date && params.isolation.completed == isolation.completed && params.isolation.confirmed == isolation.confirmed
+            isolation.update(isolation_params)
         else 
-            if isolation.completed 
-                IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_completed_email_adult.deliver_now
+            isolation.update(isolation_params)
+            currentStudent = Student.find(isolation.student_id)
+            if !currentStudent.teacher 
+                if isolation.completed 
+                    IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_completed_email_student.deliver_now
+                else 
+                    IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_updated_email_student.deliver_now
+                end 
             else 
-                IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_updated_email_adult.deliver_now
+                if isolation.completed 
+                    IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_completed_email_adult.deliver_now
+                else 
+                    IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_updated_email_adult.deliver_now
+                end 
             end 
         end 
         render json: isolation
