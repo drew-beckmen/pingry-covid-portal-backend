@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       get '/summarystats', to: 'stats#summary'
       get '/studentinfo', to: "students#info"
       get '/student_details', to: "students#details"
-      resources :users, only: [:show, :update]
+      resources :users, only: [:show, :update, :create]
       resources :students, only: [:update, :show, :index]
       resources :quarantines, only: [:update, :show, :destroy, :index, :create]
       resources :isolations, only: [:update, :show, :destroy, :index, :create]

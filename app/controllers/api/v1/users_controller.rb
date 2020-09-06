@@ -1,5 +1,11 @@
 class Api::V1::UsersController < ApplicationController
-    skip_before_action :write_access
+    skip_before_action :write_access, only: [:show, :update]
+
+    def create 
+        user = User.create(user_params)
+        render json: user 
+    end 
+
 
     def show 
         user = User.find(params[:id])
