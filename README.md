@@ -1,24 +1,23 @@
-# README
+# Pingry COVID-19 Tracking: Backend API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Pingry Anywhere](public/Screen%20Shot%202020-09-07%20at%203.00.22%20PM.png)
 
-Things you may want to cover:
+This repository contains all of the backend code for The Pingry School's internal coronavirus tracking portal. Select people will have full write access to all of the APIs endpoints, and the entire admin team will get access to protected endpoints that share detailed statistics about COVID-19 in the Pingry community. Authentication is handled with JSON Web Tokens, and – as stated previously –  there are two distinct levels of access.
 
-* Ruby version
+## Ruby Version and System Dependencies
 
-* System dependencies
+The project uses Rails version 6.0.3 with Ruby 2.6.1. The gem `rack-cors` is used to handle cross-origin resource sharing, and `capistrano` was used to deploy the project with Passenger (application server) and Nginx (web server). 
 
-* Configuration
+The backend database uses PostgreSQL. 
 
-* Database creation
+## Endpoints: 
 
-* Database initialization
+### Open Endpoints
 
-* How to run the test suite
+There is a single open endpoint: 
+* `tracking-db.pingryanywhere.org/api/v1/summarystats`
+  * This publicly available data is used in Pingry's external facing dashboard, which summarizes many data points related to the virus in the New Jersey area and at Pingry specifically. The external facing dashboard is accessible [here](dashboard.pingryanywhere.org). 
 
-* Services (job queues, cache servers, search engines, etc.)
+### Protected Endpoints
 
-* Deployment instructions
-
-* ...
+All remaining endpoints that deal with individual student data and their isolations/quarantines are protected for privacy reasons. 
