@@ -15,6 +15,7 @@ Your Current Isolation Status:
     <li>Start: <%= @isolation.start_isolation %></li>
     <li>Date of Symptom Improvement: <%= @isolation.date_improving || "Not Yet Improving" %></li>
     <li><%= @isolation.confirmed ? "Confirmed Positive" : "Presumed Positive" %> </li>
+    <li>Fever Free? <%= @isolation.fever_free ? "Yes" : "No"%></li>
     <li>Earliest Possible End Date: <%= @isolation.end_date || "Not Listed" %></li>
     <li>Overall Status: <%= @isolation.completed ? "Isolation Complete" : "Isolation Incomplete" %></li>
 </ul>
