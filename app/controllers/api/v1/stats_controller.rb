@@ -1,8 +1,8 @@
 require 'date'
 
 class Api::V1::StatsController < ApplicationController
-    skip_before_action :authorized, only: [:summary]
-    skip_before_action :write_access, only: [:summary, :index]
+    skip_before_action :authorized, only: [:summary, :details]
+    skip_before_action :write_access, only: [:summary, :index, :details]
     def index 
         short_hills_array = short_hills_master
         basking_ridge_array = basking_ridge_master
@@ -68,10 +68,51 @@ class Api::V1::StatsController < ApplicationController
             percentBaskingRidgeActiveIsolationOrQuarantine: percentBaskingRidge.round(2), 
             percentPingryActiveIsolationOrQuarantine: overallPercent.round(2)
         }
-    end 
+    end
+
+    def details 
+        render json: q_and_i_total_each_campus_past_14_next_7
+    end
 
 
     private
+    def q_and_i_total_each_campus_past_14_next_7
+        shortHillNumbers = generate_hash_past_14_next_7
+        baskingRidgeNumbers = generate_hash_past_14_next_7
+        # need to loop through each quarantine and isolation 
+        shortHillNumbers.keys.each do |key|
+            Quarantine.all.each do |q|
+                if q.exposure + 14 >= key && q.exposure <= key && !q.completed 
+                    if Student.find(q.student_id).campus == "Basking Ridge"
+                        baskingRidgeNumbers[key]["quarantine"] += 1
+                    else 
+                        shortHillNumbers[key]["quarantine"] += 1
+                    end 
+                end 
+            end 
+            Isolation.all.each do |i|
+                projected_end = i.end_date || (i.start_isolation + 10)
+                if projected_end >= key && i.start_isolation <= key && !i.completed 
+                    if Student.find(i.student_id).campus == "Basking Ridge"
+                        baskingRidgeNumbers[key]["isolation"] += 1
+                    else 
+                        shortHillNumbers[key]["isolation"] += 1
+                    end 
+                end 
+            end
+        end 
+        [shortHillNumbers, baskingRidgeNumbers] 
+    end
+    
+    def generate_hash_past_14_next_7
+        counter = -13 
+        to_return = {}
+        while counter < 7
+            to_return[Date.today + counter] = {isolation: 0, quarantine: 0}
+            counter += 1
+        end 
+        to_return
+    end
 
     def get_short_hills_people
         Student.all.select{|student| student.campus == "Short Hills"} #&& !student.teacher}
@@ -161,7 +202,7 @@ class Api::V1::StatsController < ApplicationController
         date_keys = final_hash.map{|obj| obj["name"]}
         date_keys.each do |key|  
             Isolation.all.each do |iso| 
-                if (iso.end_date == nil && !iso.completed) ||(iso.end_date > key && !iso.completed)
+                if (iso.end_date == nil && !iso.completed) ||(iso.end_date >= key && !iso.completed)
                     final_hash[mapping[key]]["total"] += 1
                     if Student.find(iso.student_id).teacher 
                         final_hash[mapping[key]]["adults"] += 1
@@ -171,7 +212,7 @@ class Api::V1::StatsController < ApplicationController
                 end 
             end 
             Quarantine.all.each do |q| 
-                if q.exposure + 14 > key && !q.completed
+                if q.exposure + 14 >= key && !q.completed
                     final_hash[mapping[key]]["total"] += 1
                     if Student.find(q.student_id).teacher 
                         final_hash[mapping[key]]["adults"] += 1
