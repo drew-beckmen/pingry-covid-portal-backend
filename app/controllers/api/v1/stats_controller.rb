@@ -1,8 +1,8 @@
 require 'date'
 
 class Api::V1::StatsController < ApplicationController
-    skip_before_action :authorized, only: [:summary, :details]
-    skip_before_action :write_access, only: [:summary, :index, :details]
+    skip_before_action :authorized, only: [:summary, :details, :q_and_i_each_campus]
+    skip_before_action :write_access, only: [:summary, :index, :details, :q_and_i_each_campus]
     def index 
         short_hills_array = short_hills_master
         basking_ridge_array = basking_ridge_master
@@ -70,12 +70,59 @@ class Api::V1::StatsController < ApplicationController
         }
     end
 
+    # This is for Jeffrey's external facing dashboard 
     def details 
-        render json: q_and_i_total_each_campus_past_14_next_7
+        short_hills, basking_ridge = q_and_i_total_each_campus_past_14_next_7
+        historical_dates = short_hills.keys[0...14]
+        short_hills_percentages = []
+        basking_ridge_percentages = []
+        historical_dates.each do |d|
+            current_day_total_sh = short_hills[d].values.sum 
+            current_day_total_br = basking_ridge[br].values.sum 
+            short_hills_percentages << ((current_day_total_sh.to_f / 364) * 100)
+            basking_ridge_percentages << ((current_day_total_br.to_f / 1195) * 100)
+        end 
+        render json: {
+            shortHillsPercentage14Days: short_hills_percentages, 
+            baskingRidgePercentage14Days: basking_ridge_percentages
+        }
     end
 
-
     private
+    def generate_hash_for_graph 
+        to_return = []
+        insert = {"name" => nil, "isolation" => 0, "quarantine" => 0, "total" => 0}
+        14.times do 
+            to_return << insert 
+        end
+        to_return
+    end 
+
+
+    def q_and_i_each_campus 
+        short_hills, basking_ridge = q_and_i_total_each_campus_past_14_next_7
+        formatted_hash_sh = generate_hash_for_graph 
+        formatted_hash_br = generate_hash_for_graph
+        historical_dates = short_hills.keys[6...21]
+        historical_dates.each_with_index do |val, index|
+            #take care of short hills
+            formatted_hash_sh[index]["name"] = val 
+            formatted_hash_sh[index]["isolation"] = short_hills[val][:isolation]
+            formatted_hash_sh[index]["quarantine"] = short_hills[val][:quarantine]
+            formatted_hash_sh[index]["total"] = short_hills[val].values.sum 
+            # same thing with BR
+            formatted_hash_br[index]["name"] = val 
+            formatted_hash_br[index]["isolation"] = basking_ridge[val][:isolation]
+            formatted_hash_br[index]["quarantine"] = basking_ridge[val][:quarantine]
+            formatted_hash_br[index]["total"] = basking_ridge[val].values.sum 
+        end
+        render json: {
+            shortHills: formatted_hash_sh, 
+            baskingRidge: formatted_hash_br
+        }
+    end 
+
+
     def q_and_i_total_each_campus_past_14_next_7
         shortHillNumbers = generate_hash_past_14_next_7
         baskingRidgeNumbers = generate_hash_past_14_next_7
