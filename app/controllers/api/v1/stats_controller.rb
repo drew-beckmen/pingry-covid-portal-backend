@@ -82,7 +82,7 @@ class Api::V1::StatsController < ApplicationController
         # need to loop through each quarantine and isolation 
         shortHillNumbers.keys.each do |key|
             Quarantine.all.each do |q|
-                if q.exposure + 14 >= key && q.exposure <= key && !q.completed 
+                if q.exposure + 14 >= key && q.exposure <= key
                     if Student.find(q.student_id).campus == "Basking Ridge"
                         baskingRidgeNumbers[key]["quarantine"] += 1
                     else 
@@ -92,7 +92,7 @@ class Api::V1::StatsController < ApplicationController
             end 
             Isolation.all.each do |i|
                 projected_end = i.end_date || (i.start_isolation + 10)
-                if projected_end >= key && i.start_isolation <= key && !i.completed 
+                if projected_end >= key && i.start_isolation <= key
                     if Student.find(i.student_id).campus == "Basking Ridge"
                         baskingRidgeNumbers[key]["isolation"] += 1
                     else 
