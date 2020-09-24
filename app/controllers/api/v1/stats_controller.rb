@@ -79,12 +79,12 @@ class Api::V1::StatsController < ApplicationController
         historical_dates.each do |d|
             current_day_total_sh = short_hills[d].values.sum 
             current_day_total_br = basking_ridge[d].values.sum 
-            short_hills_percentages << ((current_day_total_sh.to_f / 364) * 100)
-            basking_ridge_percentages << ((current_day_total_br.to_f / 1195) * 100)
+            short_hills_percentages << ((current_day_total_sh.to_f / 364) * 100).round(2)
+            basking_ridge_percentages << ((current_day_total_br.to_f / 1195) * 100).round(2)
         end 
         render json: {
-            shortHillsPercentage14Days: short_hills_percentages.round(2), 
-            baskingRidgePercentage14Days: basking_ridge_percentages.round(2)
+            shortHillsPercentage14Days: short_hills_percentages, 
+            baskingRidgePercentage14Days: basking_ridge_percentages
         }
     end
 
