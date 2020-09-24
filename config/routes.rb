@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get '/student_details', to: "students#details"
       get '/detailedstats', to: "stats#details"
       get '/graphs', to: "stats#q_and_i_each_campus"
+      get '/percentages', to: "stats#past_future_7_details"
       resources :users, only: [:show, :update, :create]
       resources :students, only: [:update, :show, :index]
       resources :quarantines, only: [:update, :show, :destroy, :index, :create]

@@ -1,8 +1,8 @@
 require 'date'
 
 class Api::V1::StatsController < ApplicationController
-    skip_before_action :authorized, only: [:summary, :details, :q_and_i_each_campus]
-    skip_before_action :write_access, only: [:summary, :index, :details, :q_and_i_each_campus]
+    skip_before_action :authorized, only: [:summary, :details, :q_and_i_each_campus, :past_future_7_details]
+    skip_before_action :write_access, only: [:summary, :index, :details, :q_and_i_each_campus, :past_future_7_details]
     def index 
         short_hills_array = short_hills_master
         basking_ridge_array = basking_ridge_master
@@ -70,23 +70,27 @@ class Api::V1::StatsController < ApplicationController
         }
     end
 
+    # This is for internal facing dashboard 
+    def past_future_7_details 
+        sh, br = all_details
+        sh = sh[6...21]
+        br = br[6...21]
+        render json: {
+            shortHillsPercentage14Days: sh, 
+            baskingRidgePercentage14Days: br
+        }
+    end 
+    
     # This is for Jeffrey's external facing dashboard 
     def details 
-        short_hills, basking_ridge = q_and_i_total_each_campus_past_14_next_7
-        historical_dates = short_hills.keys[0...14]
-        short_hills_percentages = []
-        basking_ridge_percentages = []
-        historical_dates.each do |d|
-            current_day_total_sh = short_hills[d].values.sum 
-            current_day_total_br = basking_ridge[d].values.sum 
-            short_hills_percentages << ((current_day_total_sh.to_f / 364) * 100).round(2)
-            basking_ridge_percentages << ((current_day_total_br.to_f / 1195) * 100).round(2)
-        end 
+        sh, br = all_details
+        sh = sh[0...14]
+        br = br[0...14]
         render json: {
-            shortHillsPercentage14Days: short_hills_percentages, 
-            baskingRidgePercentage14Days: basking_ridge_percentages
+            shortHillsPercentage14Days: sh, 
+            baskingRidgePercentage14Days: br
         }
-    end
+    end 
 
     # This is for the new graphs on the home page
     def q_and_i_each_campus 
@@ -113,6 +117,20 @@ class Api::V1::StatsController < ApplicationController
     end 
 
     private
+    def all_details 
+        short_hills, basking_ridge = q_and_i_total_each_campus_past_14_next_7
+        historical_dates = short_hills.keys
+        short_hills_percentages = []
+        basking_ridge_percentages = []
+        historical_dates.each do |d|
+            current_day_total_sh = short_hills[d].values.sum 
+            current_day_total_br = basking_ridge[d].values.sum 
+            short_hills_percentages << ((current_day_total_sh.to_f / 364) * 100).round(2)
+            basking_ridge_percentages << ((current_day_total_br.to_f / 1195) * 100).round(2)
+        end 
+        [short_hills_percentages, basking_ridge_percentages]
+    end
+
     def generate_hash_for_graph 
         to_return = []
         insert = {"name" => nil, "isolation" => 0, "quarantine" => 0, "total" => 0}
