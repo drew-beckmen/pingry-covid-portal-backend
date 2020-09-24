@@ -78,27 +78,17 @@ class Api::V1::StatsController < ApplicationController
         basking_ridge_percentages = []
         historical_dates.each do |d|
             current_day_total_sh = short_hills[d].values.sum 
-            current_day_total_br = basking_ridge[br].values.sum 
+            current_day_total_br = basking_ridge[d].values.sum 
             short_hills_percentages << ((current_day_total_sh.to_f / 364) * 100)
             basking_ridge_percentages << ((current_day_total_br.to_f / 1195) * 100)
         end 
         render json: {
-            shortHillsPercentage14Days: short_hills_percentages, 
-            baskingRidgePercentage14Days: basking_ridge_percentages
+            shortHillsPercentage14Days: short_hills_percentages.round(2), 
+            baskingRidgePercentage14Days: basking_ridge_percentages.round(2)
         }
     end
 
-    private
-    def generate_hash_for_graph 
-        to_return = []
-        insert = {"name" => nil, "isolation" => 0, "quarantine" => 0, "total" => 0}
-        14.times do 
-            to_return << insert 
-        end
-        to_return
-    end 
-
-
+    # This is for the new graphs on the home page
     def q_and_i_each_campus 
         short_hills, basking_ridge = q_and_i_total_each_campus_past_14_next_7
         formatted_hash_sh = generate_hash_for_graph 
@@ -122,6 +112,15 @@ class Api::V1::StatsController < ApplicationController
         }
     end 
 
+    private
+    def generate_hash_for_graph 
+        to_return = []
+        insert = {"name" => nil, "isolation" => 0, "quarantine" => 0, "total" => 0}
+        14.times do 
+            to_return << insert 
+        end
+        to_return
+    end
 
     def q_and_i_total_each_campus_past_14_next_7
         shortHillNumbers = generate_hash_past_14_next_7
