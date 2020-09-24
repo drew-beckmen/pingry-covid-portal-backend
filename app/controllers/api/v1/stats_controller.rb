@@ -76,6 +76,7 @@ class Api::V1::StatsController < ApplicationController
 
 
     private
+    #shows number of quarantines and isolations at SH/BR from -14 to +7 days
     def q_and_i_total_each_campus_past_14_next_7
         shortHillNumbers = generate_hash_past_14_next_7
         baskingRidgeNumbers = generate_hash_past_14_next_7
