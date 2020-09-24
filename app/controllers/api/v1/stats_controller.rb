@@ -84,9 +84,9 @@ class Api::V1::StatsController < ApplicationController
             Quarantine.all.each do |q|
                 if q.exposure + 14 >= key && q.exposure <= key
                     if Student.find(q.student_id).campus == "Basking Ridge"
-                        baskingRidgeNumbers[key]["quarantine"] += 1
+                        baskingRidgeNumbers[key][:quarantine] += 1
                     else 
-                        shortHillNumbers[key]["quarantine"] += 1
+                        shortHillNumbers[key][:quarantine] += 1
                     end 
                 end 
             end 
@@ -94,9 +94,9 @@ class Api::V1::StatsController < ApplicationController
                 projected_end = i.end_date || (i.start_isolation + 10)
                 if projected_end >= key && i.start_isolation <= key
                     if Student.find(i.student_id).campus == "Basking Ridge"
-                        baskingRidgeNumbers[key]["isolation"] += 1
+                        baskingRidgeNumbers[key][:isolation] += 1
                     else 
-                        shortHillNumbers[key]["isolation"] += 1
+                        shortHillNumbers[key][:isolation] += 1
                     end 
                 end 
             end
