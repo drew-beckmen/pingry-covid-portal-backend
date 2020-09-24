@@ -82,7 +82,7 @@ class Api::V1::StatsController < ApplicationController
         # need to loop through each quarantine and isolation 
         shortHillNumbers.keys.each do |key|
             Quarantine.all.each do |q|
-                if q.exposure + 14 >= key && q.exposure <= key
+                if q.exposure + 14 > key && q.exposure <= key
                     if Student.find(q.student_id).campus == "Basking Ridge"
                         baskingRidgeNumbers[key][:quarantine] += 1
                     else 
@@ -202,7 +202,7 @@ class Api::V1::StatsController < ApplicationController
         date_keys = final_hash.map{|obj| obj["name"]}
         date_keys.each do |key|  
             Isolation.all.each do |iso| 
-                if (iso.end_date == nil && !iso.completed) ||(iso.end_date >= key && !iso.completed)
+                if (iso.end_date == nil && !iso.completed) ||(iso.end_date > key && !iso.completed)
                     final_hash[mapping[key]]["total"] += 1
                     if Student.find(iso.student_id).teacher 
                         final_hash[mapping[key]]["adults"] += 1
@@ -212,7 +212,7 @@ class Api::V1::StatsController < ApplicationController
                 end 
             end 
             Quarantine.all.each do |q| 
-                if q.exposure + 14 >= key && !q.completed
+                if q.exposure + 14 > key && !q.completed
                     final_hash[mapping[key]]["total"] += 1
                     if Student.find(q.student_id).teacher 
                         final_hash[mapping[key]]["adults"] += 1
