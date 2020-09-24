@@ -76,14 +76,13 @@ class Api::V1::StatsController < ApplicationController
 
 
     private
-    #shows number of quarantines and isolations at SH/BR from -14 to +7 days
     def q_and_i_total_each_campus_past_14_next_7
         shortHillNumbers = generate_hash_past_14_next_7
         baskingRidgeNumbers = generate_hash_past_14_next_7
         # need to loop through each quarantine and isolation 
         shortHillNumbers.keys.each do |key|
             Quarantine.all.each do |q|
-                if q.exposure + 14 >= key && q.exposure <= key 
+                if q.exposure + 14 >= key && q.exposure <= key && !q.completed 
                     if Student.find(q.student_id).campus == "Basking Ridge"
                         baskingRidgeNumbers[key]["quarantine"] += 1
                     else 
@@ -93,7 +92,7 @@ class Api::V1::StatsController < ApplicationController
             end 
             Isolation.all.each do |i|
                 projected_end = i.end_date || (i.start_isolation + 10)
-                if projected_end >= key && i.start_isolation <= key
+                if projected_end >= key && i.start_isolation <= key && !i.completed 
                     if Student.find(i.student_id).campus == "Basking Ridge"
                         baskingRidgeNumbers[key]["isolation"] += 1
                     else 
