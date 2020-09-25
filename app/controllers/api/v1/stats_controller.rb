@@ -1,8 +1,8 @@
 require 'date'
 
 class Api::V1::StatsController < ApplicationController
-    skip_before_action :authorized, only: [:summary, :details, :q_and_i_each_campus, :past_future_7_details]
-    skip_before_action :write_access, only: [:summary, :index, :details, :q_and_i_each_campus, :past_future_7_details]
+    skip_before_action :authorized, only: [:summary, :details, :q_and_i_each_campus, :past_future_7_details, :test]
+    skip_before_action :write_access, only: [:summary, :index, :details, :q_and_i_each_campus, :past_future_7_details, :test]
     def index 
         short_hills_array = short_hills_master
         basking_ridge_array = basking_ridge_master
@@ -55,6 +55,11 @@ class Api::V1::StatsController < ApplicationController
                 baskingRidgeAdultsActiveQuarantines: basking_ridge_array[17], 
                 outOfSchoolHash: number_people_out_of_school
         }
+    end 
+
+    def test 
+        @iso = Isolation.find(12).potential 
+        render json: @iso 
     end 
 
     def summary 
