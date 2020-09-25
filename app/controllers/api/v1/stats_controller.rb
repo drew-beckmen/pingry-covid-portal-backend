@@ -1,8 +1,8 @@
 require 'date'
 
 class Api::V1::StatsController < ApplicationController
-    skip_before_action :authorized, only: [:summary, :details, :q_and_i_each_campus, :past_future_7_details, :test]
-    skip_before_action :write_access, only: [:summary, :index, :details, :q_and_i_each_campus, :past_future_7_details, :test]
+    skip_before_action :authorized, only: [:summary, :details]
+    skip_before_action :write_access, only: [:summary, :index, :details, :q_and_i_each_campus, :past_future_7_details]
     def index 
         short_hills_array = short_hills_master
         basking_ridge_array = basking_ridge_master
@@ -55,12 +55,7 @@ class Api::V1::StatsController < ApplicationController
                 baskingRidgeAdultsActiveQuarantines: basking_ridge_array[17], 
                 outOfSchoolHash: number_people_out_of_school
         }
-    end 
-
-    def test 
-        @iso = Isolation.find(12).potential 
-        render json: @iso 
-    end 
+    end
 
     def summary 
         short_hills_array = short_hills_master
@@ -80,6 +75,17 @@ class Api::V1::StatsController < ApplicationController
         sh, br = all_details
         sh = sh[6...21]
         br = br[6...21]
+        sh_counter = -7
+        br_counter = -7
+        sh = sh.each_with_object([]) do |p, memo|
+            memo << {"name" => (Date.today + sh_counter), "%qi" => p} 
+            sh_counter += 1
+        end 
+        br_counter = -7
+        br = br.each_with_object([]) do |p, memo|
+            memo << {"name" => (Date.today + br_counter), "%qi" => p} 
+            br_counter += 1
+        end 
         render json: {
             shortHillsPercentage14Days: sh, 
             baskingRidgePercentage14Days: br
@@ -138,9 +144,8 @@ class Api::V1::StatsController < ApplicationController
 
     def generate_hash_for_graph 
         to_return = []
-        insert = {"name" => nil, "isolation" => 0, "quarantine" => 0, "total" => 0}
         14.times do 
-            to_return << insert 
+            to_return << {"name" => nil, "isolation" => 0, "quarantine" => 0, "total" => 0}
         end
         to_return
     end
