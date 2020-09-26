@@ -137,7 +137,7 @@ class Api::V1::StatsController < ApplicationController
             current_day_total_sh = short_hills[d].values.sum 
             current_day_total_br = basking_ridge[d].values.sum 
             short_hills_percentages << ((current_day_total_sh.to_f / 364) * 100).round(2)
-            basking_ridge_percentages << ((current_day_total_br.to_f / 1195) * 100).round(2)
+            basking_ridge_percentages << ((current_day_total_br.to_f / 1196) * 100).round(2)
         end 
         [short_hills_percentages, basking_ridge_percentages]
     end
@@ -156,7 +156,9 @@ class Api::V1::StatsController < ApplicationController
         # need to loop through each quarantine and isolation 
         shortHillNumbers.keys.each do |key|
             Quarantine.all.each do |q|
-                if q.exposure + 14 > key && q.exposure <= key
+                #this logic doesn't check out. what about things converted to quarantine, also once contacts of potentially presumed cases are released
+                # need to use the date marked completed if completed. Otherwise 14 day range. If converted to isolation, don't count at all
+                if q.exposure + 14 > key && q.exposure <= key 
                     if Student.find(q.student_id).campus == "Basking Ridge"
                         baskingRidgeNumbers[key][:quarantine] += 1
                     else 
@@ -165,7 +167,7 @@ class Api::V1::StatsController < ApplicationController
                 end 
             end 
             Isolation.all.each do |i|
-                projected_end = i.end_date || (i.start_isolation + 10)
+                projected_end = i.end_date || (Date.today + 10)
                 if projected_end >= key && i.start_isolation <= key
                     if Student.find(i.student_id).campus == "Basking Ridge"
                         baskingRidgeNumbers[key][:isolation] += 1
