@@ -2,12 +2,12 @@ class QuarantineMailer < ApplicationMailer
     default from: 'contacttracing@pingry.org'
     def quarantine_started_email_student
         @student = params[:student]
-        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: #{@student.first_name}'s Quarantine Period Start")
+        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: #{@student.first_name}'s Quarantine Period Started")
     end 
 
     def quarantine_started_email_adult 
         @student = params[:student]
-        mail(to: @student.email, subject: "Pingry: Quarantine Period Started")
+        mail(to: @student.email, subject: "Pingry: Quarantine Period Started", reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org")
     end
 
     def quarantine_updated_email_student
@@ -19,7 +19,7 @@ class QuarantineMailer < ApplicationMailer
     def quarantine_updated_email_adult 
         @student = params[:student]
         @quarantine = params[:quarantine]
-        mail(to: @student.email, subject: "Pingry: Your Quarantine Update")
+        mail(to: @student.email, subject: "Pingry: Your Quarantine Update", reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org")
     end 
 
     def quarantine_converted_email_student
