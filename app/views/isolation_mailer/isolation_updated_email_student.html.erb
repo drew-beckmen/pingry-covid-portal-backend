@@ -4,7 +4,7 @@
 
 <p>Dear Parent/Guardian of <%= "#{@student.first_name} #{@student.last_name}"%>,</p>
 
-<p>According to Pingry's records, <%= @student.first_name%> is currently in an isolation period after receiving a presumed or confirmed positive diagnosis for COVID-19. Thank you for your recent update on <%= @student.first_name%>’s isolation status. We are happy to hear your child is feeling better.</p>
+<p>According to Pingry's records, <%= @student.first_name%> is currently in an isolation period after receiving a potentially positive, presumed positive, or confirmed positive diagnosis for COVID-19. Thank you for your recent update on <%= @student.first_name%>’s isolation status.</p>
 
 <p>Please note that <%= @student.first_name%> will only be permitted to return to campus once all documentation from your child's physician has been updated in the Magnus Health Portal (Coronavirus - COVID-19 Clearance), their "Overall Status" field reads "Isolation Complete," and you receive a call from one of our school nurses approving <%= @student.first_name%>'s return to campus. If there are any additional updates to <%= @student.first_name%>’s isolation status, please contact <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>.</p>
 
@@ -12,9 +12,15 @@
 
 Your Child's Current Isolation Status: 
 <ul>
-    <li>Start: <%= @isolation.start_isolation %></li>
+    <li>Start Date: <%= @isolation.start_isolation %></li>
     <li>Date of Symptom Improvement: <%= @isolation.date_improving || "Not Yet Improving" %></li>
-    <li><%= @isolation.confirmed ? "Confirmed Positive" : "Presumed Positive" %> </li>
+    <% if @isolation.confirmed %>
+        <li><%= "Confirmed Positive" %></li>
+    <% elsif @isolation.potential %>
+        <li><%= "Potentially Positive" %></li>
+    <% else %>
+        <li><%= "Presumed Positive" %></li>
+    <% end %>
     <li>Fever Free? <%= @isolation.fever_free ? "Yes" : "No"%></li>
     <li>Earliest Possible End Date: <%= @isolation.end_date || "Not Listed" %></li>
     <li>Overall Status: <%= @isolation.completed ? "Isolation Complete" : "Isolation Incomplete" %></li>

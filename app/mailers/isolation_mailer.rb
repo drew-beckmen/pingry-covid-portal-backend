@@ -37,4 +37,15 @@ class IsolationMailer < ApplicationMailer
         mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: Your Isolation Is Complete")
     end 
 
+    def potential_isolation_started_email_student
+        @student = params[:student]
+        @isolation = params[:isolation]
+        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: Potentially Positive Case of COVID-19")
+    end 
+
+    def potential_isolation_started_email_adult
+        @student = params[:student]
+        @isolation = params[:isolation]
+        mail(to: @student.email, reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: Pingry: Potentially Positive Case of COVID-19")
+    end 
 end

@@ -3,6 +3,7 @@ class Api::V1::IsolationsController < ApplicationController
         isolation = Isolation.find(params[:id])
         params = isolation_params
 
+        # Don't send email when just notes are updated.
         if Date.parse(params[:start_isolation]) == isolation.start_isolation && Date.parse(params[:date_improving]) == isolation.date_improving && params[:fever_free] == isolation.fever_free && Date.parse(params[:end_date]) == isolation.end_date && params[:completed] == isolation.completed && params[:confirmed] == isolation.confirmed
             isolation.update(isolation_params)
         else 
@@ -44,10 +45,18 @@ class Api::V1::IsolationsController < ApplicationController
     def create 
         isolation = Isolation.create(isolation_params)
         currentStudent = Student.find(isolation.student_id)
-        if !currentStudent.teacher 
-            IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_started_email_student.deliver_now
+        if !currentStudent.teacher
+            if isolation.potential
+                IsolationMailer.with(student: currentStudent, isolation: isolation).potential_isolation_started_email_student.deliver_now
+            else 
+                IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_started_email_student.deliver_now
+            end 
         else 
-            IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_started_email_adult.deliver_now
+            if isolation.potential 
+                IsolationMailer.with(student: currentStudent, isolation: isolation).potential_isolation_started_email_adult.deliver_now
+            else 
+                IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_started_email_adult.deliver_now
+            end 
         end 
         render json: isolation
     end 

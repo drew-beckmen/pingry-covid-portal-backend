@@ -4,11 +4,10 @@
 
 <p>Dear <%= "#{@student.first_name} #{@student.last_name}"%>,</p>
 
-<p>According to Pingry's records, you have completed the final day of your 14 day quarantine. The updated status of your quarantine is listed below:</p>
+<p>According to Pingry's records, you have completed the final day of your quarantine. The updated status of your quarantine is listed below:</p>
 
 <ul>
-    <li>Date of Exposure: <%= @quarantine.exposure %></li>
-    <li>Date of Completion: <%= @quarantine.exposure + 14 %></li>
+    <li>Date of Potential Exposure: <%= @quarantine.exposure %></li>
     <li>Status: <%= if @quarantine.completed
             "Complete"    
         else 

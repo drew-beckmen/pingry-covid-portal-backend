@@ -1,0 +1,25 @@
+<h3>Pingry COVID-19 Update</h3>
+<h5>You have started an isolation period.</h5>
+<hr/>
+
+<p>Dear <%= "#{@student.first_name} #{@student.last_name}"%>,</p>
+
+
+<p>The Pingry School has been notified that you have entered a mandatory isolation period after receiving a potentially positive diagnosis for COVID-19. You will soon receive a call from one of our certified contact tracers in regards to this matter. In accordance with the Community Pledge, please ensure that you speak with the Pingry contact tracer who calls you.</p>
+
+<p>By nature of Pingry's testing arrangement, samples can only be tested in groups of two or more. You received a potentially positive result from a pair of samples. In order to verify your COVID-19 status, we encourage you to obtain a PCR test within the next 48 hours. A negative result from a PCR test within 48 hours will allow you to return to campus. If you do not get individually tested or receive a positive result from a PCR test, you must follow the procedures outlined below:</p>
+
+<p>The isolation period will last at least 10 days following the first day of symptom improvement. Additionally, you must be fever-free, without the use of fever suppressants, for 24 hours. During the isolation, you will not be permitted on either Pingry campus. If there are any updates to your isolation status, please email <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>. Such updates should include the first day of symptom improvement and the 24-hour fever-free period. After reporting these changes, you will receive an email confirming the updates to your isolation status.</p>
+
+Your Current Isolation Status: 
+<ul>
+    <li>Start: <%= @isolation.start_isolation %></li>
+    <li>Potentially Positive</li>
+    <li>Earliest Possible End Date: Contingent Upon Individual Test Result</li>
+    <li>Overall Status: Isolation Incomplete</li>
+</ul>
+
+<p>Thank you for your partnership as we work to keep Pingry safe!</p>
+<p>The Pingry School</p>
+<img src="https://americanwaterpolo.org/wp-content/uploads/2018/07/PingrySchool_WhiteJuly232018.jpg" width=100 height=50>
+

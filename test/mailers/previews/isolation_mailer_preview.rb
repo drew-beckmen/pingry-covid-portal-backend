@@ -37,4 +37,16 @@ class IsolationMailerPreview < ActionMailer::Preview
         currentStudent = Student.find(isolation.student_id)
         IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_completed_email_adult
     end 
+
+    def potential_isolation_started_email_adult
+        isolation = Isolation.new(start_isolation: Date.today - 10, confirmed: true, date_improving: Date.today - 10, end_date: Date.today, completed: true, student_id: 1)
+        currentStudent = Student.find(isolation.student_id)
+        IsolationMailer.with(student: currentStudent, isolation: isolation).potential_isolation_started_email_adult
+    end 
+
+    def potential_isolation_started_email_student
+        isolation = Isolation.new(start_isolation: Date.today - 10, confirmed: true, date_improving: Date.today - 10, end_date: Date.today, completed: true, student_id: 1)
+        currentStudent = Student.find(isolation.student_id)
+        IsolationMailer.with(student: currentStudent, isolation: isolation).potential_isolation_started_email_student
+    end 
 end
