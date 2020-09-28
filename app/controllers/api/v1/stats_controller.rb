@@ -160,6 +160,7 @@ class Api::V1::StatsController < ApplicationController
         shortHillNumbers.keys.each do |key|
             Quarantine.all.each do |q|
                 if q.completed || q.converted_to_isolation
+                    # TODO: Watch out for bug here with updated_at timestamp being different than current time
                     change_date = q.updated_at 
                     if change_date > key && q.exposure <= key  
                         if Student.find(q.student_id).campus == "Basking Ridge"
@@ -292,7 +293,7 @@ class Api::V1::StatsController < ApplicationController
         date_keys = final_hash.map{|obj| obj["name"]}
         date_keys.each do |key|  
             Isolation.all.each do |iso| 
-                if (iso.end_date == nil && !iso.completed) ||(iso.end_date > key && !iso.completed)
+                if (iso.end_date == nil && !iso.completed) ||(iso.end_date >= key && !iso.completed)
                     final_hash[mapping[key]]["total"] += 1
                     if Student.find(iso.student_id).teacher 
                         final_hash[mapping[key]]["adults"] += 1
