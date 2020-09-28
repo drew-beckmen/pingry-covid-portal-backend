@@ -53,6 +53,8 @@ class Api::V1::StatsController < ApplicationController
                 baskingRidgeAdults: basking_ridge_array[19], 
                 baskingRidgeAdultsActiveIsolations: basking_ridge_array[18], 
                 baskingRidgeAdultsActiveQuarantines: basking_ridge_array[17], 
+                potentiallyPositiveIsolationsBaskingRidge: basking_ridge_array[20], 
+                potentiallyPositiveIsolationsShortHills: short_hills_array[20],
                 outOfSchoolHash: number_people_out_of_school
         }
     end
@@ -150,21 +152,31 @@ class Api::V1::StatsController < ApplicationController
         to_return
     end
 
+    # This is another one of the central functions: make sure the dates and things check out
     def q_and_i_total_each_campus_past_14_next_7
         shortHillNumbers = generate_hash_past_14_next_7
         baskingRidgeNumbers = generate_hash_past_14_next_7
         # need to loop through each quarantine and isolation 
         shortHillNumbers.keys.each do |key|
             Quarantine.all.each do |q|
-                #this logic doesn't check out. what about things converted to quarantine, also once contacts of potentially presumed cases are released
-                # need to use the date marked completed if completed. Otherwise 14 day range. If converted to isolation, don't count at all
-                if q.exposure + 14 > key && q.exposure <= key 
-                    if Student.find(q.student_id).campus == "Basking Ridge"
-                        baskingRidgeNumbers[key][:quarantine] += 1
-                    else 
-                        shortHillNumbers[key][:quarantine] += 1
+                if q.completed || q.converted_to_isolation
+                    change_date = q.updated_at 
+                    if change_date > key && q.exposure <= key  
+                        if Student.find(q.student_id).campus == "Basking Ridge"
+                            baskingRidgeNumbers[key][:quarantine] += 1
+                        else 
+                            shortHillNumbers[key][:quarantine] += 1
+                        end 
                     end 
-                end 
+                else 
+                    if q.exposure + 14 > key && q.exposure <= key 
+                        if Student.find(q.student_id).campus == "Basking Ridge"
+                            baskingRidgeNumbers[key][:quarantine] += 1
+                        else 
+                            shortHillNumbers[key][:quarantine] += 1
+                        end 
+                    end 
+                end
             end 
             Isolation.all.each do |i|
                 projected_end = i.end_date || (Date.today + 10)
@@ -227,6 +239,7 @@ class Api::V1::StatsController < ApplicationController
         teacherActiveQ = 0 
         teacherActiveI = 0 
         teacherTotal = 0
+        potentiallyPositiveI = 0
 
         totalPeople = all_people.length 
 
@@ -237,6 +250,7 @@ class Api::V1::StatsController < ApplicationController
             addToNewIso = 0 
             person.isolations.each do |iso|
                 addToActiveIso += 1 if !iso.completed
+                potentiallyPositiveI += 1 if iso.potential && !iso.completed 
                 addToNewIso += 1 if ((Date.today-3)..Date.today).include?(iso.start_isolation)
             end
             activeIso += addToActiveIso
@@ -268,7 +282,7 @@ class Api::V1::StatsController < ApplicationController
                 teacherActiveQ += addToActiveQ
             end 
         end 
-        [totalPeople, totalIso, totalQ, activeIso, activeQ, cohort1ActiveIso, cohort2ActiveIso, cohort1ActiveQ, cohort2ActiveQ, newIso, newQ, cohort1People, cohort2People, newIsoCohort1, newIsoCohort2, newQCohort1, newQCohort2, teacherActiveQ, teacherActiveI, teacherTotal]
+        [totalPeople, totalIso, totalQ, activeIso, activeQ, cohort1ActiveIso, cohort2ActiveIso, cohort1ActiveQ, cohort2ActiveQ, newIso, newQ, cohort1People, cohort2People, newIsoCohort1, newIsoCohort2, newQCohort1, newQCohort2, teacherActiveQ, teacherActiveI, teacherTotal, potentiallyPositiveI]
     end 
 
     # Graph that shows date and number of people out of school 
