@@ -16,7 +16,7 @@ class Api::V1::StudentsController < ApplicationController
     end 
 
     def info 
-        list = Student.all.map{|s| {:label => "#{s.first_name} #{s.last_name}", :value => s.id}}
+        list = Student.all.map{|s| {:label => "#{s.veracross_id}", :value => s.id}}
         render json: list 
     end 
 

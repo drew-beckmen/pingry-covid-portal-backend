@@ -160,7 +160,6 @@ class Api::V1::StatsController < ApplicationController
         shortHillNumbers.keys.each do |key|
             Quarantine.all.each do |q|
                 if q.completed || q.converted_to_isolation
-                    # TODO: Watch out for bug here with updated_at timestamp being different than current time
                     change_date = q.updated_at
                     change_date = (change_date.to_time - 5.hours).to_datetime
                     if change_date > key && q.exposure <= key  
