@@ -1,5 +1,6 @@
 # give users a token when they log in
 class Api::V1::AuthController < ApplicationController
+    #is this working?
     skip_before_action :authorized, only: [:create]
     skip_before_action :write_access, only: [:create]
     def create 
