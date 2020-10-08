@@ -127,6 +127,13 @@ class Api::V1::StatsController < ApplicationController
             shortHills: formatted_hash_sh, 
             baskingRidge: formatted_hash_br
         }
+    end
+
+    def veracross_ids
+        isos = Isolation.where(completed=false).map{|iso| iso.student.veracross_id}
+        quarantines = Quarantine.where(completed=false).map{|q| q.student.veracross_id}
+        combined = isos.concat(quarantines)
+        render json: combined
     end 
 
     private
