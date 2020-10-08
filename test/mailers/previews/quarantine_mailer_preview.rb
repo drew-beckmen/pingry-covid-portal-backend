@@ -4,13 +4,13 @@ class QuarantineMailerPreview < ActionMailer::Preview
     def quarantine_started_email_student
         quarantine = Quarantine.new(exposure: Date.today, completed: false, student_id: 1)
         currentStudent = Student.find(quarantine.student_id)
-        QuarantineMailer.with(student: currentStudent).quarantine_started_email_student 
+        QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_started_email_student 
     end 
 
     def quarantine_started_email_adult
         quarantine = Quarantine.new(exposure: Date.today, completed: false, student_id: 1)
         currentStudent = Student.find(quarantine.student_id)
-        QuarantineMailer.with(student: currentStudent).quarantine_started_email_adult 
+        QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_started_email_adult 
     end 
 
     def quarantine_updated_email_student

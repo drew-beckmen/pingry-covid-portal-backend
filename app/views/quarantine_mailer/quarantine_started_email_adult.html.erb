@@ -2,15 +2,41 @@
 <h5>You have just entered a quarantine period</h5>
 <hr/>
 
-<p>Dear <%= "#{@student.first_name} #{@student.last_name}"%>,</p>
+<p>Dear <%= "#{@student.first_name}"%>,</p>
 
-<p>According to Pingry's records, you have just entered a mandatory 14 day quarantine period after coming into contact with a potential, presumed, or confirmed positive case of COVID-19.</p>
+<p>You have been identified by Pingry’s Contact Tracing Team as having had close contact (i.e., within 6 feet for more than 10 minutes during the 3 days prior to a case’s isolation) with a COVID-19 case on <%= @quarantine.exposure %>.</p>
 
-<p>During the 14 day quarantine, you will not be permitted on either Pingry campus. If you begin developing symptoms, please contact <a href="mailto:ecarannante@pingry.org">contacttracing@pingry.org</a>. You will then be transferred to Pingry's isolation protocol and local public health officials will be notified for contact tracing purposes.</p>
+<p>In order to minimize potential community transmission, <strong>you will need to enter a mandatory 14-day quarantine starting on <%= @quarantine.exposure %> and ending on <%= @quarantine.exposure + 14 %></strong>. Your earliest possible date of return to campus is on <%= @quarantine.exposure + 15%>, regardless of a physician’s clearance and/or a negative result from a COVID-19 test.  During this quarantine period, your will not be permitted on Pingry campuses or at in-person Pingry events.</p>
 
-<p>You will receive an email upon successful completion of your quarantine period. That email is your indication that it is safe to return to campus.</p>
+<p>Please monitor for any symptoms of COVID-19. If you experience any of the following symptoms, please reach out to your healthcare provider and notify us via email at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>:</p>
 
-<p>Thank you for your help in keeping Pingry safe!</p>
+<ul>
+    <li>Fever or chills</li>
+    <li>Cough</li>
+    <li>Shortness of breath or difficulty breathing</li>
+    <li>Fatigue</li>
+    <li>Muscle or body aches</li>
+    <li>New loss of taste or smell</li>
+    <li>Sore throat</li>
+    <li>Congestion or runny nose</li>
+    <li>Nausea or vomiting</li>
+    <li>Diarrhea</li>
+</ul>
+
+<p>We will be in touch several times throughout the duration of your quarantine to check in as well.
+All information is confidential and will only be shared as needed within Pingry’s Contact Tracing Team. Please immediately:</p>
+
+<ol>
+    <li>Contact Human Resources and</li>
+    <li>Either your Division Director (and Department Chair for Basking Ridge Faculty) or your Direct Supervisor to discuss how and whether you can fulfill your employment duties while not on campus. The Contact Tracing Team will not directly pass this information on to these individuals on your behalf.</li>
+</ol>
+
+<p>In the situation that your quarantine is linked to a potentially positive COVID-19 case (i.e., COVID-19 DETECTED pair from Pingry’s weekly testing with Mirimus), we will update you appropriately if the case is cleared and your are permitted to return to campus.</p>
+
+<p>We truly appreciate your cooperation in keeping the Pingry community safe. You may also be contacted by the local Department of Health. Please let us know if there is anything we can do to help support you during this time.</p>
+
+<p>Thank you,</p>
 <p>The Pingry School</p>
-<img src="https://americanwaterpolo.org/wp-content/uploads/2018/07/PingrySchool_WhiteJuly232018.jpg" width=100 height=50>
+
+<p>CONFIDENTIAL AND/OR PRIVILEGED: This communication contains information intended only for use by the individual or entity to which it is addressed and may contain private and/or sensitive information. If you are not the intended recipient or have received this message in error, you are hereby notified that any disclosure, copying, distribution or use of its content is strictly prohibited and illegal. If you have received this transmission in error, please notify the above sender immediately and permanently destroy all copies of this message.</p>
 

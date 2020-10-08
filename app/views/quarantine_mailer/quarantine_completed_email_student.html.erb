@@ -2,20 +2,22 @@
 <h5>Your child's quarantine has ended</h5>
 <hr/>
 
-<p>Dear Parent/Guardian of <%= "#{@student.first_name} #{@student.last_name}"%>,</p>
+<p>Dear Parent/Guardian of <%= "#{@student.first_name}"%>,</p>
 
-<p>According to Pingry's records, <%= @student.first_name %> has completed the final day of their quarantine. The updated status of your child's quarantine is listed below:</p>
+<p>According to Pingry's records, your child has completed the final day of their quarantine today on <%= @quarantine.exposure + 14%> and will be able to return to campus starting tomorrow on <%= @quarantine.exposure + 15%>.</p>
+
+<p>If your child has developed symptoms or tested positive for COVID-19 during their quarantine, please contact us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>.</p>
+
+<p>We ask that you inform Pingry if your child will be switching from a remote learner to an in-person learner by emailing the appropriate divisional attendance email:</p>
+
 
 <ul>
-    <li>Date of Potential Exposure: <%= @quarantine.exposure %></li>
-    <li>Status: <%= if @quarantine.completed
-            "Complete"    
-        else 
-            "Incomplete"
-        end %></li>
+    <li>Lower School: <a href="mailto:lsattendance@pingry.org">lsattendance@pingry.org</a>  + your child's homeroom teacher</li>
+    <li>Middle School: <a href="mailto:msattendance@pingry.org@pingry.org">msattendance@pingry.org</a> </li>
+    <li>Upper School: <a href="usattendance@pingry.org">usattendance@pingry.org</a></li>
 </ul>
 
-<p>As long as <%= @student.first_name %> has not developed any symptoms throughout quarantine, we look forward to seeing them back on campus! If there are changes to report, please contact <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>. Thank you for your help in keeping Pingry safe, and welcome back!</p>
+<p>Thank you for your help in keeping Pingry safe, and welcome back!</p>
 
 <p>The Pingry School</p>
-<img src="https://americanwaterpolo.org/wp-content/uploads/2018/07/PingrySchool_WhiteJuly232018.jpg" width=100 height=50>
+<p>CONFIDENTIAL AND/OR PRIVILEGED: This communication contains information intended only for use by the individual or entity to which it is addressed and may contain private and/or sensitive information. If you are not the intended recipient or have received this message in error, you are hereby notified that any disclosure, copying, distribution or use of its content is strictly prohibited and illegal. If you have received this transmission in error, please notify the above sender immediately and permanently destroy all copies of this message.</p>

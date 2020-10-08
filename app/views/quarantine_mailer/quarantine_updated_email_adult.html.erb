@@ -2,23 +2,20 @@
 <h5>A change has been noted on your quarantine status</h5>
 <hr/>
 
-<p>Dear <%= "#{@student.first_name} #{@student.last_name}"%>,</p>
+<p>Dear <%= "#{@student.first_name}"%>,</p>
 
-<p>According to Pingry's records, you are currently in a 14 day quarantine. The updated status of your quarantine is listed below:</p>
+<p>Based on your most recent communication with our Contact Tracing team, your quarantine period has been extended. The updated status of your quarantine is listed below:</p>
 
 <ul>
-    <li>Date of Exposure: <%= @quarantine.exposure %></li>
-    <li>Date of Completion: <%= @quarantine.exposure + 14 %></li>
-    <li>Status: <%= if @quarantine.completed
-            "Complete"    
-        else 
-            "Incomplete"
-        end %></li>
+    <li>Updated Date of Most Recent Exposure: <%= @quarantine.exposure %></li>
+    <li>Updated End Date: <%= @quarantine.exposure + 14 %></li>
+    <li>Updated Earliest Possible Date of Return to Campus: <%= @quarantine.exposure + 15 %></li>
 </ul>
 
-<p>If you begin developing symptoms or have any other changes in quarantine status, please contact <a href="mailto:ecarannante@pingry.org">contacttracing@pingry.org</a>. Please note that you will only be permitted to return to campus once the "Status" field reads <strong>"Complete."</strong></p>
+
+<p>If you begin developing symptoms or have any other changes in quarantine status, please contact <a href="mailto:ecarannante@pingry.org">contacttracing@pingry.org</a>.</strong></p>
 
 <p>Thank you for your help in keeping Pingry safe!</p>
 <p>The Pingry School</p>
-<img src="https://americanwaterpolo.org/wp-content/uploads/2018/07/PingrySchool_WhiteJuly232018.jpg" width=100 height=50>
 
+<p>CONFIDENTIAL AND/OR PRIVILEGED: This communication contains information intended only for use by the individual or entity to which it is addressed and may contain private and/or sensitive information. If you are not the intended recipient or have received this message in error, you are hereby notified that any disclosure, copying, distribution or use of its content is strictly prohibited and illegal. If you have received this transmission in error, please notify the above sender immediately and permanently destroy all copies of this message.</p>

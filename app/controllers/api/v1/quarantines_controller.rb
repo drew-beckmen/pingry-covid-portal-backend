@@ -54,9 +54,9 @@ class Api::V1::QuarantinesController < ApplicationController
         quarantine = Quarantine.create(quarantine_params)
         currentStudent = Student.find(quarantine.student_id)
         if !currentStudent.teacher
-            QuarantineMailer.with(student: currentStudent).quarantine_started_email_student.deliver_now
+            QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_started_email_student.deliver_now
         else 
-            QuarantineMailer.with(student: currentStudent).quarantine_started_email_adult.deliver_now
+            QuarantineMailer.with(student: currentStudent, quarantine: quarantine)).quarantine_started_email_adult.deliver_now
         end 
         render json: quarantine
     end 

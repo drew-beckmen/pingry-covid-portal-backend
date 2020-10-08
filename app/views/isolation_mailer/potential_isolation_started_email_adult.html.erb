@@ -2,24 +2,28 @@
 <h5>You have started an isolation period.</h5>
 <hr/>
 
-<p>Dear <%= "#{@student.first_name} #{@student.last_name}"%>,</p>
+<p>Dear <%= "#{@student.first_name}"%>,</p>
 
 
-<p>The Pingry School has been notified that you have entered a mandatory isolation period after receiving a potentially positive diagnosis for COVID-19. You will soon receive a call from one of our certified contact tracers in regards to this matter. In accordance with the Community Pledge, please ensure that you speak with the Pingry contact tracer who calls you.</p>
+<p>The Pingry School has been notified that you have been identified as one of two individuals in a potentially positive pair resulting from Pingry’s weekly COVID-19 testing. As a result, you will enter a mandatory isolation starting on <%= @isolation.start_isolation %>.</p>
 
-<p>By nature of Pingry's testing arrangement, samples can only be tested in groups of two or more. You received a potentially positive result from a pair of samples. In order to verify your COVID-19 status, we encourage you to obtain a PCR test within the next 48 hours. A negative result from a PCR test within 48 hours will allow you to return to campus. If you do not get individually tested or receive a positive result from a PCR test, you must follow the procedures outlined below:</p>
+<p>You will then have two options. You may either:</p>
+<ol>
+    <li>Continue the <strong>mandatory 10-day-minimum isolation starting on <%= @isolation.start_isolation %> and ending at the earliest on <%= @isolation.start_isolation + 10%></strong>. Your earliest possible date of return to campus is on <%= @isolation.start_isolation + 11 %>. During this isolation period, you are not permitted on Pingry campuses or at in-person Pingry events; or</li>
+    <li>Submit results from an independent PCR test administered within the next 48 hours.  Testing sites can be found <a href="https://covid19.nj.gov/pages/testing#test-sites">here</a>. The cost of this test would be your responsibility, but most medical plans cover COVID-19 tests at 100%.  We encourage you to take this step as soon as possible, since a negative result from a PCR test administered within 48 hours will clear both your isolation status as well as the quarantine status of anyone with whom you came in contact, and allow you to return to campus.  Until you are able to submit a negative test, you should not return to campus and isolate as described in scenario 1 above. Short Hills employees should submit their test results to <a href="mailto:pedell@pingry.org">Paula Edell</a>. Basking Ridge employees should submit their test results to <a href="mailto:jdibiasi@pingry.org">Jennifer DiBiasi</a> and <a href="mailto:jlivak@pingry.org">Joy Livak</a>.</li>
+</ol>
 
-<p>The isolation period will last at least 10 days following the first day of symptom improvement. Additionally, you must be fever-free, without the use of fever suppressants, for 24 hours. During the isolation, you will not be permitted on either Pingry campus. If there are any updates to your isolation status, please email <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>. Such updates should include the first day of symptom improvement and the 24-hour fever-free period. After reporting these changes, you will receive an email confirming the updates to your isolation status.</p>
+<p>In either scenario, please immediately:</p>
+<ol>
+    <li>Contact Human Resources and</li>
+    <li>Either your Division Director (and Department Chair for Basking Ridge Faculty) or your Direct Supervisor to discuss how and whether you can fulfill your employment duties while not on campus. The Contact Tracing Team will not directly pass this information on to these individuals on your behalf.</li>
+</ol>
 
-Your Current Isolation Status: 
-<ul>
-    <li>Start: <%= @isolation.start_isolation %></li>
-    <li>Potentially Positive</li>
-    <li>Earliest Possible End Date: Contingent Upon Individual Test Result</li>
-    <li>Overall Status: Isolation Incomplete</li>
-</ul>
+<p>A member of the Pingry Contact Tracing Team will be calling you shortly to conduct a contact tracing interview and connect on next steps. If you do not receive a call within the next 24 hours, please reach out to us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>. It is essential that you connect with our Contact Tracing Team to help minimize potential community spread.</p>
 
-<p>Thank you for your partnership as we work to keep Pingry safe!</p>
+<p>Please notify us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a> immediately of any changes to your status, including if you become symptomatic (e.g., fever, sore throat, uncontrolled cough, diarrhea, vomiting, abdominal pain, severe headache).</p>
+
 <p>The Pingry School</p>
-<img src="https://americanwaterpolo.org/wp-content/uploads/2018/07/PingrySchool_WhiteJuly232018.jpg" width=100 height=50>
+
+<p>CONFIDENTIAL AND/OR PRIVILEGED: This communication contains information intended only for use by the individual or entity to which it is addressed and may contain private and/or sensitive information. If you are not the intended recipient or have received this message in error, you are hereby notified that any disclosure, copying, distribution or use of its content is strictly prohibited and illegal. If you have received this transmission in error, please notify the above sender immediately and permanently destroy all copies of this message.</p>
 

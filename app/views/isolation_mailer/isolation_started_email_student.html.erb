@@ -2,24 +2,24 @@
 <h5>Your child has started an isolation period.</h5>
 <hr/>
 
-<p>Dear Parent/Guardian of <%= "#{@student.first_name} #{@student.last_name}"%>,</p>
+<p>Dear Parent/Guardian of <%= "#{@student.first_name}"%>,</p>
 
-<p>The Pingry School has been notified that <%= @student.first_name %> has entered a mandatory isolation period after receiving a presumed or confirmed positive diagnosis for COVID-19. You will soon receive a call from one of our certified contact tracers in regards to this matter. In accordance with the Community Pledge, please ensure that you speak with the Pingry contact tracer who calls you.</p>
+<p>Thank you for notifying Pingry regarding <%= @student.first_name %>’s positive COVID-19 diagnosis. Your willingness to share this information will help ensure we continue to keep our community safe. Our wishes are for <%= @student.first_name %> to have a speedy and restful recovery. </p>
 
-<p>You will receive more information from your local health department for additional contact tracing efforts, but please refer to the following information in regards to Pingry's protocols.</p>
 
-<p>The isolation period will last at least 10 days following the first day of symptom improvement. Additionally, the student must be fever-free, without the use of fever suppressants, for 24 hours. During the isolation, <%= @student.first_name %> will not be permitted on either Pingry campus. If your child feels able to attend classes, they may engage in virtual coursework through the flexible learning model established by Pingry Anywhere. If there are any updates to your child’s isolation status, please email <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>. Such updates should include the first day of symptom improvement and the 24-hour fever-free period. After reporting these changes, you will receive an email confirming the updates to your child’s isolation status. Thank you for your partnership as we work to keep Pingry safe!</p>
+<p>According to the information on file, <strong>your child entered a mandatory 10-day-minimum isolation starting on <%= @isolation.start_isolation %> and ending at the earliest on <%= @isolation.start_isolation  + 10%></strong>. Your child’s earliest possible date of return to campus is on <%= @isolation.start_isolation  + 11 %>. If your child is symptomatic, your child will need to be fever-free for at least 24 hours without the use of fever suppressants and show improvement of symptoms before being released from isolation. We will be periodically checking in with you and your child during your child’s isolation. During this isolation period, your child is not permitted on Pingry campuses or at in-person Pingry events.</p>
 
-Your Child's Current Isolation Status: 
-<ul>
-    <li>Start: <%= @isolation.start_isolation %></li>
-    <li>Date of Symptom Improvement: <%= @isolation.date_improving || "Not Yet Improving" %></li>
-    <li><%= @isolation.confirmed ? "Confirmed Positive" : "Presumed Positive" %> </li>
-    <li>Earliest Possible End Date: <%= @isolation.end_date || "Not Listed" %></li>
-    <li>Overall Status: <%= @isolation.completed ? "Isolation Complete" : "Isolation Incomplete" %></li>
-</ul>
 
-<p>Best wishes for a speedy recovery,</p>
+<p>A member of the Pingry Contact Tracing Team will be calling you shortly to conduct a contact tracing interview and connect on next steps. If you do not receive a call within the next 24 hours, please reach out to us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>. It is essential that you connect with our Contact Tracing Team to help minimize potential community spread.</p>
+
+
+<p>If your child feels able to attend classes, they may engage as a remote learner in Pingry Anywhere. Please reach out to your child’s Division Director for any additional support needed for your child to participate as a remote learner in Pingry Anywhere.</p>
+
+<p>If you have updates regarding your child’s status, please email us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>.</p>
+
+<p>Thank you for your partnership as we work to keep Pingry safe! You may receive more information from your local health department for additional contact tracing efforts.</p>
+
 <p>The Pingry School</p>
-<img src="https://americanwaterpolo.org/wp-content/uploads/2018/07/PingrySchool_WhiteJuly232018.jpg" width=100 height=50>
+
+<p>CONFIDENTIAL AND/OR PRIVILEGED: This communication contains information intended only for use by the individual or entity to which it is addressed and may contain private and/or sensitive information. If you are not the intended recipient or have received this message in error, you are hereby notified that any disclosure, copying, distribution or use of its content is strictly prohibited and illegal. If you have received this transmission in error, please notify the above sender immediately and permanently destroy all copies of this message.</p>
 

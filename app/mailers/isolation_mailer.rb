@@ -4,48 +4,48 @@ class IsolationMailer < ApplicationMailer
     def isolation_started_email_student
         @student = params[:student]
         @isolation = params[:isolation]
-        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: #{@student.first_name}'s COVID-19 Isolation")
+        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: #{@student.first_name}'s COVID-19 Isolation", :content_type => 'text/html')
     end  
 
     def isolation_started_email_adult 
         @student = params[:student]
         @isolation = params[:isolation]
-        mail(to: @student.email, reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: Your COVID-19 Isolation")
+        mail(to: @student.email, reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: Your COVID-19 Isolation", :content_type => 'text/html')
     end 
     
     def isolation_updated_email_student 
         @student = params[:student]
         @isolation = params[:isolation]
-        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: #{@student.first_name}'s COVID-19 Isolation Update")
+        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: #{@student.first_name}'s COVID-19 Isolation Update", :content_type => 'text/html')
     end 
 
     def isolation_updated_email_adult 
         @student = params[:student]
         @isolation = params[:isolation]
-        mail(to: @student.email, reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: Your COVID-19 Isolation Update")
+        mail(to: @student.email, reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: Your COVID-19 Isolation Update", :content_type => 'text/html')
     end 
 
     def isolation_completed_email_student
         @student = params[:student]
         @isolation = params[:isolation]
-        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: #{@student.first_name}'s COVID-19 Isolation Complete")
+        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: #{@student.first_name}'s COVID-19 Isolation Complete", :content_type => 'text/html')
     end 
 
     def isolation_completed_email_adult
         @student = params[:student]
         @isolation = params[:isolation]
-        mail(to: @student.email, reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: Your Isolation Is Complete")
+        mail(to: @student.email, reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: Your Isolation Is Complete", :content_type => 'text/html')
     end 
 
     def potential_isolation_started_email_student
         @student = params[:student]
         @isolation = params[:isolation]
-        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: Potentially Positive Case of COVID-19")
+        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: Potentially Positive Case of COVID-19", :content_type => 'text/html')
     end 
 
     def potential_isolation_started_email_adult
         @student = params[:student]
         @isolation = params[:isolation]
-        mail(to: @student.email, reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: Pingry: Potentially Positive Case of COVID-19")
+        mail(to: @student.email, reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: Pingry: Potentially Positive Case of COVID-19", :content_type => 'text/html')
     end 
 end
