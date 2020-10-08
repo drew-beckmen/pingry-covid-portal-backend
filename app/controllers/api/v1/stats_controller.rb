@@ -130,10 +130,18 @@ class Api::V1::StatsController < ApplicationController
     end
 
     def veracross_ids
-        isos = Isolation.where(completed=false).map{|iso| iso.student.veracross_id}
-        quarantines = Quarantine.where(completed=false).map{|q| q.student.veracross_id}
-        combined = isos.concat(quarantines)
-        render json: combined
+        ids = []
+        Isolation.all.each do |i| 
+            if !i.completed
+                ids << i.student.veracross_id
+            end 
+        end
+        Quarantine.all.each do |q|
+            if !q.completed
+                ids << q.student.veracross_id
+            end 
+        end 
+        render json: ids
     end 
 
     private
