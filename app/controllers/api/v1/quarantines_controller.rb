@@ -56,10 +56,10 @@ class Api::V1::QuarantinesController < ApplicationController
         if !currentStudent.teacher
             QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_started_email_student.deliver_now
         else 
-            QuarantineMailer.with(student: currentStudent, quarantine: quarantine)).quarantine_started_email_adult.deliver_now
+            QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_started_email_adult.deliver_now
         end 
         render json: quarantine
-    end 
+    end
 
     private 
     def quarantine_params 
