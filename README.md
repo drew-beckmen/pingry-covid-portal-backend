@@ -14,9 +14,11 @@ The backend database uses PostgreSQL.
 
 ### Open Endpoints
 
-There is a single open endpoint: 
+There are two open endpoints: 
 * `tracking-db.pingryanywhere.org/api/v1/summarystats`
   * This publicly available data is used in Pingry's external facing dashboard, which summarizes many data points related to the virus in the New Jersey area and at Pingry specifically. The external facing dashboard is accessible here: http://dashboard.pingryanywhere.org
+* `tracking-db.pingryanywhere.org/api/v1/detailedstats`
+  * This publicly available data returns the % of students in quarantine and isolation for each of the last 7 days. It is used on the dashboard so that we can include historical data for backdated quarantines and isolations.
 
 ### Protected Endpoints
 
