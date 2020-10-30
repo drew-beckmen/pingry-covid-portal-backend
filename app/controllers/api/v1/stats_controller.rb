@@ -153,8 +153,8 @@ class Api::V1::StatsController < ApplicationController
         historical_dates.each do |d|
             current_day_total_sh = short_hills[d].values.sum 
             current_day_total_br = basking_ridge[d].values.sum 
-            short_hills_percentages << ((current_day_total_sh.to_f / 364) * 100).round(2)
-            basking_ridge_percentages << ((current_day_total_br.to_f / 1196) * 100).round(2)
+            short_hills_percentages << ((current_day_total_sh.to_f / 368) * 100).round(2)
+            basking_ridge_percentages << ((current_day_total_br.to_f / 1211) * 100).round(2)
         end 
         [short_hills_percentages, basking_ridge_percentages]
     end
@@ -177,7 +177,7 @@ class Api::V1::StatsController < ApplicationController
                 if q.completed || q.converted_to_isolation
                     change_date = q.updated_at
                     change_date = (change_date.to_time - 5.hours).to_datetime
-                    if change_date > key && q.exposure <= key  
+                    if change_date >= key && q.exposure <= key  
                         if Student.find(q.student_id).campus == "Basking Ridge"
                             baskingRidgeNumbers[key][:quarantine] += 1
                         else 
@@ -185,7 +185,7 @@ class Api::V1::StatsController < ApplicationController
                         end 
                     end 
                 else 
-                    if q.exposure + 14 > key && q.exposure <= key 
+                    if q.exposure + 14 >= key && q.exposure <= key 
                         if Student.find(q.student_id).campus == "Basking Ridge"
                             baskingRidgeNumbers[key][:quarantine] += 1
                         else 
