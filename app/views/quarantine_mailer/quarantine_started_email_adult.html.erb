@@ -4,9 +4,11 @@
 
 <p>Dear <%= "#{@student.first_name}"%>,</p>
 
-<p>You have been identified by Pingry’s Contact Tracing Team as having had close contact (i.e., within 6 feet for more than 10 minutes during the 3 days prior to a case’s isolation) with a COVID-19 case on <%= @quarantine.exposure %>.</p>
+<p>You have been identified by Pingry’s Contact Tracing Team as having had close contact with a COVID-19 case on <%= @quarantine.exposure %> (see our <a href="https://pingryanywhere.org/health-safety/covid-19-contact-tracing/">COVID-19 Contact Tracing</a> page for more information about the process and close contact definition).</p>
 
-<p>In order to minimize potential community transmission, <strong>you will need to enter a mandatory 14-day quarantine starting on <%= @quarantine.exposure %> and ending on <%= @quarantine.exposure + 14 %></strong>. Your earliest possible date of return to campus is on <%= @quarantine.exposure + 15%>, regardless of a physician’s clearance and/or a negative result from a COVID-19 test.  During this quarantine period, your will not be permitted on Pingry campuses or at in-person Pingry events.</p>
+<p>In order to minimize potential community transmission, <strong>you will need to enter a mandatory 14-day quarantine starting on <%= @quarantine.exposure %> and ending on <%= @quarantine.exposure + 14 %></strong>. Your earliest possible date of return to campus is on <%= @quarantine.exposure + 15%>, regardless of a physician’s clearance and/or a negative result from a COVID-19 test. During this quarantine period, you are not permitted on Pingry campuses or at in-person Pingry events at any time for any reason.</p>
+
+<p>As part of our contact tracing process, we seek to share the fact that you have been identified as a close contact as quickly as possible, but we appreciate that a phone call will be helpful to process this information and ask clarifying questions. A member of the Contact Tracing team will be in touch, via phone, within the next 48 hours. If you do not receive a call, please reach out to us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>. We appreciate your understanding that weekends and/or holidays may cause a slight delay.</p>
 
 <p>Please monitor for any symptoms of COVID-19. If you experience any of the following symptoms, please reach out to your healthcare provider and notify us via email at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>:</p>
 
