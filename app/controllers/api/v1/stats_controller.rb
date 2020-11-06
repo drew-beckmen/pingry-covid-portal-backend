@@ -268,7 +268,7 @@ class Api::V1::StatsController < ApplicationController
             person.isolations.each do |iso|
                 addToActiveIso += 1 if !iso.completed
                 potentiallyPositiveI += 1 if iso.potential && !iso.completed 
-                addToNewIso += 1 if (((Date.today-3)..Date.today).include?(iso.start_isolation) && !i.completed)
+                addToNewIso += 1 if ((Date.today-3)..Date.today).include?(iso.start_isolation)
             end
             activeIso += addToActiveIso
 
@@ -276,7 +276,7 @@ class Api::V1::StatsController < ApplicationController
             addToNewQ = 0 
             person.quarantines.each do |q| 
                 addToActiveQ += 1 if !q.completed 
-                addToNewQ += 1 if (((Date.today-3)..Date.today).include?(q.exposure) && !q.converted_to_isolation && !q.completed)
+                addToNewQ += 1 if (((Date.today-3)..Date.today).include?(q.exposure) && !q.converted_to_isolation)
             end 
             activeQ += addToActiveQ
             newIso += addToNewIso
