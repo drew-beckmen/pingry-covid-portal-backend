@@ -14,9 +14,9 @@
     <% end %> </strong>for COVID-19. Thank you for your recent update on your child’s isolation status.
 </p>
 
-<p>Please note that your child will only be permitted to return to campus once all documentation from your child's physician has been updated in the Magnus Health Portal (Coronavirus - COVID-19 Clearance), their "Overall Status" field reads "Isolation Complete," and you receive a call from one of our school nurses approving <%= @student.first_name%>’s return to campus. If there are any additional updates to your child’s isolation status, please contact <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>.</p>
-
 <p>Your child’s current status is <strong>isolation incomplete with an earliest possible return date of <%= @isolation.end_date ? @isolation.end_date + 1 : "not yet listed" %></strong>.</p>
+
+<p>Please note that your child will only be permitted to return to campus once all documentation from your child's physician has been updated in the Magnus Health Portal (Coronavirus - COVID-19 Clearance), their status reads "complete", and you receive a call from one of our school nurses approving <%= @student.first_name%>’s return to campus. If there are any additional updates to your child’s isolation status, please contact <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>.</p>
 
 <p>Thank you for your partnership as we work to keep Pingry safe!</p>
 
