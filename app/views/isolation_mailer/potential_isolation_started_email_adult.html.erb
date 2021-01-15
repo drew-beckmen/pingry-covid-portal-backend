@@ -5,19 +5,15 @@
 <p>Dear <%= "#{@student.first_name}"%>,</p>
 
 
-<p>The Pingry School has been notified that you have been identified as one of two individuals in a potentially positive pair resulting from Pingry’s weekly COVID-19 testing. As a result, you will enter a mandatory isolation starting on <%= @isolation.start_isolation %>.</p>
+<p>The Pingry School has been notified that you have been identified as one of two individuals in a potentially positive pair resulting from Pingry’s weekly COVID-19 testing. Until we can determine your result, you <em>must isolate immediately starting on <%= @isolation.start_isolation %></em>.
 
-<p>You will have three options for your attendance at school. Please note that the first option listed is the one that we strongly recommend. Your child may:</p>
+<p>For your convenience and peace of mind, Pingry has partnered with a third party physicians group that can re-test your original sample and provide a diagnostic result within hours of registration. We strongly recommend you take advantage of this offering. To register:</p>
+
+<p>Click on this <a href="https://covid-app.meenta.io/pooling/m1gT7fzM14Rny1dtrp7C">link</a> to have your sample re-reviewed. To begin the registration process you will need to enter your vial barcode number which is <em><%= @isolation.barcode %></em>. A detailed guide on how to register can be found attached to this email. A member of the Pingry Contact Tracing Team is on hand to assist you through the process if needed.</p>
+
+<p>There are two other options for your attendance at school:</p>
+
 <ol>
-    <li>Click on this <a href="https://covid-app.meenta.io/pooling/m1gT7fzM14Rny1dtrp7C">link</a> to have your sample re-reviewed. Before you follow these steps, you will need to reach out to <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a> to obtain the collection tube barcode number from your sample.</li>
-        <ul>
-            <li>When each individual clicks on the provided link, they will be prompted to enter their sample collection tube barcode and register for a personal account on our third-party results reporting platform.</li>
-            <li>The individual will register for an account, sign consent, provide demographics, and answer health history screening questions.</li>
-            <li>Upon completion of the above, a physician’s order will be placed and automatically approved by the system appointed physician.</li>
-            <li>The physician’s order approval will then automatically release an individual diagnostic result. When results are ready to view, the individual associated with the sample barcode will be notified via email that their results are ready to view.</li>
-            <li>Each individual will log back into the reporting platform and will be able to view and download their individual diagnostic test result.</li>
-            <li>The physician who placed the order will attempt three (3) care calls to the phone number provided by the individual to explain individual diagnostic test results and answer any questions.</li>
-        </ul>
     <li>Continue the <strong>mandatory 10-day-minimum isolation starting on <%= @isolation.start_isolation %> and ending at the earliest on <%= @isolation.start_isolation + 9 %></strong>. Your earliest possible date of return to campus is on <%= @isolation.start_isolation + 10 %>. During this isolation period, you are not permitted on Pingry campuses or at in-person Pingry events; or</li>
     <li>Submit results from an independent PCR test administered within the next 48 hours.  Testing sites can be found <a href="https://covid19.nj.gov/pages/testing#test-sites">here</a>. The cost of this test would be your responsibility, but most medical plans cover COVID-19 tests at 100%.  We encourage you to take this step as soon as possible, since a negative result from a PCR test administered within 48 hours will clear both your isolation status as well as the quarantine status of anyone with whom you came in contact, and allow you to return to campus.  Until you are able to submit a negative test, you should not return to campus and isolate as described in scenario 1 above. Short Hills employees should submit their test results to <a href="mailto:pedell@pingry.org">Paula Edell</a>. Basking Ridge employees should submit their test results to <a href="mailto:jdibiasi@pingry.org">Jennifer DiBiasi</a> and <a href="mailto:jlivak@pingry.org">Joy Livak</a>.</li>
 </ol>
@@ -25,12 +21,14 @@
 <p>In either scenario, please immediately:</p>
 <ol>
     <li>Contact Human Resources and</li>
-    <li>Contact either your Division Director (and Department Chair for Basking Ridge Faculty) or your Direct Supervisor to discuss how and whether you can fulfill your employment duties while not on campus. The Contact Tracing Team will not directly pass this information on to these individuals on your behalf.</li>
+    <li>Contact either your Division Director (and Department Chair for Basking Ridge Faculty) or your Direct Supervisor to discuss how and whether you can fulfill your employment duties while not on campus. The Contact Tracing Team will <em>not</em> directly pass this information on to these individuals on your behalf.</li>
 </ol>
 
-<p>A member of the Pingry Contact Tracing Team will be calling you shortly to conduct a contact tracing interview and connect on next steps. If you do not receive a call within the next 24 hours, please reach out to us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>. It is essential that you connect with our Contact Tracing Team to help minimize potential community spread.</p>
+<p>If you haven’t already been in touch with  a member of the Pingry Contact Tracing Team please reach out to <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a> and a member of the team will be in touch soon.</p>
 
 <p>Please notify us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a> immediately of any changes to your status, including if you become symptomatic (e.g., fever, sore throat, uncontrolled cough, diarrhea, vomiting, abdominal pain, severe headache).</p>
+
+<p>Thank you for your partnership as we work to keep Pingry safe!</p>
 
 <p>The Pingry School</p>
 

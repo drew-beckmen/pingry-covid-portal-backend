@@ -31,3 +31,4 @@
 
 .env 
 /db/seed.csv
+.DS_Store

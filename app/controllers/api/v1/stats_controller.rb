@@ -2,7 +2,7 @@ require 'date'
 
 class Api::V1::StatsController < ApplicationController
     skip_before_action :authorized, only: [:summary, :details]
-    skip_before_action :write_access, only: [:summary, :index, :details, :q_and_i_each_campus, :past_future_7_details]
+    skip_before_action :write_access, only: [:summary, :index, :details, :q_and_i_each_campus, :past_future_7_details, :grade_level_data]
     def index 
         short_hills_array = short_hills_master
         basking_ridge_array = basking_ridge_master
@@ -103,7 +103,21 @@ class Api::V1::StatsController < ApplicationController
             shortHillsPercentage14Days: sh, 
             baskingRidgePercentage14Days: br
         }
-    end 
+    end
+
+    # Trying out some fancy new active record queries
+    def grade_level_data
+        active_quarantine_grades = Quarantine.all.where(completed: false).map(&:student).map(&:grade).compact
+        active_isolation_grades = Isolation.all.where(completed: false).map(&:student).map(&:grade).compact
+        frequency_table_isolation = active_isolation_grades.inject(Hash.new(0)) {|hash, grade| hash[grade] += 1; hash}
+        frequency_table_quarantine = active_quarantine_grades.inject(Hash.new(0)) {|hash, grade| hash[grade] += 1; hash}
+        arr_to_display_as_graph = []
+        13.times do |i|
+            name = i == 0 ? "Kindergarten" : "Grade #{i}"
+            arr_to_display_as_graph << {"name": name, "isolation": frequency_table_isolation[i], "quarantine": frequency_table_quarantine[0]}
+        end
+        render json: arr_to_display_as_graph
+    end
 
     # This is for the new graphs on the home page
     def q_and_i_each_campus 
