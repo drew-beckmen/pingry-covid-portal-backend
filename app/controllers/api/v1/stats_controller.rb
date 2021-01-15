@@ -114,7 +114,7 @@ class Api::V1::StatsController < ApplicationController
         arr_to_display_as_graph = []
         13.times do |i|
             name = i == 0 ? "Kindergarten" : "Grade #{i}"
-            arr_to_display_as_graph << {"name": name, "isolation": frequency_table_isolation[i], "quarantine": frequency_table_quarantine[0]}
+            arr_to_display_as_graph << {"name": name, "isolation": frequency_table_isolation[i], "quarantine": frequency_table_quarantine[i]}
         end
         render json: arr_to_display_as_graph
     end
