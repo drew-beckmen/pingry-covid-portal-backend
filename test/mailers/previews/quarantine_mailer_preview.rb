@@ -2,7 +2,7 @@
 require 'date'
 class QuarantineMailerPreview < ActionMailer::Preview
     def quarantine_started_email_student
-        quarantine = Quarantine.new(exposure: Date.today, completed: false, student_id: 1)
+        quarantine = Quarantine.new(exposure: Date.today, completed: false, student_id: 1, end_date: Date.today + 20)
         currentStudent = Student.find(quarantine.student_id)
         QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_started_email_student 
     end 

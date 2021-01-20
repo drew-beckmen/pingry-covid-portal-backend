@@ -13,7 +13,7 @@
 
 <p>This week’s testing cycle information can be found <a href="https://pingryanywhere.org/health-safety/covid-19-testing/">here</a>.</p>
 
-<p>Our records show that your child’s quarantine ends on <%= @quarantine.exposure + 13 %> and the first day your child is permitted to be back on campus is on <%= @quarantine.exposure + 14 %> provided that you are in compliance with <a href="https://pingryanywhere.org/health-safety/covid-19-testing/">Pingry’s testing policy</a>. In the event that your quarantine ends during the campus access window of this upcoming testing cycle and you would like to return in-person, please participate in this week’s testing cycle through one of the below options:</p>
+<p>Our records show that your child’s quarantine ends on <%= @quarantine.end_date || @quarantine.exposure + 13 %> and the first day your child is permitted to be back on campus is on <%= @quarantine.end_date ? @quarantine.end_date + 1 : @quarantine.exposure + 14 %> provided that you are in compliance with <a href="https://pingryanywhere.org/health-safety/covid-19-testing/">Pingry’s testing policy</a>. In the event that your quarantine ends during the campus access window of this upcoming testing cycle and you would like to return in-person, please participate in this week’s testing cycle through one of the below options:</p>
 
 <p><strong>Option 1: Proxy on Distribution Day and Collection Day</strong>—The quarantined individual does not come to campus. A proxy picks up the quarantined individual's test kit on distribution day. The quarantined individual provides the saliva sample at home. A proxy drops off the quarantined individual's test kit, accompanied by their Pingry ID, to a collection station on collection day prior to 9:15 a.m.</p>
 
