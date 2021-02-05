@@ -6,9 +6,9 @@
 
 <p>Your child has been identified by Pingry’s Contact Tracing Team as having had close contact with a COVID-19 case on <%= @quarantine.exposure %> (see our <a href="https://pingryanywhere.org/health-safety/covid-19-contact-tracing/">COVID-19 Contact Tracing</a> page for more information about the process and close contact definition).</p>
 
-<p>In order to minimize potential community transmission, <strong>your child will need to enter a mandatory 14-day quarantine starting on <%= @quarantine.exposure %> and ending on <%= @quarantine.end_date || @quarantine.exposure + 13 %></strong>. Your child’s earliest possible date of return to campus is on <%= @quarantine.end_date ? @quarantine.end_date + 1 : @quarantine.exposure + 14%>, regardless of a physician’s clearance and/or a negative result from a COVID-19 test. During this quarantine period, your child is not permitted on Pingry campuses or at in-person Pingry events at any time for any reason.</p>
+<p>In order to minimize potential community transmission, <strong>your child will need to enter a mandatory 14-day quarantine starting on <%= @quarantine.exposure %> and ending on <%= @quarantine.end_date || @quarantine.exposure + 14 %></strong>. Your child’s earliest possible date of return to campus is on <%= @quarantine.end_date ? @quarantine.end_date + 1 : @quarantine.exposure + 15 %>, regardless of a physician’s clearance and/or a negative result from a COVID-19 test. During this quarantine period, your child is not permitted on Pingry campuses or at in-person Pingry events at any time for any reason.</p>
 
-<p>As part of our contact tracing process, we seek to share the fact that your child has been identified as a close contact as quickly as possible, but we appreciate that a phone call will be helpful to process this information and ask clarifying questions. A member of the Contact Tracing team will be in touch, via phone, within the next 48 hours. If you do not receive a call, please reach out to us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>. We appreciate your understanding that weekends and/or holidays may cause a slight delay.</p>
+<p>As part of our contact tracing process, we seek to share the fact that your child has been identified as a close contact as quickly as possible, but we appreciate that a phone call will be helpful to process this information and ask clarifying questions. <strong>A member of the Contact Tracing team will be in touch, via phone, within the next 48 hours. If you do not receive a call, please reach out to us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a></strong>. We appreciate your understanding that weekends and/or holidays may cause a slight delay.</p>
 
 <p>Please monitor your child for any symptoms of COVID-19. If <%= @student.first_name %> develops any of the following symptoms, please reach out to your healthcare provider and notify us via email at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>:</p>
 
@@ -25,7 +25,7 @@
     <li>Diarrhea</li>
 </ul>
 
-<p>We will be in touch several times throughout the duration of <%= @student.first_name %>’s quarantine to check in as well. All information is confidential and will only be shared as needed within Pingry’s Contact Tracing Team. We ask that you inform Pingry that your child will be participating as a remote learner in <a href="https://pingryanywhere.org/">Pingry Anywhere</a> for the duration of their quarantine by emailing the appropriate divisional attendance email:</p>
+<p>We ask that you inform Pingry that your child will be participating as a remote learner in <a href="https://pingryanywhere.org/">Pingry Anywhere</a> for the duration of their quarantine by emailing the appropriate divisional attendance email:</p>
 
 <ul>
     <li>Lower School: <a href="mailto:lsattendance@pingry.org">lsattendance@pingry.org</a>  + your child's homeroom teacher</li>
@@ -37,7 +37,7 @@
 
 <p>We truly appreciate your cooperation in keeping the Pingry community safe. You may also be contacted by the local Department of Health. Please let us know if there is anything we can do to help support your family during this time.</p>
 
-<p>Thank you for your help in keeping Pingry safe!</p>
+<p>Thank you,</p>
 <p>The Pingry School</p>
 
 <p>CONFIDENTIAL AND/OR PRIVILEGED: This communication contains information intended only for use by the individual or entity to which it is addressed and may contain private and/or sensitive information. If you are not the intended recipient or have received this message in error, you are hereby notified that any disclosure, copying, distribution or use of its content is strictly prohibited and illegal. If you have received this transmission in error, please notify the above sender immediately and permanently destroy all copies of this message.</p>

@@ -14,12 +14,12 @@
     <% end %> </strong>for COVID-19. Thank you for your recent update on your isolation status.
 </p>
 
-<p>Your current status is <strong>isolation incomplete with an earliest possible return date of <%= @isolation.end_date ? @isolation.end_date + 1 : "not yet listed" %></strong>.</p>
+<p>Your current status is <strong>isolation incomplete with an earliest possible return date of <%= @isolation.end_date ? @isolation.end_date + 1 : @isolation.start_isolation + 11 %></strong>.</p>
 
-<p>This information is confidential and will only be shared as needed within Pingry’s Contact Tracing Team. Please continue to stay in contact with:</p>
+<p>This information is confidential and will only be shared as needed within Pingry’s Contact Tracing Team. <strong>Please continue to stay in contact with:</p>
 <ol>
     <li>Human Resources and</li>
-    <li>Either your Division Director (and Department Chair for Basking Ridge Faculty) or your Direct Supervisor to discuss how and whether you can fulfill your employment duties while not on campus. The Contact Tracing Team will not directly pass this information on to these individuals on your behalf.</li>
+    <li>Either your Division Director</strong> (and Department Chair for Basking Ridge Faculty) or your Direct Supervisor to discuss how and whether you can fulfill your employment duties while not on campus. The Contact Tracing Team will not directly pass this information on to these individuals on your behalf.</li>
 </ol>
 
 
