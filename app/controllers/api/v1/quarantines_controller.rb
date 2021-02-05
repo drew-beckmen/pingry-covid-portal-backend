@@ -4,7 +4,8 @@ class Api::V1::QuarantinesController < ApplicationController
 
         # don't want to send email if only update is notes
         params = quarantine_params 
-        if Date.parse(params[:exposure]) == quarantine.exposure && params[:completed] == quarantine.completed && params[:converted_to_isolation] == quarantine.converted_to_isolation && Date.parse(params[:end_date]) == quarantine.end_date 
+        if Date.parse(params[:exposure]) == quarantine.exposure && params[:completed] == quarantine.completed && params[:converted_to_isolation] == quarantine.converted_to_isolation && 
+            ((params[:end_date].nil? && quarantine.end_date.nil?) || Date.parse(params[:end_date]) == quarantine.end_date)
             quarantine.update(quarantine_params)
         else 
             quarantine.update(quarantine_params)

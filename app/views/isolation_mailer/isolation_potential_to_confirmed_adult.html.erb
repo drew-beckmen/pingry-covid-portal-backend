@@ -1,0 +1,27 @@
+<h3>Pingry COVID-19 Update</h3>
+<h5>You have started an isolation period.</h5>
+<hr/>
+
+<p>Dear <%= "#{@student.first_name}"%>,</p>
+
+<p>We are very sorry to hear that further review  has concluded that you are positive for COVID-19. Our wishes are for you to have a speedy and restful recovery.</p>
+
+<p>Based on this updated information, you entered a mandatory 10-day-minimum isolation starting on <%= @isolation.start_isolation %> and ending at the earliest on <%= @isolation.end_date ? @isolation.end_date : @isolation.start_isolation + 10 %>. Your earliest possible date of return to campus is on <%= @isolation.end_date ? @isolation.end_date + 1 : @isolation.start_isolation + 11 %>. Pingry would also like to inform you that you are now exempt from participation in our weekly pooled testing until the testing cycle after <%= @isolation.start_isolation + 90 %>. We will be periodically checking in with you during isolation. During this isolation period, you are not permitted on Pingry campuses or at in-person Pingry events at any time for any reason.</p>
+
+<p>Please note that once an individual has tested positive for COVID, they are presumed to have contracted the virus. Therefore, we will not accept any changes to this result with any following tests that show a negative result.</p>
+
+<strong><p>Please immediately:</p>
+<ol>
+    <li>Contact Human Resources and</li>
+    <li>Contact either your Division Director</strong> (and Department Chair for Basking Ridge Faculty) or your Direct Supervisor to discuss how and whether you can fulfill your employment duties while not on campus. The Contact Tracing Team will <strong>not</strong> directly pass this information on to these individuals on your behalf.</li>
+</ol>
+
+<p><strong>If you haven’t already been in touch with  a member of the Pingry Contact Tracing Team please reach out to <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a> and a member of the team will be in touch soon</strong>. It is essential that you connect with our Contact Tracing Team to help minimize potential community spread.</p>
+
+<p>If you have updates regarding your status, please email us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>.</p>
+
+<p>Thank you for your partnership as we work to keep Pingry safe! You may receive more information from your local health department for additional contact tracing efforts.<p>
+
+<p>The Pingry School</p>
+
+<p>CONFIDENTIAL AND/OR PRIVILEGED: This communication contains information intended only for use by the individual or entity to which it is addressed and may contain private and/or sensitive information. If you are not the intended recipient or have received this message in error, you are hereby notified that any disclosure, copying, distribution or use of its content is strictly prohibited and illegal. If you have received this transmission in error, please notify the above sender immediately and permanently destroy all copies of this message.</p>

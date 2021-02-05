@@ -1,0 +1,35 @@
+<h3>Pingry COVID-19 Update</h3>
+<h5>Your child has started an isolation period.</h5>
+<hr/>
+
+<p>Dear Parent/Guardian of <%= "#{@student.first_name}"%>,</p>
+
+<p>We are very sorry to hear that after further review <%= @student.first_name %> has tested positive for COVID-19. Our wishes are for <%= @student.first_name %> to have a speedy and restful recovery.</p>
+
+<p>Based on this updated information, <strong>your child entered a mandatory 10-day-minimum isolation starting on <%= @isolation.start_isolation %> and ending at the earliest on <%= @isolation.end_date ? @isolation.end_date : @isolation.start_isolation + 10 %></strong>. Your child’s earliest possible date of return to campus is on <%= @isolation.end_date ? @isolation.end_date + 1 : @isolation.start_isolation + 11 %>. Pingry would also like to inform you that <%= @student.first_name %> is now exempt from participation in our weekly pooled testing until the testing cycle after <%= @isolation.start_isolation + 90 %>. We will be periodically checking in with you and your child during your child’s isolation. During this isolation period, your child is not permitted on Pingry campuses or at in-person Pingry events at any time for any reason.</p>
+
+<p>Please note that once an individual has tested positive for COVID, they are presumed to have contracted the virus. Therefore, we will not accept any changes to this result with any following tests that show a negative result.</p>
+
+<p>Pingry respects your family’s privacy and will not be sharing this information broadly with members of our community  (including advisors, homeroom teachers, coaches, etc.). You are, of course, welcome to share details about your absence from school if you wish, but you are not required to do so.</p>
+
+<p>If your child feels able to attend classes, they may engage as a remote learner in Pingry Anywhere. <strong>We do ask that you inform Pingry if your child will indeed be participating as a remote learner in <a href="https://pingryanywhere.org/">Pingry Anywhere</a> for the duration of their isolation by emailing the appropriate divisional attendance email:</strong></p>
+
+<ul>
+    <li>Lower School: <a href="mailto:lsattendance@pingry.org">lsattendance@pingry.org</a>  + your child's homeroom teacher</li>
+    <li>Middle School: <a href="mailto:msattendance@pingry.org">msattendance@pingry.org</a> </li>
+    <li>Upper School: <a href="mailto:usattendance@pingry.org">usattendance@pingry.org</a></li>
+</ul>
+
+<p>If you have updates regarding your child’s status, please email us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>.</p>
+
+<p>Thank you for your partnership as we work to keep Pingry safe! You may receive more information from your local health department for additional contact tracing efforts.</p>
+
+<p>The Pingry School</p>
+
+<p>CONFIDENTIAL AND/OR PRIVILEGED: This communication contains information intended only for use by the individual or entity to which it is addressed and may contain private and/or sensitive information. If you are not the intended recipient or have received this message in error, you are hereby notified that any disclosure, copying, distribution or use of its content is strictly prohibited and illegal. If you have received this transmission in error, please notify the above sender immediately and permanently destroy all copies of this message.</p>
+
+<p>Thank you for your help in keeping Pingry safe, and best wishes for a speedy recovery! You may receive more information from your local health department for additional contact tracing efforts.</p>
+<p>Best wishes for a speedy recovery,</p>
+<p>The Pingry School</p>
+
+<p>CONFIDENTIAL AND/OR PRIVILEGED: This communication contains information intended only for use by the individual or entity to which it is addressed and may contain private and/or sensitive information. If you are not the intended recipient or have received this message in error, you are hereby notified that any disclosure, copying, distribution or use of its content is strictly prohibited and illegal. If you have received this transmission in error, please notify the above sender immediately and permanently destroy all copies of this message.</p>

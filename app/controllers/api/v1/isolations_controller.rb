@@ -4,8 +4,21 @@ class Api::V1::IsolationsController < ApplicationController
         params = isolation_params
 
         # Don't send email when just notes are updated.
-        if Date.parse(params[:start_isolation]) == isolation.start_isolation && Date.parse(params[:date_improving]) == isolation.date_improving && params[:fever_free] == isolation.fever_free && Date.parse(params[:end_date]) == isolation.end_date && params[:completed] == isolation.completed && params[:confirmed] == isolation.confirmed
+        if Date.parse(params[:start_isolation]) == isolation.start_isolation && 
+            ((params[:date_improving].nil? && isolation.date_improving.nil?) || Date.parse(params[:date_improving]) == isolation.date_improving) && 
+            params[:fever_free] == isolation.fever_free && Date.parse(params[:end_date]) == isolation.end_date && 
+            params[:completed] == isolation.completed && params[:confirmed] == isolation.confirmed && 
+            params[:potential] == isolation.potential
             isolation.update(isolation_params)
+        elsif isolation.potential && params[:confirmed]
+            puts("HERE")
+            isolation.update(isolation_params)
+            currentStudent = Student.find(isolation.student_id)
+            if !currentStudent.teacher
+                IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_potential_to_confirmed_student.deliver_now
+            else
+                IsolationMailer.with(student: currentStudent, isolation: isolation).isolation_potential_to_confirmed_adult.deliver_now
+            end
         else 
             isolation.update(isolation_params)
             currentStudent = Student.find(isolation.student_id)
