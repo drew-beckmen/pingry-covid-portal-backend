@@ -4,11 +4,8 @@
 
 <p>Dear <%= "#{@student.first_name}"%>,</p>
 
-<% if Date.today < @quarantine.exposure + 14 %>
-<p>According to Pingry's records, you were  being quarantined in connection to a potential positive case resulting from Pingry's pool testing initiative. As a result of that potential positive case's independent re-testing with a negative result, your quarantine period ends today on <%= Date.today %> and you will be able to return to campus starting tomorrow on <%= Date.today + 1 %>.</p>
-<% else %>
 <p>According to Pingry's records, you have completed the final day of your quarantine today on <%= Date.today %> and will be able to return to campus starting tomorrow on <%= Date.today + 1%>.</p>
-<% end %>
+
 <p>If you have developed symptoms or tested positive for COVID-19 during your quarantine, please contact us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>.</p>
 
 <p>As long as you have not developed any symptoms throughout quarantine, we look forward to seeing you back on campus tomorrow. If there are changes to report, please contact <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>.</p>
