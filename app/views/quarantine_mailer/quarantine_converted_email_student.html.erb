@@ -4,11 +4,7 @@
 
 <p>Dear Parent/Guardian of <%= "#{@student.first_name}"%>,</p>
 
-<p>We are sorry to hear about <%= @student.first_name %>’s positive COVID-19 diagnosis and the resulting change in their quarantine status.</p>
-
-<p>This email confirms that your child has been identified as either a presumed positive (i.e., from known exposure and symptoms) or confirmed positive (i.e., from test results) COVID-19 case and will be entering a mandatory 10-day-minimum isolation period starting on <%= Date.today %> and ending at the earliest on <%= Date.today + 10 %>.</p>
-
-<p>Your child’s earliest possible date of return to campus is on <%= Date.today + 11 %>. If your child is symptomatic, your child will need to be fever-free for at least 24 hours without the use of fever suppressants and show improvement of symptoms before being released from isolation. We will be periodically checking in with you and your child during your child’s isolation. During this isolation period, your child is not permitted on Pingry campuses or at in-person Pingry events at any time for any reason.</p>
+<p>We are sorry to hear about <%= @student.first_name %>’s positive COVID-19 diagnosis and the resulting change in their quarantine status. We will be following up via email shortly with updates regarding <%= @student.first_name %>.</p>
 
 <p><strong>A member of the Pingry Contact Tracing Team will be calling you shortly to conduct a contact tracing interview and connect on next steps. If you do not receive a call within the next 24 hours, please reach out to us at <a href="mailto:contacttracing@pingry.org">contracttracing@pingry.org</a></strong>. It is essential that you connect with our Contact Tracing Team to help minimize potential community spread.</p>
 

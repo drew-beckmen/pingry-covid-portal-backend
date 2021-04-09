@@ -9,11 +9,11 @@
 
 <p>According to the information on file, <strong>your child entered a mandatory 10-day-minimum isolation starting on <%= @isolation.start_isolation %> and ending at the earliest on <%= @isolation.start_isolation  + 10 %></strong>. Your child’s earliest possible date of return to campus is on <%= @isolation.start_isolation  + 11 %>. Pingry would also like to inform you that <%= @student.first_name %> is now exempt from participation in our weekly pooled testing until the testing cycle after <%= @isolation.start_isolation  + 90 %>. We will be periodically checking in with you and your child during your child’s isolation. During this isolation period, your child is not permitted on Pingry campuses or at in-person Pingry events at any time for any reason.</p>
 
-<p>Please note that once an individual has tested positive for COVID-19, they are presumed to have contracted the virus. Therefore, we will not accept any changes to this result with any following tests that show a negative result.</p>
+<p>Attached to this email you will find Pingry’s COVID-19 clearance form. This form must be completed by <%= @student.first_name %>’s physician and returned to our school nurses prior to your child’s return to campus. Pingry will only accept the attached form and will not accept independent physician’s clearance notes. For those on the Short Hills Campus, please submit the form to <a href="mailto: pedell@pingry.org">Paula Edell</a>. For those on the Basking Ridge Campus, please submit the form to <a href="mailto: jdibiasi@pingry.org">Jennifer DiBiasi</a> and <a href="mailto: jlivak@pingry.org">Joy Livak</a>.Please note that once an individual has tested positive for COVID-19, they are presumed to have contracted the virus. Therefore, we will not accept any changes to this result with any following tests that show a negative result.</p>
 
 <p><strong>If you haven’t already been in touch with a member of the Pingry Contact Tracing Team please reach out to <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a> and a member of the team will be in touch soon</strong>. It is essential that you connect with our Contact Tracing Team to help minimize potential community spread.</p>
 
-<p>Pingry respects your family’s privacy and will not be sharing this information broadly with members of our community (including advisors, homeroom teachers, coaches, etc.). However, you are welcome to share details about your absence from school with other community members if you wish, but you are not required to do so.</p>
+<p>Pingry  respects your family’s privacy and will not be sharing information regarding <%= @student.first_name %>’s isolation outside of our contact tracing team. However, we do encourage you to connect with <%= @student.first_name %>’s advisor/homeroom teacher to discuss how we can best support <%= @student.first_name %> at this time. You can also feel free to inform coaches, club advisors, or other adult members of the Pingry community if you feel comfortable with doing so.</p>
 
 <p>If your child feels able to attend classes, they may engage as a remote learner in Pingry Anywhere. <strong>We do ask that you inform Pingry if your child will indeed be participating as a remote learner in <a href="https://pingryanywhere.org/">Pingry Anywhere</a> for the duration of their isolation by emailing the appropriate divisional attendance email:</strong></p>
 
@@ -22,8 +22,6 @@
     <li>Middle School: <a href="mailto:msattendance@pingry.org">msattendance@pingry.org</a> </li>
     <li>Upper School: <a href="mailto:usattendance@pingry.org">usattendance@pingry.org</a></li>
 </ul>
-
-<p>Please see the attached COVID-19 clearance form to be completed by <%= @student.first_name%>’s Physician and returned to our school nurses upon completion of the isolation. For those on the Short Hills Campus, please submit the form to <a href="mailto: pedell@pingry.org">Paula Edell</a>. For those on the Basking Ridge Campus, please submit the form to <a href="mailto: jdibiasi@pingry.org">Jennifer DiBiasi</a> and <a href="mailto: jlivak@pingry.org">Joy Livak</a>.</p>
 
 <p>If you have updates regarding your child’s status, please email us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>.</p>
 

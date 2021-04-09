@@ -4,9 +4,9 @@
 
 <p>Dear Parent/Guardian of <%= "#{@student.first_name}"%>,</p>
 
-<p>According to Pingry's records, your child has completed the final day of their quarantine today on <%= Date.today %> and will be able to return to campus starting tomorrow on <%= Date.today + 1%>.</p>
+<p>According to Pingry's records, your child has completed the final day of their quarantine today on <%= @quarantine.end_date ? @quarantine.end_date : Date.today %> and will be able to return to campus effective <%= @quarantine.end_date ? @quarantine.end_date + 1 : Date.today + 1%>.</p>
 
-<p>If your child has developed symptoms or tested positive for COVID-19 during their quarantine, please contact us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>.</p>
+<p><strong>If your child has developed symptoms or tested positive for COVID-19 during their quarantine, please contact us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>.</strong></p>
 
 <p><strong>We ask that you inform Pingry if your child will be switching from a remote learner to an in-person learner by emailing the appropriate divisional attendance email:</strong></p>
 

@@ -4,7 +4,7 @@
 
 <p>Dear <%= "#{@student.first_name}"%>,</p>
 
-<p>We are very sorry to hear that further review  has concluded that you are positive for COVID-19. Our wishes are for you to have a speedy and restful recovery.</p>
+<p>We are very sorry to hear that further review has concluded that you are positive for COVID-19. Our wishes are for you to have a speedy and restful recovery.</p>
 
 <p>Based on this updated information, you entered a mandatory 10-day-minimum isolation starting on <%= @isolation.start_isolation %> and ending at the earliest on <%= @isolation.end_date ? @isolation.end_date : @isolation.start_isolation + 10 %>. Your earliest possible date of return to campus is on <%= @isolation.end_date ? @isolation.end_date + 1 : @isolation.start_isolation + 11 %>. Pingry would also like to inform you that you are now exempt from participation in our weekly pooled testing until the testing cycle after <%= @isolation.start_isolation + 90 %>. We will be periodically checking in with you during isolation. During this isolation period, you are not permitted on Pingry campuses or at in-person Pingry events at any time for any reason.</p>
 
