@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       resources :students, only: [:update, :show, :index]
       resources :quarantines, only: [:update, :show, :destroy, :index, :create]
       resources :isolations, only: [:update, :show, :destroy, :index, :create]
+      resources :contacts, only: [:show, :destroy, :index, :create]
     end 
   end 
 end
