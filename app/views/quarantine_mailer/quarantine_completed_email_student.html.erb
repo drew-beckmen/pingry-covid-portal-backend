@@ -2,7 +2,7 @@
 <h5>Your child's quarantine has ended</h5>
 <hr/>
 
-<p>Dear Parent/Guardian of <%= "#{@student.first_name}"%>,</p>
+<p>Dear Caregiver of <%= "#{@student.first_name}"%>,</p>
 
 <p>According to Pingry's records, your child has completed the final day of their quarantine today on <%= @quarantine.end_date ? @quarantine.end_date : Date.today %> and will be able to return to campus effective <%= @quarantine.end_date ? @quarantine.end_date + 1 : Date.today + 1%>.</p>
 

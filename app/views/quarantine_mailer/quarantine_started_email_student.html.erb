@@ -2,7 +2,7 @@
 <h5>Your child has just entered a quarantine period</h5>
 <hr/>
 
-<p>Dear caregiver of <%= "#{@student.first_name}"%>,</p>
+<p>Dear Caregiver of <%= "#{@student.first_name}"%>,</p>
 
 <p>Your child has been identified by Pingry’s Contact Tracing Team as having had close contact with a COVID-19 case on <%= @quarantine.exposure %> (see our <a href="https://pingryanywhere.org/health-safety/covid-19-contact-tracing/">COVID-19 Contact Tracing</a> page for more information about the process and close contact definition).
 <% if @quarantine.is_seven_day %>
@@ -55,7 +55,7 @@
     <li>Upper School: <a href="mailto:usattendance@pingry.org">usattendance@pingry.org</a></li>
 </ul>
 
-<p>Pingry  respects your family’s privacy and will not be sharing information regarding <%= @student.first_name %>’s quarantine outside of our contact tracing team. However, we do encourage you to connect with <%= @student.first_name %>’s advisor/homeroom teacher to discuss how we can best support <%= @student.first_name %> at this time. You can also feel free to inform coaches, club advisors, or other adult members of the Pingry community if you feel comfortable with doing so.</p>
+<p>Pingry  respects your family’s privacy and will not be sharing information regarding <%= @student.first_name %>’s quarantine outside of our Contact Tracing Team. However, we do encourage you to connect with <%= @student.first_name %>’s advisor/homeroom teacher to discuss how we can best support <%= @student.first_name %> at this time. You can also feel free to inform coaches, club advisors, or other adult members of the Pingry community if you feel comfortable with doing so.</p>
 
 <p>We truly appreciate your cooperation in keeping the Pingry community safe. You may also be contacted by the local Department of Health. Please let us know if there is anything we can do to help support your family during this time.</p>
 

@@ -1,0 +1,40 @@
+<h3>Pingry COVID-19 Update</h3>
+<h5>Your child has been identified as a close contact </h5>
+<hr/>
+
+<p>Dear Caregiver of <%= "#{@student.first_name}"%>,</p>
+
+<p>Your child has been identified by Pingry’s Contact Tracing Team as having had close contact with a COVID-19 case on <%= @contact.exposure %> (see our <a href="https://pingryanywhere.org/health-safety/covid-19-contact-tracing/">COVID-19 Contact Tracing</a> page for more information about the process and close contact definition). </p>
+
+<p>Due to the fact that your child is fully vaccinated against COVID-19, in accordance with guidance from the New Jersey Department of Health, your child:</p>
+
+<ul>
+    <li>Does not need to quarantine, be excluded from school, or be tested following an exposure to someone with suspected or confirmed COVID-19.</li>
+    <li>Should self-monitor for symptoms of COVID-19 for 14 days following an exposure.</li>
+</ul>
+
+<p>As part of our contact tracing process, we seek to share the fact that your child has been identified as a close contact as quickly as possible, but we appreciate that a phone call will be helpful to process this information and ask clarifying questions. <strong>To set-up a call, please reach out to us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a></strong>, and we will schedule a time for a member of our team to speak with you.</p>
+
+<p>If <%= "#{@student.first_name}"%> experiences any of the following symptoms, please reach out to your healthcare provider, notify them of your child’s vaccination status, and contact Pingry via email at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>:</p>
+
+<ul>
+    <li>Fever or chills</li>
+    <li>Cough</li>
+    <li>Shortness of breath or difficulty breathing</li>
+    <li>Fatigue</li>
+    <li>Muscle or body aches</li>
+    <li>New loss of taste or smell</li>
+    <li>Sore throat</li>
+    <li>Congestion or runny nose</li>
+    <li>Nausea or vomiting</li>
+    <li>Diarrhea</li>
+</ul>
+
+<p>Pingry respects your family’s privacy and will not be sharing information regarding <%= "#{@student.first_name}"%>’s close contact outside of our Contact Tracing Team. </p>
+
+<p>We truly appreciate your cooperation in keeping the Pingry community safe. Please let us know if there is anything we can do to help support your family during this time.</p>
+
+<p>Thank you,</p>
+<p>The Pingry School</p>
+
+<p>CONFIDENTIAL AND/OR PRIVILEGED: This communication contains information intended only for use by the individual or entity to which it is addressed and may contain private and/or sensitive information. If you are not the intended recipient or have received this message in error, you are hereby notified that any disclosure, copying, distribution or use of its content is strictly prohibited and illegal. If you have received this transmission in error, please notify the above sender immediately and permanently destroy all copies of this message.</p>

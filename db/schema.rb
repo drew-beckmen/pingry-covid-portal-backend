@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2021_08_17_031000) do
     t.date "exposure"
     t.integer "student_id"
     t.string "notes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "isolations", force: :cascade do |t|

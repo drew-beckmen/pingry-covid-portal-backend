@@ -4,9 +4,9 @@
 
 <p>Dear <%= "#{@student.first_name}"%>,</p>
 
-<p>Thank you for notifying Pingry of your positive COVID-19 diagnosis. Your willingness to share this information will help ensure we continue to keep our community safe. Our wishes are for your speedy and restful recovery.</p>
+<p>Thank you for notifying Pingry of your positive COVID-19 diagnosis. Your willingness to share this information will help ensure we continue to keep our community safe. Our wishes are for your speedy and restful recovery. </p>
 
-<p>According to the information on file, you entered a mandatory 10-day-minimum isolation starting on <%= @isolation.start_isolation %> and ending at the earliest on <%= @isolation.start_isolation + 10 %>. Your earliest possible date of return to campus is on <%= @isolation.start_isolation + 11 %>. Pingry would also like to inform you that you are exempt from participation in our weekly pool testing until <%= @isolation.start_isolation + 90 %>. We will be periodically checking in with you during your isolation. During this isolation period, you are not permitted on Pingry campuses or at in-person Pingry events.</p>
+<p>According to the information on file, you entered a mandatory 10-day-minimum isolation starting on <%= @isolation.start_isolation %> and ending on <%= @isolation.start_isolation + 10 %>. Your earliest possible date of return to campus is on <%= @isolation.start_isolation + 11 %>. Pingry would also like to inform you that you are exempt from participation in our weekly pool testing until <%= @isolation.start_isolation + 90 %>. We will be periodically checking in with you during your isolation. During this isolation period, you are not permitted on Pingry campuses or at in-person Pingry events.</p>
 
 <p>Please note that once an individual has tested positive for COVID, they are presumed to have contracted the virus. Therefore, we will not accept any changes to this result with any following tests that show a negative result.</p>
 

@@ -19,13 +19,11 @@ class Api::V1::ContactsController < ApplicationController
         contact = Contact.create(contact_params)
         currentStudent = Student.find(contact.student_id)
         # TODO: add email functionality for contacts
-        # if !currentStudent.teacher
-        #     QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_started_email_student.deliver_now
-        #     # QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_testing_email_student.deliver_now
-        # else 
-        #     QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_started_email_adult.deliver_now
-        #     # QuarantineMailer.with(student: currentStudent, quarantine: quarantine).quarantine_testing_email_adult.deliver_now
-        # end 
+        if !currentStudent.teacher
+            ContactMailer.with(student: currentStudent, contact: contact).contact_student.deliver_now
+        else 
+            ContactMailer.with(student: currentStudent, contact: contact).contact_adult.deliver_now
+        end 
         render json: contact
     end
 
