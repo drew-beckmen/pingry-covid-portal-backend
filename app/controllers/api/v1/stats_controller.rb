@@ -167,8 +167,8 @@ class Api::V1::StatsController < ApplicationController
         historical_dates.each do |d|
             current_day_total_sh = short_hills[d].values.sum 
             current_day_total_br = basking_ridge[d].values.sum 
-            short_hills_percentages << ((current_day_total_sh.to_f / 368) * 100).round(2)
-            basking_ridge_percentages << ((current_day_total_br.to_f / 1211) * 100).round(2)
+            short_hills_percentages << ((current_day_total_sh.to_f / 324) * 100).round(2)
+            basking_ridge_percentages << ((current_day_total_br.to_f / 857) * 100).round(2)
         end 
         [short_hills_percentages, basking_ridge_percentages]
     end
@@ -234,8 +234,9 @@ class Api::V1::StatsController < ApplicationController
         to_return
     end
 
+    # we have defined grade 13 as someone no longer part of the school community
     def get_short_hills_people
-        Student.all.select{|student| student.campus == "Short Hills"} #&& !student.teacher}
+        Student.all.select{|student| student.campus == "Short Hills" and student.grade != 13} #&& !student.teacher}
     end
 
     def short_hills_master
@@ -248,7 +249,7 @@ class Api::V1::StatsController < ApplicationController
 
         
     def get_basking_ridge_people
-        Student.all.select{|student| student.campus == "Basking Ridge"} # && !student.teacher}
+        Student.all.select{|student| student.campus == "Basking Ridge" and student.grade != 13} # && !student.teacher}
     end 
 
     def stats_calculator(all_people)
