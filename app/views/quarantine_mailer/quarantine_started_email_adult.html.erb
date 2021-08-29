@@ -4,7 +4,7 @@
 
 <p>Dear <%= "#{@student.first_name}"%>,</p>
 
-<p>You have been identified by Pingry’s Contact Tracing Team as having had close contact with a COVID-19 case on <%= @quarantine.exposure %> (see our <a href="https://pingryanywhere.org/health-safety/covid-19-contact-tracing/">COVID-19 Contact Tracing</a> page for more information about the process and close contact definition).
+<p>You have been identified by Pingry’s Contact Tracing Team as having had close contact with a COVID-19 case on <%= @quarantine.exposure %> .
 
 <% if @quarantine.is_seven_day %>
     Currently, the regional <a href="https://www.nj.gov/health/cd/documents/topics/NCOV/COVID_19_Report_Week_2021_14.pdf">CALI SCORE</a> permits Pingry to adopt a seven-day quarantine period for those who have come into close contact with anyone who tested positive for COVID-19. Accordingly, you may return to our campus on <%= @quarantine.end_date || @quarantine.exposure + 8%> provided the following criteria have been met:</p>

@@ -4,7 +4,7 @@
 
 <p>Dear Caregiver of <%= "#{@student.first_name}"%>,</p>
 
-<p>Your child has been identified by Pingry’s Contact Tracing Team as having had close contact with a COVID-19 case on <%= @quarantine.exposure %> (see our <a href="https://pingryanywhere.org/health-safety/covid-19-contact-tracing/">COVID-19 Contact Tracing</a> page for more information about the process and close contact definition).
+<p>Your child has been identified by Pingry’s Contact Tracing Team as having had close contact with a COVID-19 case on <%= @quarantine.exposure %>.
 <% if @quarantine.is_seven_day %>
     Currently, the regional <a href="https://www.nj.gov/health/cd/documents/topics/NCOV/COVID_19_Report_Week_2021_14.pdf">CALI SCORE</a> permits Pingry to adopt a seven-day quarantine period for those who have come into close contact with anyone who tested positive for COVID-19. Accordingly, <%= @student.first_name%> may return to our campus on <%= @quarantine.end_date || @quarantine.exposure + 8%> provided the following criteria have been met:</p>
 
@@ -28,8 +28,6 @@
 <% end %>
 
 
-
-
 <p>As part of our contact tracing process, we seek to share the fact that your child has been identified as a close contact as quickly as possible, but we appreciate that a phone call will be helpful to process this information and ask clarifying questions. <strong>A member of the Contact Tracing team will be in touch, via phone, within the next 48 hours. If you do not receive a call, please reach out to us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a></strong>. We appreciate your understanding that weekends and/or holidays may cause a slight delay.</p>
 
 <p>Please monitor your child for any symptoms of COVID-19. If <%= @student.first_name %> develops any of the following symptoms, please reach out to your healthcare provider and notify us via email at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>:</p>
@@ -47,7 +45,7 @@
     <li>Diarrhea</li>
 </ul>
 
-<p>We ask that you inform Pingry that your child will be participating as a remote learner in <a href="https://pingryanywhere.org/">Pingry Anywhere</a> for the duration of their quarantine by emailing the appropriate divisional attendance email:</p>
+<p>We ask that you inform Pingry that your child will be participating as a remote learner for the duration of their quarantine by emailing the appropriate divisional attendance email:</p>
 
 <ul>
     <li>Lower School: <a href="mailto:lsattendance@pingry.org">lsattendance@pingry.org</a>  + your child's homeroom teacher</li>
