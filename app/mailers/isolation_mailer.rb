@@ -41,15 +41,15 @@ class IsolationMailer < ApplicationMailer
     def potential_isolation_started_email_student
         @student = params[:student]
         @isolation = params[:isolation]
-        attachments['meenta_instructions' + '.pdf'] = File.read('app/mailers/Meenta.io.pdf')
+        # attachments['meenta_instructions' + '.pdf'] = File.read('app/mailers/Meenta.io.pdf')
         mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: Potentially Positive Case of COVID-19")
     end 
 
     def potential_isolation_started_email_adult
         @student = params[:student]
         @isolation = params[:isolation]
-        attachments['meenta_instructions' + '.pdf'] = File.read('app/mailers/Meenta.io.pdf')
-        mail(to: @student.email, reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: Pingry: Potentially Positive Case of COVID-19")
+        # attachments['meenta_instructions' + '.pdf'] = File.read('app/mailers/Meenta.io.pdf')
+        mail(to: @student.email, reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: Potentially Positive Case of COVID-19")
     end
 
     def isolation_potential_to_confirmed_student
