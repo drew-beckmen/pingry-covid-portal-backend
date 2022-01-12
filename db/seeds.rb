@@ -23,16 +23,16 @@ u5 = User.create(username: "tchan", password: "bigblue5", write: false)
 u6 = User.create(username: "sacharya", password: "bigblue6", write: false)
 
 
-CSV.foreach(File.join(Rails.root, "db", "seed.csv"), headers: false) do |row| 
-    first_name, last_name, grade, campus, cohort, veracross_id, email, teacher = row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7]
-    Student.create(
-        first_name: first_name, 
-        last_name: last_name, 
-        grade: grade, 
-        campus: campus, 
-        cohort: cohort, 
-        veracross_id: veracross_id, 
-        email: email, 
-        teacher: teacher
-    )
-end 
+# CSV.foreach(File.join(Rails.root, "db", "seed.csv"), headers: false) do |row| 
+#     first_name, last_name, grade, campus, cohort, veracross_id, email, teacher = row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7]
+#     Student.create(
+#         first_name: first_name, 
+#         last_name: last_name, 
+#         grade: grade, 
+#         campus: campus, 
+#         cohort: cohort, 
+#         veracross_id: veracross_id, 
+#         email: email, 
+#         teacher: teacher
+#     )
+# end 

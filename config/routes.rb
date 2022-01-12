@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get '/percentages', to: "stats#past_future_7_details"
       get '/veracrossids', to: "stats#veracross_ids"
       get '/bygrade', to: "stats#grade_level_data"
+      get '/data_export', to: "exports#data_export"
       resources :users, only: [:show, :update, :create]
       resources :students, only: [:update, :show, :index]
       resources :quarantines, only: [:update, :show, :destroy, :index, :create]
