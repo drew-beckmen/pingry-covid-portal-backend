@@ -4,40 +4,29 @@
 
 <p>Dear <%= "#{@student.first_name}"%>,</p>
 
-<p>You have been identified by Pingry’s Contact Tracing Team as having had close contact with a COVID-19 case on <%= @quarantine.exposure %> .
-
-<% if @quarantine.is_seven_day %>
-    Currently, the regional <a href="https://www.nj.gov/health/cd/documents/topics/NCOV/COVID_19_Report_Week_2021_14.pdf">CALI SCORE</a> permits Pingry to adopt a seven-day quarantine period for those who have come into close contact with anyone who tested positive for COVID-19. Accordingly, you may return to our campus on <%= @quarantine.end_date || @quarantine.exposure + 8%> provided the following criteria have been met:</p>
+<p>You have been identified by Pingry’s Contact Tracing Team as having had close contact with a COVID-19 case on <%= @quarantine.exposure %>. In order to minimize potential community transmission, <strong>you will need to enter a mandatory quarantine starting on <%= @quarantine.exposure %></strong>. There are two approved options to return to campus from <a href='https://www.cdc.gov/quarantine/index.html'>quarantine.</a></p> 
 
 
-    <ol>
-        <li>You must have quarantined for at least seven consecutive days.</li>
-        <li>You must have remained completely without symptoms for the entirety of the quarantine period.</li>
-        <li>You  must have obtained a “NEGATIVE” or “NOT DETECTED” result from a polymerase chain reaction (PCR) test taken on or after <%= @quarantine.exposure + 5 %></li>
-    </ol>
+<strong>Option 1: </strong>
+<p>Quarantine at home for 10 days starting on <%= @quarantine.exposure %> and ending on <%= @quarantine.exposure + 10%>. Your earliest possible date of return to campus would be on <%= @quarantine.exposure + 11 %>.</p>
 
-    <p>Pingry’s pool testing may be used as long as:</p>
-    <ol>
-        <li>The saliva sample was generated on or after <%= @quarantine.exposure + 5%>.</li>
-        <li>Results from the testing cycle have been completed and you have been <strong>individually notified via email</strong> that you are cleared to return to campus.</li>
-    </ol>
+<strong>Option 2:</strong>
+<p>Quarantine at home for a minimum of 5 days starting on <%= @quarantine.exposure %> and ending on <%= @quarantine.exposure + 5 %>. Your earliest possible day of return to campus would be on <%= @quarantine.exposure + 6 %> provided you meets all of the following criteria: </p>
 
-        <p>
-    If Pingry’s pool test does not align with you quarantine timeline, we would encourage you to seek an independent PCR test to satisfy this requirement of an abbreviated quarantine. Please submit the results of your independent PCR test to <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a> prior to your return to campus. 
-    </p>
-<% else %>
-    <p>In order to minimize potential community transmission, <strong>you will need to enter a mandatory 14-day quarantine starting on <%= @quarantine.exposure %> and ending on <%= @quarantine.end_date || @quarantine.exposure + 14 %></strong>. Your earliest possible date of return to campus is on <%= @quarantine.end_date ? @quarantine.end_date + 1 : @quarantine.exposure + 15 %>, regardless of a physician’s clearance and/or a negative result from a COVID-19 test. During this quarantine period, you are not permitted on Pingry campuses or at in-person Pingry events at any time for any reason.</p>
-<% end %>
+<ul>
+    <li>You remain asymptomatic for the duration of the quarantine period</li>
+    <li>You submit a negative test result from a rapid antigen test (at home or administered by a physician) taken on or after <%= @quarantine.exposure + 5 %> to <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>, including full name, date of birth and date of test taken.</li>
+</ul>
 
-<p><strong>Your next immediate steps are:</p>
+<p>During this quarantine period, you are not permitted on Pingry campuses, at in-person Pingry events, or around Pingry community members at any time for any reason.</p>
 
+<p><strong>Your immediate next steps are:</p>
 <ol>
     <li>Contact Human Resources and</li>
     <li>Either your Division Director</strong> (and Department Chair for Basking Ridge Faculty) or your Direct Supervisor to discuss how and whether you can fulfill your employment duties while not on campus. The Contact Tracing Team will <strong>not</strong> directly pass this information on to these individuals on your behalf.</li>
 </ol>
 
-
-<p>As part of our contact tracing process, we seek to share the fact that you have been identified as a close contact as quickly as possible, but we appreciate that a phone call will be helpful to process this information and ask clarifying questions. A member of the Contact Tracing Team will be in touch, via phone, within the next 48 hours. If you do not receive a call, please reach out to us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>. We appreciate your understanding that weekends and/or holidays may cause a slight delay.</p>
+<p>As part of our contact tracing process, we seek to share the fact that you have been identified as a close contact as quickly as possible, but we appreciate that a phone call will be helpful to process this information and ask clarifying questions. <strong>A member of the Contact Tracing team will be in touch, via phone, within the next 48 hours. If you do not receive a call, please reach out to us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a></strong>. We appreciate your understanding that weekends and/or holidays may cause a slight delay.</p>
 
 <p>Please monitor for any symptoms of COVID-19. If you develop any of the following symptoms, please reach out to your healthcare provider and notify us via email at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>:</p>
 
@@ -60,4 +49,3 @@
 <p>The Pingry School</p>
 
 <p>CONFIDENTIAL AND/OR PRIVILEGED: This communication contains information intended only for use by the individual or entity to which it is addressed and may contain private and/or sensitive information. If you are not the intended recipient or have received this message in error, you are hereby notified that any disclosure, copying, distribution or use of its content is strictly prohibited and illegal. If you have received this transmission in error, please notify the above sender immediately and permanently destroy all copies of this message.</p>
-

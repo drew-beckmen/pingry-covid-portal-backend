@@ -4,29 +4,22 @@
 
 <p>Dear Caregiver of <%= "#{@student.first_name}"%>,</p>
 
-<p>Your child has been identified by Pingry’s Contact Tracing Team as having had close contact with a COVID-19 case on <%= @quarantine.exposure %>.
-<% if @quarantine.is_seven_day %>
-    Currently, the regional <a href="https://www.nj.gov/health/cd/documents/topics/NCOV/COVID_19_Report_Week_2021_14.pdf">CALI SCORE</a> permits Pingry to adopt a seven-day quarantine period for those who have come into close contact with anyone who tested positive for COVID-19. Accordingly, <%= @student.first_name%> may return to our campus on <%= @quarantine.end_date || @quarantine.exposure + 8%> provided the following criteria have been met:</p>
+<p>Your child has been identified by Pingry’s Contact Tracing Team as having had close contact with a COVID-19 case on <%= @quarantine.exposure %>. In order to minimize potential community transmission, <strong>your child will need to enter a mandatory quarantine starting on <%= @quarantine.exposure %></strong>. There are two approved options to return to campus from <a href='https://www.cdc.gov/quarantine/index.html'>quarantine.</a></p> 
 
-    <ol>
-        <li><%= @student.first_name %> must have quarantined for at least seven consecutive days.</li>
-        <li><%= @student.first_name %> must have remained completely without symptoms for the entirety of the quarantine period.</li>
-        <li><%= @student.first_name %>  must have obtained a “NEGATIVE” or “NOT DETECTED” result from a polymerase chain reaction (PCR) test taken on or after <%= @quarantine.exposure + 5 %></li>
-    </ol>
 
-    <p>Pingry’s pool testing may be used as long as:</p>
-    <ol>
-        <li>The saliva sample was generated on or after <%= @quarantine.exposure + 5%>.</li>
-        <li>Results from the testing cycle have been completed and you have been <strong>individually notified via email</strong> that <%= @student.first_name %> is cleared to return to campus.</li>
-    </ol>
 
-    <p>
-    If Pingry’s pool test does not align with <%= @student.first_name %>’s  quarantine timeline, we would encourage you to seek an independent PCR test to satisfy this requirement of an abbreviated quarantine. Results from <%= @student.first_name %>’s PCR test must be submitted to <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a> and our school nurses. For Short Hills students please submit your results to <a href="mailto: pedell@pingry.org">Paula Edell</a>, for Basking Ridge students please submit your results to <a href="mailto: jdibiasi@pingry.org">Jennifer DiBiasi</a> and/or <a href="mailto: jlivak@pingry.org">Joy Livak</a>. 
-    </p>
-<% else %>
-    <p>In order to minimize potential community transmission, <strong>your child will need to enter a mandatory 14-day quarantine starting on <%= @quarantine.exposure %> and ending on <%= @quarantine.end_date || @quarantine.exposure + 14 %></strong>. Your child’s earliest possible date of return to campus is on <%= @quarantine.end_date ? @quarantine.end_date + 1 : @quarantine.exposure + 15 %>, regardless of a physician’s clearance and/or a negative result from a COVID-19 test. During this quarantine period, your child is not permitted on Pingry campuses or at in-person Pingry events at any time for any reason.</p>
-<% end %>
+<strong>Option 1: </strong>
+<p>Quarantine at home for 10 days starting on <%= @quarantine.exposure %> and ending on <%= @quarantine.exposure + 10%>. <%= "#{@student.first_name}"%>’s earliest possible date of return to campus would be on <%= @quarantine.exposure + 11 %>.</p>
 
+<strong>Option 2:</strong>
+<p>Quarantine at home for a minimum of 5 days starting on <%= @quarantine.exposure %> and ending on <%= @quarantine.exposure + 5 %>. <%= "#{@student.first_name}"%>’s earliest possible day of return to campus would be on <%= @quarantine.exposure + 6 %> provided your child meets all of the following criteria: </p>
+
+<ul>
+    <li><%= "#{@student.first_name}"%> remains asymptomatic for the duration of the quarantine period</li>
+    <li><%= "#{@student.first_name}"%> submits a negative test result from a rapid antigen test (at home or administered by a physician) taken on or after <%= @quarantine.exposure + 5 %> to the appropriate campus nurse and <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>, including full name, date of birth and date of test taken.</li>
+</ul>
+
+<p>During this quarantine period, your child is not permitted on Pingry campuses, at in-person Pingry events, or around Pingry community members at any time for any reason.</p>
 
 <p>As part of our contact tracing process, we seek to share the fact that your child has been identified as a close contact as quickly as possible, but we appreciate that a phone call will be helpful to process this information and ask clarifying questions. <strong>A member of the Contact Tracing team will be in touch, via phone, within the next 48 hours. If you do not receive a call, please reach out to us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a></strong>. We appreciate your understanding that weekends and/or holidays may cause a slight delay.</p>
 

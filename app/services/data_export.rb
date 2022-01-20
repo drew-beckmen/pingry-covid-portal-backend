@@ -23,8 +23,7 @@ class DataExport
         select p.*, q.exposure as start,
                 case
                     when q.end_date is not null then q.end_date
-                    when q.is_seven_day is true then q.exposure + 7
-                    else q.exposure + 14
+                    else q.exposure + 5
                 end,
                 'Quarantine' as Type
         from quarantines q join people p on p.id = q.student_id

@@ -200,7 +200,7 @@ class Api::V1::StatsController < ApplicationController
                         end 
                     end 
                 else 
-                    projected_end = q.end_date || (q.exposure + 14)
+                    projected_end = q.end_date || (q.exposure + 5)
                     if projected_end >= key && q.exposure <= key 
                         if Student.find(q.student_id).campus == "Basking Ridge"
                             baskingRidgeNumbers[key][:quarantine] += 1
@@ -336,7 +336,7 @@ class Api::V1::StatsController < ApplicationController
             end 
             Quarantine.all.each do |q| 
                 # may need to remove equal to sign here when change conventions
-                projected_end = q.end_date || (q.exposure + 14)
+                projected_end = q.end_date || (q.exposure + 5)
                 if projected_end >= key && !q.completed
                     final_hash[mapping[key]]["total"] += 1
                     if Student.find(q.student_id).teacher 

@@ -4,16 +4,31 @@
 
 <p>Dear Caregiver of <%= "#{@student.first_name}"%>,</p>
 
-<p>Thank you for notifying Pingry regarding <%= @student.first_name %>’s positive COVID-19 diagnosis. Your willingness to share this information will help ensure we continue to keep our community safe. Our wishes are for <%= @student.first_name %> to have a speedy and restful recovery.  </p>
+<p>We are very sorry to hear that <%= @student.first_name %> has tested positive for COVID-19. Our wishes are for <%= @student.first_name %> to have a speedy and restful recovery.</p>
 
 
-<p>According to the information on file, <strong>your child entered a mandatory 10-day-minimum isolation starting on <%= @isolation.start_isolation %> and ending on <%= @isolation.start_isolation  + 10 %></strong>. Your child’s earliest possible date of return to campus is on <%= @isolation.start_isolation  + 11 %>. Pingry would also like to inform you that <%= @student.first_name %> is now exempt from participation in our weekly pooled testing until the testing cycle after <%= @isolation.start_isolation  + 90 %>. We will be periodically checking in with you and your child during your child’s isolation. During this isolation period, your child is not permitted on Pingry campuses, in-person Pingry events, or around Pingry community members at any time for any reason.</p>
+<p>According to the information on file, your child entered a mandatory isolation period starting on <%= @isolation.start_isolation %>. There are two approved options to return to campus from <a href='https://www.cdc.gov/quarantine/index.html'>isolation.</a></p>
 
-<p>Attached to this email you will find Pingry’s COVID-19 clearance form. <strong>This form must be completed by <%= @student.first_name %>’s physician and returned to our school nurses prior to your child’s return to campus.</strong> Pingry will only accept the attached form and will not accept independent physician’s clearance notes. For those on the Short Hills Campus, please submit the form to <a href="mailto: pedell@pingry.org">Paula Edell</a>. For those on the Basking Ridge Campus, please submit the form to <a href="mailto: jdibiasi@pingry.org">Jennifer DiBiasi</a> and <a href="mailto: jlivak@pingry.org">Joy Livak</a>. Please note that once an individual has tested positive for COVID-19, they are presumed to have contracted the virus. Therefore, we will not accept any changes to this result with any following tests that show a negative result.</p>
+<strong>Option 1:</strong>
+<p>Isolate at home for 10 days. If you choose this option, your child's isolation will end on <%= @isolation.start_isolation + 10 %>. Your child's earliest possible date of return to campus is on <%= @isolation.start_isolation + 11 %>. We recommend that you inform your child's Primary Care Physician of <%= @student.first_name %>'s positive COVID-19 result as soon as possible. <strong>Your child is also required to have a <a href='https://resources.finalsite.net/images/v1642538640/pingry/dfcgrazyzeelgnjpfyia/COVID-19_Clearance_Form.pdf'>COVID-19 Clearance Form</a> signed by an appropriate medical professional (MD, DO, PA, APN) on file before returning to in-person learning.</strong> For those on the Short Hills Campus, please <strong>submit the form</strong> to <a href="mailto: pedell@pingry.org">Paula Edell</a>. For those on the Basking Ridge Campus, please submit the form to <a href="mailto: jdibiasi@pingry.org">Jennifer DiBiasi</a> and <a href="mailto: jlivak@pingry.org">Joy Livak</a>.</p>
 
-<p><strong>If you haven’t already been in touch with a member of the Pingry Contact Tracing Team please reach out to <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a> and a member of the team will be in touch soon</strong>. It is essential that you connect with our Contact Tracing Team to help minimize potential community spread.</p>
+<strong>Option 2:</strong>
+<p>Isolate at home for a minimum of 5 days. If you choose this option, your child's isolation will end on <%= @isolation.start_isolation + 5 %>. Your child's earliest possible date of return to campus is on <%= @isolation.start_isolation + 6 %>. Beginning on <%= @isolation.start_isolation + 6 %>, your child may return to campus only if they meet all of the following criteria:</p>
 
-<p>Pingry  respects your family’s privacy and will not be sharing information regarding <%= @student.first_name %>’s isolation outside of our contact tracing team. However, we do encourage you to connect with <%= @student.first_name %>’s advisor/homeroom teacher to discuss how we can best support <%= @student.first_name %> at this time. You can also feel free to inform coaches, club advisors, or other adult members of the Pingry community if you feel comfortable with doing so.</p>
+<ul>
+    <li>Have been fever-free for at least 72 hours</li>
+    <li>Have resolved or significantly improved symptoms</li>
+    <li>Do not have a runny nose (i.e., does not impede proper mask use)</li>
+    <li>Do not have more than a minimal cough (i.e., does not interrupt work and does not impede proper mask use)</li>
+    <li>Submit a negative test result from a rapid antigen test (at home or administered by a physician) taken on or after Day 5 to the appropriate campus nurse and <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>, including full name, date of birth, and date of test taken.</li>
+    <li>Students are also required to have a <a href='https://resources.finalsite.net/images/v1642538640/pingry/dfcgrazyzeelgnjpfyia/COVID-19_Clearance_Form.pdf'>COVID-19 Clearance Form</a> signed by an appropriate medical professional (MD, DO, PA, APN) on file before returning to in-person learning. We recommend that you inform your child's Primary Care Physician of <%= @student.first_name %>'s positive COVID-19 result as soon as possible. <strong>Please submit COVID-19 Clearance Forms with your negative test result from a rapid antigen test to the appropriate campus nurse.</strong> For those on the Short Hills Campus, please submit the form to <a href="mailto: pedell@pingry.org">Paula Edell</a>. For those on the Basking Ridge Campus, please submit the form to <a href="mailto: jdibiasi@pingry.org">Jennifer DiBiasi</a> and <a href="mailto: jlivak@pingry.org">Joy Livak</a>.</li>
+</ul>
+
+<p>Pingry would also like to inform you that <%= @student.first_name %> should not participate in our weekly pooled testing until the testing cycle after <%= @isolation.start_isolation + 90 %>. We will periodically check in with you and your child during your child's isolation. During this isolation period, your child is not permitted on Pingry campuses, in-person Pingry events, or around Pingry community members at any time for any reason. Please note that once an individual has tested positive for COVID-19, they are presumed to have contracted the virus. Therefore, we will not accept any changes to this result with any following tests that show a negative result.</p>
+
+<p>If you haven't already been in touch with a member of the Pingry Contact Tracing Team, please reach out to contacttracing@pingry.org, and a member of the team will be in touch soon. It is essential that you connect with our Contact Tracing Team to help minimize potential community spread.</p>
+
+<p>Pingry respects your family’s privacy and will not be sharing information regarding <%= @student.first_name %>’s isolation outside of our contact tracing team. However, we do encourage you to connect with <%= @student.first_name %>’s advisor/homeroom teacher to discuss how we can best support <%= @student.first_name %> at this time. You can also feel free to inform coaches, club advisors, or other adult members of the Pingry community if you feel comfortable with doing so.</p>
 
 <p>If your child feels able to attend classes, they may engage as a remote learner. <strong>We do ask that you inform Pingry if your child will indeed be participating as a remote learner for the duration of their isolation by emailing the appropriate divisional attendance email:</strong></p>
 
@@ -25,9 +40,8 @@
 
 <p>If you have updates regarding your child’s status, please email us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>.</p>
 
-<p>Thank you for your partnership as we work to keep Pingry safe! You may receive more information from your local health department for additional contact tracing efforts.</p>
-
+<p>Thank you for your help in keeping Pingry safe, and best wishes for a speedy recovery! You may receive more information from your local health department for additional contact tracing efforts.</p>
+<p>Best wishes for a speedy recovery,</p>
 <p>The Pingry School</p>
 
 <p>CONFIDENTIAL AND/OR PRIVILEGED: This communication contains information intended only for use by the individual or entity to which it is addressed and may contain private and/or sensitive information. If you are not the intended recipient or have received this message in error, you are hereby notified that any disclosure, copying, distribution or use of its content is strictly prohibited and illegal. If you have received this transmission in error, please notify the above sender immediately and permanently destroy all copies of this message.</p>
-
