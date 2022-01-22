@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get '/bygrade', to: "stats#grade_level_data"
       get '/data_export', to: "exports#data_export"
       resources :users, only: [:show, :update, :create]
-      resources :students, only: [:update, :show, :index]
+      resources :students, only: [:update, :show, :index, :create]
       resources :quarantines, only: [:update, :show, :destroy, :index, :create]
       resources :isolations, only: [:update, :show, :destroy, :index, :create]
       resources :contacts, only: [:show, :destroy, :index, :create]
