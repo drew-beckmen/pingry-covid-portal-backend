@@ -1,40 +1,52 @@
+<% if @contact.recent_recovery %>
+
 <h3>Pingry COVID-19 Update</h3>
 <h5>You have been identified as a close contact </h5>
 <hr/>
 
 <p>Dear <%= "#{@student.first_name}"%>,</p>
 
-<p>You have been identified by Pingry’s Contact Tracing Team as having had close contact with a COVID-19 case on <%= @contact.exposure %>.</p>
+<p>You have been in close contact with a member of our community who recently tested positive for COVID-19. You were most likely exposed on <%= @contact.exposure %>.</p>
 
-<p>Due to the fact that you are fully vaccinated against COVID-19, in accordance with guidance from the New Jersey Department of Health, you:</p>
-
-<ul>
-    <li>Do not need to quarantine, be excluded from school, but should test following an exposure to someone with suspected or confirmed COVID-19. <strong>Pingry’s weekly pool testing will satisfy this recommendation.</strong></li>
-    <li>Should self-monitor for symptoms of COVID-19 for 14 days following an exposure.</li>
-</ul>
-
-<p>As part of our contact tracing process, we seek to share the fact that you have been identified as a close contact as quickly as possible, but we appreciate that a phone call will be helpful to process this information and ask clarifying questions. To set-up a call, please reach out to us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a> and we will schedule a time for a member of our team to speak with you.</p>
-
-<p>If you experience any of the following symptoms, please reach out to your healthcare provider, notify them of your vaccination status, and contact Pingry via email at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>:</p>
+<p>Our records indicate that you have recovered from COVID-19 within the past 90-days. As such, you:</p>
 
 <ul>
-    <li>Fever or chills</li>
-    <li>Cough</li>
-    <li>Shortness of breath or difficulty breathing</li>
-    <li>Fatigue</li>
-    <li>Muscle or body aches</li>
-    <li>New loss of taste or smell</li>
-    <li>Sore throat</li>
-    <li>Congestion or runny nose</li>
-    <li>Nausea or vomiting</li>
-    <li>Diarrhea</li>
+    <li>Are not required to participate in Pingry’s pooled testing cycles throughout the remainder of the 90-day period</li>
+    <li>Are not required to seek an outside COVID-19/PCR test</li>
+    <li>Will not be excluded from school</li>
+    <li>Should monitor for symptoms</li>
 </ul>
 
-<p>Pingry respects your privacy and will not be sharing information regarding your close contact  outside of our Contact Tracing Team. </p>
+<p>If you experience any <a href="https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html">symptoms of COVID-19</a>, please contact your healthcare provider and contact Pingry’s <a href="mailto:contacttracing@pingry.org">Contact Tracing Team.</a></p>
 
-<p>We truly appreciate your cooperation in keeping the Pingry community safe. Please let us know if there is anything we can do to help support you during this time.</p>
+<p>We truly appreciate your cooperation in keeping the Pingry community safe. If you need additional information, please review our up-to-date health and safety policies on our <a href="https://www.pingry.org/hp/21-22-bettertogether">Better Together page.</a></p>
+
+<% else %>
+
+<h3>Pingry COVID-19 Update</h3>
+<h5>You have been identified as a close contact </h5>
+<hr/>
+
+<p>Dear <%= "#{@student.first_name}"%>,</p>
+
+<p>You have been in close contact with a member of our community who recently tested positive for COVID-19. You were most likely exposed on <%= @contact.exposure %>.</p>
+
+<p>Our records indicate that you are fully vaccinated against COVID-19 and have received all reccomended vaccine doses. In accordance with guidance from the <a href="https://www.state.nj.us/health/cd/documents/topics/NCOV/RecommendationsForLocalHealthDepts_K12Schools.pdf">New Jersey Department of Health</a>, it is recommended that you:</p>
+
+<ul>
+    <li>Participate in Pingry’s required weekly pooled testing cycles</li>
+    <li>Are <strong>not</strong> required to seek an outside COVID-19/PCR test </li>
+    <li>Will not be excluded from school</li>
+    <li>Should monitor for symptoms</li>
+</ul>
+
+<p>If you experience any <a href="https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html">symptoms of COVID-19</a>, please contact your healthcare provider and contact Pingry’s <a href="mailto:contacttracing@pingry.org">Contact Tracing Team.</a></p>
+
+<p>We truly appreciate your cooperation in keeping the Pingry community safe. If you need additional information, please review our up-to-date health and safety policies on our <a href="https://www.pingry.org/hp/21-22-bettertogether">Better Together page.</a></p>
 
 <p>Thank you,</p>
 <p>The Pingry School</p>
 
 <p>CONFIDENTIAL AND/OR PRIVILEGED: This communication contains information intended only for use by the individual or entity to which it is addressed and may contain private and/or sensitive information. If you are not the intended recipient or have received this message in error, you are hereby notified that any disclosure, copying, distribution or use of its content is strictly prohibited and illegal. If you have received this transmission in error, please notify the above sender immediately and permanently destroy all copies of this message.</p>
+
+<% end %>

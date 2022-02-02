@@ -18,7 +18,13 @@ class Api::V1::ContactsController < ApplicationController
     def create 
         contact = Contact.create(contact_params)
         currentStudent = Student.find(contact.student_id)
-        # TODO: add email functionality for contacts
+        latestIsolation = Isolation.where(student_id: currentStudent, confirmed: true).sort_by(&:created_at)&.last&.created_at
+        if !latestIsolation.nil? && latestIsolation >= 90.days.ago 
+            contact.recent_recovery = true
+        else
+            contact.recent_recovery = false
+        end
+        contact.save
         if !currentStudent.teacher
             ContactMailer.with(student: currentStudent, contact: contact).contact_student.deliver_now
         else 
@@ -29,6 +35,6 @@ class Api::V1::ContactsController < ApplicationController
 
     private 
     def contact_params 
-        params.require(:contact).permit(:id, :exposure, :student_id, :notes)
+        params.require(:contact).permit(:id, :exposure, :student_id, :notes, :recent_recovery)
     end 
 end
