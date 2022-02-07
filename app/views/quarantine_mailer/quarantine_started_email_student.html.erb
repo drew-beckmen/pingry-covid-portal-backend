@@ -2,45 +2,31 @@
 <h5>Your child has just entered a quarantine period</h5>
 <hr/>
 
-<p>Dear Caregiver of <%= "#{@student.first_name}"%>,</p>
+<p>Dear Parent/Guardian of <%= "#{@student.first_name}"%>,</p>
 
 <p>Your child has been identified by Pingry’s Contact Tracing Team as having had close contact with a COVID-19 case on <%= @quarantine.exposure %>. In order to minimize potential community transmission, <strong>your child will need to enter a mandatory quarantine starting on <%= @quarantine.exposure %></strong>. There are two approved options to return to campus from <a href='https://www.cdc.gov/quarantine/index.html'>quarantine.</a></p> 
 
 
 
 <strong>Option 1: </strong>
-<p>Quarantine at home for 10 days starting on <%= @quarantine.exposure %> and ending on <%= @quarantine.exposure + 10%>. <%= "#{@student.first_name}"%>’s earliest possible date of return to campus would be on <%= @quarantine.exposure + 11 %>.</p>
+<p>Quarantine at home for 10 days beginning <%= @quarantine.exposure %> and ending on <%= @quarantine.exposure + 10%>. <%= "#{@student.first_name}"%>’s earliest possible date of return to campus would be on <%= @quarantine.exposure + 11 %>.</p>
 
 <strong>Option 2:</strong>
-<p>Quarantine at home for a minimum of 5 days starting on <%= @quarantine.exposure %> and ending on <%= @quarantine.exposure + 5 %>. <%= "#{@student.first_name}"%>’s earliest possible day of return to campus would be on <%= @quarantine.exposure + 6 %> provided your child meets all of the following criteria: </p>
+<p>Quarantine at home for a minimum of five days beginning <%= @quarantine.exposure %> and ending on <%= @quarantine.exposure + 5 %>. <%= "#{@student.first_name}"%>’s earliest possible day of return to campus would be on <%= @quarantine.exposure + 6 %> provided your child meets all of the following criteria: </p>
 
 <ul>
-    <li><%= "#{@student.first_name}"%> remains asymptomatic for the duration of the quarantine period</li>
-    <li><%= "#{@student.first_name}"%> submits a negative test result from a rapid antigen test (at home or administered by a physician) taken on or after <%= @quarantine.exposure + 5 %> to the appropriate campus nurse and <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>, including full name, date of birth and date of test taken.</li>
+    <li>Remains asymptomatic for the duration of the quarantine period</li>
+    <li>Submit a negative test result from a rapid antigen test — administered at home or by a physician and taken on or after day five of the isolation period — to the appropriate campus nurse and ContactTracing@pingry.org, including full name, date of birth, and date of test taken. Click <a href="https://www.pingry.org/hp/21-22-bettertogether/example-photo-test-result-rat">here</a> for an example.</li>
+    <li><strong>Please note: your child’s submission of a negative test result from a rapid antigen test is not a substitute for participation in Pingry’s weekly pooled testing</strong>. In order to maintain uninterrupted campus access after your child’s quarantine is complete, your child must either participate in Pingry’s weekly pooled testing or provide a negative test result from an independent PCR test. You can review Pingry’s testing calendar <a href="https://www.pingry.org/hp/21-22-bettertogether">here</a>>. Any results from an independent PCR should be submitted to <a href="mailto:HealthandSafety@pingry.org">HealthandSafety@pingry.org</a>.</li>
 </ul>
 
-<p>During this quarantine period, your child is not permitted on Pingry campuses, at in-person Pingry events, or around Pingry community members at any time for any reason.</p>
+<p>During this quarantine period, your child is not permitted on Pingry's campuses, at in-person Pingry events, or around Pingry community members at any time for any reason.</p>
 
-<p>Please note if our Contact Tracing Team identifies your child as a close contact and your child’s vaccination records are not already uploaded and approved by the time you receive this notification, <strong>your child must remain at home</strong> — even if they are vaccinated —until our Health and Safety Team approves their vaccination records. This process may take up to one business day, during which your child must stay at home as a remote learner.</p>
+<p>Should our Contact Tracing Team identify your child as a close contact and your child’s vaccination records are not already uploaded and approved by the time you receive this notification, <strong>your child must remain at home</strong> — even if they are vaccinated — until our school nurses approve their vaccination records. <strong>This process may take up to one business day, during which your child must stay at home as a remote learner.</strong></p>
 
-<p>As part of our contact tracing process, we seek to share the fact that your child has been identified as a close contact as quickly as possible, but we appreciate that a phone call will be helpful to process this information and ask clarifying questions. <strong>A member of the Contact Tracing team will be in touch, via phone, within the next 48 hours. If you do not receive a call, please reach out to us at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a></strong>. We appreciate your understanding that weekends and/or holidays may cause a slight delay.</p>
+<p>If you are seeking clarification, please first review our up-to-date health and safety policies on our <a href="https://www.pingry.org/hp/21-22-bettertogether">Better Together</a> page. Please note that you may also be contacted by the local Department of Health. If you have any further questions, please reach out to us at contacttracing@pingry.org.</p>
 
-<p>Please monitor your child for any symptoms of COVID-19. If <%= @student.first_name %> develops any of the following symptoms, please reach out to your healthcare provider and notify us via email at <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>:</p>
-
-<ul>
-    <li>Fever or chills</li>
-    <li>Cough</li>
-    <li>Shortness of breath or difficulty breathing</li>
-    <li>Fatigue</li>
-    <li>Muscle or body aches</li>
-    <li>New loss of taste or smell</li>
-    <li>Sore throat</li>
-    <li>Congestion or runny nose</li>
-    <li>Nausea or vomiting</li>
-    <li>Diarrhea</li>
-</ul>
-
-<p>We ask that you inform Pingry that your child will be participating as a remote learner for the duration of their quarantine by emailing the appropriate divisional attendance email:</p>
+<p>During this time, please inform Pingry that your child will participate in remote learning for the duration of their quarantine by emailing the appropriate divisional attendance email:</p>
 
 <ul>
     <li>Lower School: <a href="mailto:lsattendance@pingry.org">lsattendance@pingry.org</a>  + your child's homeroom teacher</li>
@@ -48,9 +34,14 @@
     <li>Upper School: <a href="mailto:usattendance@pingry.org">usattendance@pingry.org</a></li>
 </ul>
 
-<p>Pingry  respects your family’s privacy and will not be sharing information regarding <%= @student.first_name %>’s quarantine outside of our Contact Tracing Team. However, we do encourage you to connect with <%= @student.first_name %>’s advisor/homeroom teacher to discuss how we can best support <%= @student.first_name %> at this time. You can also feel free to inform coaches, club advisors, or other adult members of the Pingry community if you feel comfortable with doing so.</p>
+<p>We encourage you to connect with <%= @student.first_name %>’s advisor/homeroom teacher to discuss how we can best support <%= @student.first_name %> at this time. Please feel free to also inform coaches, club advisors, or other adult members of the Pingry community if you feel comfortable doing so.</p>
 
-<p>We truly appreciate your cooperation in keeping the Pingry community safe. You may also be contacted by the local Department of Health. Please let us know if there is anything we can do to help support your family during this time.</p>
+
+<p>Pingry  respects your family’s privacy and will not be sharing information regarding ’s quarantine outside of our Contact Tracing Team. However, we do encourage you to connect with <%= @student.first_name %>’s advisor/homeroom teacher to discuss how we can best support <%= @student.first_name %> at this time. You can also feel free to inform coaches, club advisors, or other adult members of the Pingry community if you feel comfortable with doing so.</p>
+
+<p>If <%= @student.first_name %> experiences any <a href="https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html">symptoms of COVID-19</a>, please reach out to your healthcare provider and contact Pingry via email at <a href="mailto:ContactTracing@pingry.org">ContactTracing@pingry.org</a>.</p>
+
+<p>We truly appreciate your cooperation in keeping the Pingry community safe.</p>
 
 <p>Thank you,</p>
 <p>The Pingry School</p>

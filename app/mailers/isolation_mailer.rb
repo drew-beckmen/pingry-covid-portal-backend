@@ -5,13 +5,13 @@ class IsolationMailer < ApplicationMailer
         @student = params[:student]
         @isolation = params[:isolation]
         # attachments['covid_clearance' + '.pdf'] = File.read('app/mailers/covid_clearance.pdf')
-        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: #{@student.first_name}'s COVID-19 Isolation")
+        mail(to: "pingry.parents_and_#{@student.veracross_id}@mail.veracross.com", reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Your Child’s Mandatory Isolation Period Has Started")
     end  
 
     def isolation_started_email_adult 
         @student = params[:student]
         @isolation = params[:isolation]
-        mail(to: @student.email, reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Pingry: Your COVID-19 Isolation", :content_type => 'text/html')
+        mail(to: @student.email, reply_to: "contacttracing@pingry.org", cc: "contacttracing@pingry.org", subject: "Your Mandatory Isolation Period Has Started", :content_type => 'text/html')
     end 
     
     def isolation_updated_email_student 
