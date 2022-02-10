@@ -2,7 +2,7 @@
 <h5>Your child has been identified as a close contact </h5>
 <hr/>
 
-<p>Dear Caregiver of <%= "#{@student.first_name}"%>,</p>
+<p>Dear Parent/Guardian of <%= "#{@student.first_name}"%>,</p>
 
 <p>Your child has been in close contact with a member of our community who recently tested positive for COVID-19. Your child was most likely exposed on <%= @contact.exposure %>.</p>
 
@@ -18,7 +18,7 @@
     </ul>
 
 <% else %>
-    <p>Our records indicate that your child is fully vaccinated against COVID-19 and has received all reccommended vaccine doses. In accordance with guidance from the <a href="https://www.state.nj.us/health/cd/documents/topics/NCOV/RecommendationsForLocalHealthDepts_K12Schools.pdf">New Jersey Department of Health</a>, your child:</p>
+    <p>Our records indicate that your child is fully vaccinated against COVID-19 and has received all recommended vaccine doses. In accordance with guidance from the <a href="https://www.state.nj.us/health/cd/documents/topics/NCOV/RecommendationsForLocalHealthDepts_K12Schools.pdf">New Jersey Department of Health</a>, your child:</p>
 
     <ul>
         <li>Must continue to participates in Pingry’s required weekly pooled testing cycles</li>
