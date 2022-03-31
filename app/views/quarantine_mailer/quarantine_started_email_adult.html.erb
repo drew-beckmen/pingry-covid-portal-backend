@@ -7,18 +7,26 @@
 <p>You have been identified by Pingry’s Contact Tracing Team as having had close contact with a COVID-19 case on <%= @quarantine.exposure %>. In order to minimize potential community transmission, <strong>you will need to enter a mandatory quarantine starting on <%= @quarantine.exposure %></strong>. There are two approved options to return to campus from <a href='https://www.cdc.gov/quarantine/index.html'>quarantine.</a></p> 
 
 
-<strong>Option 1: </strong>
+<strong>Option 1: Traditional Quarantine </strong>
 <p>Quarantine at home for 10 days beginning <%= @quarantine.exposure %> and ending on <%= @quarantine.exposure + 10%>. Your earliest possible date of return to campus would be on <%= @quarantine.exposure + 11 %>.</p>
 
-<strong>Option 2:</strong>
+<strong>Option 2: Abbreviated At-Home Quarantine</strong>
 <p>Quarantine at home for a minimum of 5 days beginning <%= @quarantine.exposure %> and ending on <%= @quarantine.exposure + 5 %>. Your earliest possible day of return to campus would be on <%= @quarantine.exposure + 6 %> provided you meets all of the following criteria: </p>
 
 <ul>
     <li>Remain asymptomatic for the duration of the quarantine period</li>
     <li>Submit a negative test result from a rapid antigen test — administered at home or by a physician and taken on or after day five of the isolation period — to the appropriate campus nurse and <a href="mailto:contacttracing@pingry.org">contacttracing@pingry.org</a>, including full name, date of birth, and date of test taken. Click <a href="https://www.pingry.org/hp/21-22-bettertogether/example-photo-test-result-rat">here</a> for an example.</li>
+    <li>Wear a mask while on campus between <%= @quarantine.exposure + 6 %> and <%= @quarantine.exposure + 10 %>.</li>
 </ul>
 
-<p>During this quarantine period, you are not permitted on Pingry’s campuses, at in-person Pingry events, or around Pingry community members at any time for any reason.</p>
+<strong>Option 3: Test to Stay</strong>
+<p>You may return to school immediately provided the following criteria are met: </p>
+
+<ul>
+    <li>You are currently asymptomatic and must remain asymptomatic for 10-days following their close contact.</li>
+    <li>You must submit two negative test results from at-home rapid antigen tests. The first test must be administered, submitted, and approved in advance of the next school day. The second test must be administered, submitted, and approved on <%= @quarantine.exposure + 5 %>. Test results should be submitted to the appropriate campus nurse and ContactTracing@pingry.org, including full name, date of birth, and date that the test was taken.  Click <a href="https://www.pingry.org/hp/21-22-bettertogether/example-photo-test-result-rat">here</a> for an example.</li>
+    <li>You must wear a mask while on campus until <%= @quarantine.exposure + 6 %>.</li>
+</ul>
 
 <p><strong>Your immediate next steps are:</p>
 <ol>
