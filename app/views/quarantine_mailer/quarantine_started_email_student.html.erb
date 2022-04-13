@@ -15,25 +15,28 @@
 <p>Quarantine at home for a minimum of five days beginning <%= @quarantine.exposure %> and ending on <%= @quarantine.exposure + 5 %>. <%= "#{@student.first_name}"%>’s earliest possible day of return to campus would be on <%= @quarantine.exposure + 6 %> provided your child meets all of the following criteria: </p>
 
 <ul>
-    <li>Remains asymptomatic for the duration of the quarantine period</li>
-    <li>Submit a negative test result from a rapid antigen test — administered at home or by a physician and taken on or after day five of the isolation period — to the appropriate campus nurse and ContactTracing@pingry.org, including full name, date of birth, and date of test taken. Click <a href="https://www.pingry.org/hp/21-22-bettertogether/example-photo-test-result-rat">here</a> for an example.</li>
+    <li><%= "#{@student.first_name}"%> remains asymptomatic for the duration of the quarantine period</li>
+    <li>Submit a negative test result from a rapid antigen test — administered at home or by a physician and taken on or after <%= @quarantine.exposure + 5 %> — to the appropriate campus nurse and <a href="mailto:ContactTracing@pingry.org">ContactTracing@pingry.org</a>, including full name, date of birth, and date of test taken. Click <a href="https://www.pingry.org/hp/21-22-bettertogether/example-photo-test-result-rat">here</a> for an example.</li>
     <li><strong>Wear a mask while on campus between <%= @quarantine.exposure + 6 %> and <%= @quarantine.exposure + 10 %>.</strong></li>
     <li>During this quarantine period, your child is not permitted on Pingry’s campuses, at in-person Pingry events, or around Pingry community members.</li>
 </ul>
 
-<strong>Option 3: Test to Stay</strong>
+<strong>Option 3: <a href="https://www.nj.gov/health/cd/documents/topics/NCOV/K-12-test-to-stay.pdf">Test to Stay</a></strong>
+<p><em>
+<a href="https://www.nj.gov/health/cd/documents/topics/NCOV/K-12-test-to-stay.pdf">Test to Stay</a> is a modified quarantine protocol to help reduce disruptions to in-person learning for eligible individuals who meet the <a href="https://www.cdc.gov/coronavirus/2019-ncov/your-health/quarantine-isolation.html">requirements for quarantine</a>. Test to Stay utilizes serial testing (repeat testing during a window of time) and self-monitoring for symptoms of COVID-19 to determine eligibility for in-person learning.
+</em></p>
+
 <p><%= "#{@student.first_name}"%> may return to school immediately provided the following criteria are met: </p>
 
 <ul>
     <li>Your child is currently asymptomatic and must remain asymptomatic for 10-days following their close contact.</li>
-    <li>Your child must submit <strong>two negative test results</strong> from at-home rapid antigen tests. The first test must be administered, submitted, and approved in advance of the next school day. The second test must be administered, submitted, and approved on <%= @quarantine.exposure + 5 %>. Test results should be submitted to the appropriate campus nurse and ContactTracing@pingry.org, including full name, date of birth, and date that the test was taken. Click <a href="https://www.pingry.org/hp/21-22-bettertogether/example-photo-test-result-rat">here</a> for an example.</li>
-    <li>Your child must wear a mask while on campus until <%= @quarantine.exposure + 6 %>.</li>
-    <li>Your child may not participate in extracurricular activities until <%= @quarantine.exposure + 6 %>.</li>
+    <li>Your child must submit <strong>two negative test results</strong> from at-home rapid antigen tests. The first test must be administered, submitted, and approved in advance of the next school day. <strong>The second test must be administered and submitted by 5pm on <%= @quarantine.exposure + 5 %></strong>. Test results should be submitted to the appropriate campus nurse and <a href="mailto:ContactTracing@pingry.org">ContactTracing@pingry.org</a>, including full name, date of birth, and date that the test was taken. Click <a href="https://www.pingry.org/hp/21-22-bettertogether/example-photo-test-result-rat">here</a> for an example.<strong>Please note that if your child arrives to school without submitting their second test they will be sent home by our school nurse until proof of their second negative test is provided.</strong></li>
+    <li><strong>Your child must wear a mask while on campus until <%= @quarantine.exposure + 10 %>.</strong></li>
 </ul>
 
 <p>If your child’s vaccination records are not up to date, uploaded and approved by the time you receive this notification, your child’s quarantine options will remain unchanged until our school nurses approve their vaccination records. This process may take up to one business day.</p>
 
-<p>If you are seeking clarification, please first review our up-to-date health and safety policies on our <a href="https://www.pingry.org/hp/21-22-bettertogether">Better Together</a> page. Please note that you may also be contacted by the local Department of Health. If you have any further questions, please reach out to us at contacttracing@pingry.org.</p>
+<p>If you are seeking clarification, please <strong>first</strong> review our up-to-date health and safety policies on our <a href="https://www.pingry.org/hp/21-22-bettertogether">Better Together</a> page. Please note that you may also be contacted by the local Department of Health. If you have any further questions, please reach out to us at contacttracing@pingry.org.</p>
 
 <p>During this time, please inform Pingry that your child will participate in remote learning for the duration of their quarantine by emailing the appropriate divisional attendance email:</p>
 
